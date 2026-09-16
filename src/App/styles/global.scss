@@ -7,3 +7,26 @@ body {
     font-family: var(--font-main);
     line-height: 1.5;
 }
+
+.container {
+    max-width: var(--content-width);
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+.primaryButton {
+    padding: 8px 20px;
+    
+    color: var(--color-text-secondary);
+
+    border-radius: 5px;
+
+    background-color: var(--color-primary);
+
+    transition: background .28s ease;
+
+    &:hover {
+        background-color: var(--color-primary-hover);
+    }
+}

@@ -1,6 +1,5 @@
 .page {
     min-height: 100vh;
-
 }
 
 .container {
@@ -10,7 +9,7 @@
     margin: 0 auto;
 }
 
-.content {
+.headerContent {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,24 +38,25 @@
     }
 }
 
-.primaryButton {
-    padding: 8px 20px;
-    
-    color: var(--color-text-secondary);
-
-    border-radius: 5px;
-
-    background-color: var(--color-primary);
-
-    transition: background .28s ease;
-
-    &:hover {
-        background-color: var(--color-primary-hover);
-    }
-}
-
 .hero {
     background-color: var(--color-primary-light);
-    
-    height: 30vh;
+}
+
+.heroContent {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    padding-block: 80px;
+}
+
+.heroTitle {
+    line-height: 1.2;
+}
+
+.heroDescription {
+    color: var(--color-text-muted);
 }
