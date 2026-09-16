@@ -17,15 +17,46 @@
 }
 
 .header {
+    padding-block: 10px;
 
     background-color: var(--color-surface);
 }
 
+.logo {
+    color: var(--color-primary);
+}
+
+.navigation {
+    $base-gap: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: $base-gap * 4;
+
+    & ul {
+        display: flex;
+        gap: $base-gap;
+    }
+}
+
+.primaryButton {
+    padding: 8px 20px;
+    
+    color: var(--color-text-secondary);
+
+    border-radius: 5px;
+
+    background-color: var(--color-primary);
+
+    transition: background .28s ease;
+
+    &:hover {
+        background-color: var(--color-primary-hover);
+    }
+}
+
 .hero {
-    background-image: url("@/assets/img/doc.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 15px;
+    background-color: var(--color-primary-light);
     
     height: 30vh;
 }

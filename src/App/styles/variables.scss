@@ -1,6 +1,8 @@
 :root {
     --content-width: 1200px;
 
+    --font-main: "Manrope", sans-serif;
+
     /* Background */
     --color-bg: #F4F7F9;
     --color-surface: #FFFFFF;
@@ -8,12 +10,12 @@
 
     /* Text */
     --color-text-primary: #1A2B3C;
-    --color-text-secondary: #5A6E7F;
+    --color-text-secondary: #EBFFFF;
     --color-text-muted: #8C9CAE;
 
     /* Brand */
-    --color-primary: #2B6CB0;
-    --color-primary-hover: #1E4E82;
+    --color-primary: #58839C;
+    --color-primary-hover: #466F87;
     --color-primary-light: #DCE8F5;
 
     /* Accent */

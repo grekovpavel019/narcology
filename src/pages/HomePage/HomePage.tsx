@@ -8,21 +8,22 @@ const HomePage: FC = (): React.JSX.Element => {
             <header className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.content}>
-                        <h1>
+                        <h1 className={styles.logo}>
                             Новая Жизнь
                         </h1>
 
-                        <nav>
+                        <nav className={styles.navigation}>
                             <ul>
-                                <li>О клинике</li>
-                                <li>Услуги</li>
-                                <li>Цены</li>
+                                <li><a href="">О клинике</a></li>
+                                <li><a href="">Услуги</a></li>
+                                <li><a href="">Цены</a></li>
                             </ul>
+
+                            <button className={styles.primaryButton}>
+                                Запись
+                            </button>
                         </nav>
 
-                        <button>
-                            Запись
-                        </button>
                     </div>
                 </div>
             </header>
