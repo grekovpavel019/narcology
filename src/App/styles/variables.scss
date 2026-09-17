@@ -1,33 +1,33 @@
 :root {
-    --content-width: 1200px;
-
-    --font-main: "Manrope", sans-serif;
-
     /* Background */
-    --color-bg: #F4F7F9;
+    --color-bg: #F6FAFA;
     --color-surface: #FFFFFF;
-    --color-surface-soft: #E8F0F5;
 
     /* Text */
-    --color-text-primary: #1A2B3C;
-    --color-text-secondary: #EBFFFF;
-    --color-text-muted: #4a545f;
+    --color-text-primary: #15323C;
+    --color-text-secondary: #51707A;
+    --color-text-muted: #7C949B;
 
-    /* Brand */
-    --color-primary: #58839C;
-    --color-primary-hover: #466F87;
-    --color-primary-light: #DCE8F5;
+    /* Primary */
+    --color-primary: #2AAE8F;
+    --color-primary-soft: #E4F4EF;
 
-    /* Accent */
-    --color-accent: #319795;
-    --color-accent-light: #E6FFFA;
+    /* Secondary */
+    --color-secondary: #2B6E8F;
+    --color-secondary-dark: #1F5470;
 
-    /* UI */
-    --color-border: #D0DFE8;
-    --color-success: #38A169;
-    --color-danger: #E53E3E;
+    /* Dark */
+    --color-dark: #123840;
 
-    /* Dark section */
-    --color-dark: #0F172A;
-    --color-dark-surface: #1E293B;
+    /* Border */
+    --color-border: #E1EAEA;
+    --color-border-soft: #EDF3F3;
+
+    --font-head: "Manrope", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --gl-pad-in: 28px;
+    --gl-pad-bl: 16px;
+
+    --btn-bor-rad: 20px;
 }

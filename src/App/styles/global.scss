@@ -1,32 +1,18 @@
 body {
     min-width: 320px;
+    
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    line-height: 1.6;
 
     background-color: var(--color-bg);
-    color: var(--color-text-primary);
 
-    font-family: var(--font-main);
-    line-height: 1.5;
+    font-size: 14px;
 }
 
 .container {
-    max-width: var(--content-width);
+    max-width: 1200px;
     width: 100%;
 
     margin: 0 auto;
-}
-
-.primaryButton {
-    padding: 8px 20px;
-    
-    color: var(--color-text-secondary);
-
-    border-radius: 5px;
-
-    background-color: var(--color-primary);
-
-    transition: background .28s ease;
-
-    &:hover {
-        background-color: var(--color-primary-hover);
-    }
 }
