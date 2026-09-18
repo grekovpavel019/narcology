@@ -30,7 +30,9 @@ $lc-max-w: 520px;
 }
 
 .eyebrow {
-    display: inline-block;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
 
     padding: 9px 22px;
     margin-bottom: 15px;
@@ -41,6 +43,12 @@ $lc-max-w: 520px;
 
     background-color: var(--color-primary-soft);
     border-radius: var(--btn-bor-rad);
+
+    & svg {
+        width: 16px;
+        height: 16px;
+
+    }
 }
 
 .card {

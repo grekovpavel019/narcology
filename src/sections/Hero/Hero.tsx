@@ -2,6 +2,7 @@ import React, { type FC } from "react";
 
 import LinkButton from "@/shared/components/LinkButton";
 import ShieldIcon from "@/shared/icons/ShieldIcon";
+import PlusIcon from "@/shared/icons/PlusIcon";
 
 import styles from "./Hero.module.scss";
 
@@ -10,7 +11,7 @@ const Hero: FC = (): React.JSX.Element => {
         <section className={`${styles.hero} container`}>
             <div className={styles.heroIntro}>
                 <span className={styles.eyebrow}>
-                    + Частная Клиника "Новый шаг"
+                    <PlusIcon /> Частная Клиника "Новый шаг"
                 </span>
 
                 <h1>

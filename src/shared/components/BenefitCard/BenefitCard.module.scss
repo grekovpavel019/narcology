@@ -1,0 +1,31 @@
+.card {
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+
+    padding: 26px 22px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    box-shadow: var(--shadow);
+
+    & p {
+        color: var(--color-text-secondary);
+    }  
+}
+
+ & .icon {
+        
+        & svg {
+            width: 50px;
+            height: 50px;
+
+            padding: 12px;
+
+            color: var(--color-primary);
+            border-radius: 15px;
+
+            background-color: var(--color-primary-soft);
+        }
+    }
