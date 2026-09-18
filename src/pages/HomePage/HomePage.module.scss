@@ -14,11 +14,12 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: var(--gl-pad-bl) var(--gl-pad-in);
+    padding-block: var(--gl-pad-bl);
 }
 
 .logo {
     font-size: 2rem;
+    font-weight: bold;
 }
 
 .mainNav {
@@ -56,4 +57,13 @@
     &:hover {
         background-color: var(--color-secondary-dark);
     }
+}
+
+.card {
+    max-width: 600px;
+}
+
+.heroHeader {
+    font-size: 2rem;
+    font-weight: bold;
 }

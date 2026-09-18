@@ -10,9 +10,18 @@ body {
     font-size: 14px;
 }
 
+main {
+    margin-top: 90px;
+}
+
+section {
+    margin-top: 90px;
+}
+
 .container {
     max-width: 1200px;
     width: 100%;
 
     margin: 0 auto;
+    padding-inline: var(--gl-pad-in);
 }
