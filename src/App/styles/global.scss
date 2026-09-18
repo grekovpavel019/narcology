@@ -25,3 +25,41 @@ section {
     margin: 0 auto;
     padding-inline: var(--gl-pad-in);
 }
+
+.primaryButton {
+    cursor: pointer;
+
+    padding: 9px 21px;
+
+    display: inline-flex;
+
+    color: var(--color-surface);
+    font-weight: bold;
+
+    background-color: var(--color-secondary);
+    border-radius: var(--btn-bor-rad);
+
+    transition: background .25s linear;
+
+    &:hover {
+        background-color: var(--color-secondary-dark);
+    }
+}
+
+.navLinkButton {
+    cursor: pointer;
+
+    padding: 9px 14px;
+
+    color: var(--color-text-secondary);
+    font-weight: bold;
+
+    border-radius: var(--btn-bor-rad);
+
+    transition: background .25s linear, color .25s linear;
+
+    &:hover {
+        background-color: var(--color-border-soft);
+        color: var(--color-text-primary);
+    }
+}

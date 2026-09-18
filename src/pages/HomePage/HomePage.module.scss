@@ -43,22 +43,6 @@
     }
 }
 
-.buttonPrimary {
-    padding: 9px 21px;
-
-    color: var(--color-surface);
-    font-weight: bold;
-
-    background-color: var(--color-secondary);
-    border-radius: var(--btn-bor-rad);
-
-    transition: background .25s linear;
-
-    &:hover {
-        background-color: var(--color-secondary-dark);
-    }
-}
-
 .hero {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
