@@ -11,7 +11,7 @@ $lc-max-w: 520px;
 .heroIntro {
 
     & h1 {
-        font-size: clamp(2rem, 3.4vw, 3.6rem);
+        font-size: clamp(2.4rem, 3.4vw, 3.2rem);
         font-weight: 700;
 
         line-height: 1.2;
@@ -23,16 +23,19 @@ $lc-max-w: 520px;
 
         margin-top: 20px;
 
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+
+        opacity: .8;
     }
 }
 
 .eyebrow {
     display: inline-block;
 
-    padding: 9px 12px;
+    padding: 9px 22px;
     margin-bottom: 15px;
 
+    font-size: 0.9rem;
     font-weight: bold;
     color: var(--color-primary);
 
@@ -55,7 +58,23 @@ $lc-max-w: 520px;
 .note {
     max-width: $lc-max-w;
 
-    margin-top: 25px;
+    margin-top: 32px;
+
+    display: flex;
+    align-items: start;
+    gap: 10px;
+
+    font-size: 0.9rem;
     
     color: var(--color-text-muted);
+
+    & svg {
+        width: 20px;
+        height: 20px;
+
+        margin-top: 2px;
+        
+        flex-shrink: 0;
+        color: var(--color-primary);
+    }
 }
