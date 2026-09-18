@@ -1,0 +1,21 @@
+.benefits {
+    padding-top: var(--sec-p-top);
+
+    & h2 {
+        text-align: center;
+        
+        font-size: clamp(1.2rem, 3.4vw, 2.2rem);
+    }
+}
+
+.benefitsGrid {
+    margin-top: 48px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid black;
+}
