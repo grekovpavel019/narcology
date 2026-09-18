@@ -59,11 +59,54 @@
     }
 }
 
+.hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    padding: 9px 12px;
+    margin-bottom: 15px;
+
+    font-weight: bold;
+    color: var(--color-primary);
+
+    background-color: var(--color-primary-soft);
+    border-radius: var(--btn-bor-rad);
+}
+
 .card {
-    max-width: 600px;
+    border: 1px solid black;
 }
 
 .heroHeader {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: clamp(2rem, 3.4vw, 3.6rem);
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -0.1rem;
+}
+
+.heroDescription {
+    max-width: 520px;
+
+    margin-top: 20px;
+
+    font-size: 1.2rem;
+}
+
+.heroActions {
+    margin-top: 40px;
+    
+    display: flex;
+    gap: 15px;
+}
+
+.heroNote {
+    margin-top: 25px;
+    
+    color: var(--color-text-muted);
 }
