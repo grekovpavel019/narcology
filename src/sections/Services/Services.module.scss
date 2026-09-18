@@ -1,0 +1,21 @@
+@use "@/shared/styles/mixins" as mixins;
+
+.services {
+    padding-top: calc(2 * var(--sec-p-top));
+
+    & p {
+        @include mixins.lede;
+
+        max-width: 500px;
+
+        margin-top: 18px;
+    }
+}
+
+.servicesGrid {
+    margin-top: 28px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
