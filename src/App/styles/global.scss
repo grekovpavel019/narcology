@@ -14,10 +14,6 @@ main {
     margin-top: 90px;
 }
 
-section {
-    margin-top: 90px;
-}
-
 .container {
     max-width: 1200px;
     width: 100%;
@@ -46,10 +42,27 @@ section {
     }
 }
 
+.secondaryButton {
+    padding: 9px 21px;
+
+    cursor: pointer;
+    
+    font-weight: bold;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--btn-bor-rad);
+
+    transition: background .25s linear;
+
+    &:hover {
+        background-color: var(--color-border-soft);
+    }
+}
+
 .navLinkButton {
     cursor: pointer;
 
-    padding: 9px 14px;
+    padding: 9px 21px;
 
     color: var(--color-text-secondary);
     font-weight: bold;

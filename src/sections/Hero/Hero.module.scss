@@ -4,6 +4,8 @@ $lc-max-w: 520px;
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 56px;
+
+    padding-top: var(--sec-p-top);
 }
 
 .heroIntro {
