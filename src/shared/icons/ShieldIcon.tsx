@@ -1,0 +1,14 @@
+const ShieldIcon = () => {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+        >
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" />
+        </svg>
+    );
+};
+
+export default ShieldIcon;

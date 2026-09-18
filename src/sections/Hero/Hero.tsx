@@ -1,6 +1,7 @@
 import React, { type FC } from "react";
 
 import LinkButton from "@/shared/components/LinkButton";
+import ShieldIcon from "@/shared/icons/ShieldIcon";
 
 import styles from "./Hero.module.scss";
 
@@ -26,7 +27,7 @@ const Hero: FC = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.note}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"></path></svg>
+                    <ShieldIcon />
                     Мы не даём медицинских гарантий и не обещаем конкретный результат — подход подбирается индивидуально после консультации со специалистом.
                 </div>
             </div>
