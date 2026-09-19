@@ -15,6 +15,11 @@ const HomePage: FC = (): React.JSX.Element => {
                 <Benefits />
                 <Services />
                 <Location />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </main>
 
         </>

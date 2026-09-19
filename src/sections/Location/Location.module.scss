@@ -1,0 +1,26 @@
+@use "@/shared/styles/mixins" as mixins;
+
+.location {
+    padding-top: calc(2 * var(--sec-p-top));
+
+    & h2 {
+        text-align: end;
+    }
+}
+
+.wrap {
+    margin-top: 24px;
+
+    padding: 6px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    box-shadow: 0 0px 30px rgb(0 0 0 / 15%);
+
+    & iframe {
+        width: 100%;
+        min-height: 400px;
+    }
+}
