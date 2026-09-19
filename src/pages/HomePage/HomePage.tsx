@@ -4,6 +4,7 @@ import Header from "@/sections/Header";
 import Hero from "@/sections/Hero";
 import Benefits from "@/sections/Benefits";
 import Services from "@/sections/Services";
+import Location from "@/sections/Location";
 
 const HomePage: FC = (): React.JSX.Element => {
     return (
@@ -13,6 +14,7 @@ const HomePage: FC = (): React.JSX.Element => {
                 <Hero />
                 <Benefits />
                 <Services />
+                <Location />
             </main>
 
         </>
