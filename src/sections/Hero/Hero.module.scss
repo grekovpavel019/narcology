@@ -1,11 +1,13 @@
 @use "@/shared/styles/mixins.scss" as mixins;
 
 .hero {
+    padding-top: var(--sec-p-top);
+}
+
+.heroInner {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 56px;
-
-    padding-top: var(--sec-p-top);
 }
 
 .heroIntro {

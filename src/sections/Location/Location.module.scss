@@ -2,7 +2,9 @@
 
 .location {
     padding-top: calc(2 * var(--sec-p-top));
+}
 
+.locationInner {
     & h2 {
         text-align: end;
     }

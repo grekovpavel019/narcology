@@ -2,13 +2,15 @@
 
 .services {
     padding-top: calc(2 * var(--sec-p-top));
+}
 
+.servicesInner {
     & > p {
         max-width: 640px;
         margin-top: 12px;
 
         @include mixins.lede;
-    }
+    }   
 }
 
 .servicesGrid {
