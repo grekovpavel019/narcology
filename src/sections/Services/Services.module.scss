@@ -3,12 +3,11 @@
 .services {
     padding-top: calc(2 * var(--sec-p-top));
 
-    & p {
+    & > p {
+        max-width: 640px;
+        margin-top: 12px;
+
         @include mixins.lede;
-
-        max-width: 500px;
-
-        margin-top: 18px;
     }
 }
 
@@ -18,4 +17,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+}
+
+.buttonArea {
+    margin-top: 28px;
 }

@@ -1,6 +1,4 @@
-@use "@/shared/styles/mixins" as mixins;
-
-$lc-max-w: 520px;
+@use "@/shared/styles/mixins.scss" as mixins;
 
 .hero {
     display: grid;
@@ -12,6 +10,8 @@ $lc-max-w: 520px;
 
 .heroIntro {
 
+    max-width: 520px;
+
     & h1 {
         font-size: clamp(2.4rem, 3.4vw, 3.2rem);
         font-weight: 700;
@@ -21,8 +21,6 @@ $lc-max-w: 520px;
     }
 
     & p {
-        max-width: $lc-max-w;
-
         margin-top: 20px;
 
         @include mixins.lede;
@@ -64,8 +62,6 @@ $lc-max-w: 520px;
 }
 
 .note {
-    max-width: $lc-max-w;
-
     margin-top: 32px;
 
     display: flex;
