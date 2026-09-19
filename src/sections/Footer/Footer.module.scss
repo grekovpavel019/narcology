@@ -1,3 +1,30 @@
 .siteFooter {
-    background-color: red;
+
+    margin-top: calc(2 * var(--sec-p-top));
+    padding-inline: var(--gl-pad-in);
+    padding-block: var(--gl-pad-bl);
+
+    background-color: var(--color-deep);
+}
+
+.footerInline {
+    & h3, h4 {
+        color: var(--color-surface);
+        margin-bottom: 8px;
+    }
+
+    & ul {
+        list-style: disc;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    & p, li {
+        color: var(--color-deep-soft);
+    }
+}
+
+.desc {
+    max-width: 280px;
 }

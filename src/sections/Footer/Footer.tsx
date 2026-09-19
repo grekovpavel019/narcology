@@ -5,9 +5,21 @@ import styles from "./Footer.module.scss";
 const Footer: FC = (): React.JSX.Element => {
     return (
         <footer className={`${styles.siteFooter}`}>
-            <div className="container">
-            бам бам
+            <div className={`${styles.footerInline} container`}>
+                <div>
+                    <h3>Новый шаг</h3>
+                    <p className={styles.desc}>Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.</p>
+                </div>
 
+                <div>
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>г. Брянск, ул. Харьковская, д. 10</li>
+                        <li>+7 (903) 819-87-23</li>
+                        <li>grekovpavel065@gmail.com</li>
+                        <li>Ежедневно, 9:00-21:00</li>
+                    </ul>
+                </div>
             </div>
         </footer>
     );
