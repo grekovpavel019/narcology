@@ -58,7 +58,8 @@
     align-items: center;
 
     & img {
-        border-radius: 20px;;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
     }
 }
 
@@ -96,5 +97,10 @@
     .heroInner {
         display: flex;
         flex-direction: column-reverse;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
     }
 }

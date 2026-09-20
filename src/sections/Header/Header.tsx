@@ -1,6 +1,7 @@
 import React, { type FC } from "react";
 
 import LinkButton from "@/shared/components/LinkButton";
+import BurgerIcon from "@/shared/icons/BurgerIcon";
 
 import styles from "./Header.module.scss";
 
@@ -18,7 +19,10 @@ const Header: FC = (): React.JSX.Element => {
                     <LinkButton variant="navLinkButton">Услуги</LinkButton>
                 </nav>
 
-                <LinkButton variant="primaryButton">Получить консультацию</LinkButton>
+                <div className={styles.buttonArea}>
+
+                    <LinkButton variant="primaryButton">Получить консультацию</LinkButton>
+                </div>
             </div>
         </header>
     );

@@ -27,3 +27,13 @@
     display: flex;
     gap:6px;
 }
+
+@media (max-width: 850px) {
+    .mainNav {
+        display: none;
+    }
+
+    .buttonArea {
+        display: none;
+    }
+}
