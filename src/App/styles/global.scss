@@ -81,6 +81,12 @@ h2 {
     }
 }
 
+.active {
+    color: var(--color-primary);
+    
+    background-color: var(--color-primary-soft);
+}
+
 .inlineButton {
     color: inherit;
     cursor: pointer;

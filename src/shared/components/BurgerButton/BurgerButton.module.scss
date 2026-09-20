@@ -1,0 +1,17 @@
+
+.burgerButton {
+    width: 26px;
+    height: 26px;
+}
+
+.iconArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative
+}
+
+.cross {
+    rotate: 45deg;
+}

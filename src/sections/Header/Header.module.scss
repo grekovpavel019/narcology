@@ -23,9 +23,38 @@
     font-weight: bold;
 }
 
+.wrapNav {
+    display: flex;
+}
+
 .mainNav {
     display: flex;
-    gap:6px;
+    align-items: center;
+    justify-content: start;
+    gap: 6px;
+}
+
+.burgerButtonArea {
+    display: none;
+}
+
+.mobileMenu {
+    display: none;
+    position: fixed;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
+
+    font-size: 2rem;
+
+    background-color: var(--color-surface);
+
+    padding-inline: var(--gl-pad-in);
+
+    flex-direction: column;
+    gap: 40px;
 }
 
 @media (max-width: 850px) {
@@ -35,5 +64,17 @@
 
     .buttonArea {
         display: none;
+    }
+
+    .burgerButtonArea {
+        display: block;
+    }
+
+    .open {
+        display: block;
+    }
+
+    .mobileMenu.open {
+        display: flex;
     }
 }

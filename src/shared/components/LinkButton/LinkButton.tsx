@@ -1,12 +1,12 @@
 import React, { type FC } from "react";
 
-import type { Button } from "@/shared/types/Button";
+import type { ButtonLinkProps } from "@/shared/types/Button";
 
-const LinkButton: FC<Button> = (props: Button): React.JSX.Element => {
+const LinkButton: FC<ButtonLinkProps> = (props: ButtonLinkProps): React.JSX.Element => {
     
     const {
         variant,
-        children
+        children,
     } = props;
 
     return (
