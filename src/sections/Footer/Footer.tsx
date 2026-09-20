@@ -1,5 +1,7 @@
 import React, { type FC } from "react";
 
+import LinkButton from "@/shared/components/LinkButton";
+
 import styles from "./Footer.module.scss";
 
 const Footer: FC = (): React.JSX.Element => {
@@ -11,7 +13,15 @@ const Footer: FC = (): React.JSX.Element => {
                     <p className={styles.desc}>Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.</p>
                 </div>
 
-                <div>
+                <div className={styles.nav}>
+                    <h4>Навигация</h4>
+                    <LinkButton variant="inlineButton">Главная</LinkButton>
+                    <LinkButton variant="inlineButton">О клинике</LinkButton>
+                    <LinkButton variant="inlineButton">Услуги</LinkButton>
+                    <LinkButton variant="inlineButton">Получить консультацию</LinkButton>
+                </div>
+
+                <div className={styles.contacts}>
                     <h4>Контакты</h4>
                     <ul>
                         <li>г. Брянск, ул. Харьковская, д. 10</li>

@@ -8,16 +8,13 @@
 }
 
 .footerInline {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
     & h3, h4 {
         color: var(--color-surface);
         margin-bottom: 8px;
-    }
-
-    & ul {
-        list-style: disc;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
     }
 
     & p, li {
@@ -27,4 +24,21 @@
 
 .desc {
     max-width: 280px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: var(--color-surface);
+}
+
+.contacts {
+    & ul {
+        list-style: disc;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 }
