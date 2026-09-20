@@ -27,11 +27,14 @@
 }
 
 .nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 
-    color: var(--color-surface);
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    color: var(--color-deep-soft);
 }
 
 .contacts {
@@ -40,5 +43,13 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+@media (max-width: 850px) {
+    .footerInline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
     }
 }

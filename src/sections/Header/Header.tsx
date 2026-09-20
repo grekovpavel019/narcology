@@ -9,7 +9,7 @@ const Header: FC = (): React.JSX.Element => {
         <header className={styles.siteHeader}>
             <div className={`container ${styles.headerInner}`}>
                 <div className={styles.logo}>
-                    Капельник
+                    Алкоклиник
                 </div>
 
                 <nav className={styles.mainNav}>

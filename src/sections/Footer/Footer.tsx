@@ -9,16 +9,18 @@ const Footer: FC = (): React.JSX.Element => {
         <footer className={`${styles.siteFooter}`}>
             <div className={`${styles.footerInline} container`}>
                 <div>
-                    <h3>Новый шаг</h3>
+                    <h3>Алкоклиник</h3>
                     <p className={styles.desc}>Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.</p>
                 </div>
 
                 <div className={styles.nav}>
                     <h4>Навигация</h4>
-                    <LinkButton variant="inlineButton">Главная</LinkButton>
-                    <LinkButton variant="inlineButton">О клинике</LinkButton>
-                    <LinkButton variant="inlineButton">Услуги</LinkButton>
-                    <LinkButton variant="inlineButton">Получить консультацию</LinkButton>
+                    <ul>
+                        <li><LinkButton variant="inlineButton">Главная</LinkButton></li>
+                        <li><LinkButton variant="inlineButton">О клинике</LinkButton></li>
+                        <li><LinkButton variant="inlineButton">Услуги</LinkButton></li>
+                        <li><LinkButton variant="inlineButton">Получить консультацию</LinkButton></li>
+                    </ul>
                 </div>
 
                 <div className={styles.contacts}>

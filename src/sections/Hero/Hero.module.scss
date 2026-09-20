@@ -52,7 +52,14 @@
 }
 
 .card {
-    border: 1px solid black;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    & img {
+        border-radius: 20px;;
+    }
 }
 
 .actions {
@@ -82,5 +89,12 @@
         
         flex-shrink: 0;
         color: var(--color-primary);
+    }
+}
+
+@media (max-width: 850px) {
+    .heroInner {
+        display: flex;
+        flex-direction: column-reverse;
     }
 }

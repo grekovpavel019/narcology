@@ -4,6 +4,8 @@ import LinkButton from "@/shared/components/LinkButton";
 import ShieldIcon from "@/shared/icons/ShieldIcon";
 import PlusIcon from "@/shared/icons/PlusIcon";
 
+import heroImage from "@/assets/img/hero.jpg";
+
 import styles from "./Hero.module.scss";
 
 const Hero: FC = (): React.JSX.Element => {
@@ -12,7 +14,7 @@ const Hero: FC = (): React.JSX.Element => {
             <div className={`${styles.heroInner} container`}>
                 <div className={styles.heroIntro}>
                     <span className={styles.eyebrow}>
-                        <PlusIcon /> Частная Клиника "Новый шаг"
+                        <PlusIcon /> Частная Клиника "Алкоклиник"
                     </span>
 
                     <h1>
@@ -35,7 +37,7 @@ const Hero: FC = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.card}>
-                    123
+                    <img src={heroImage} alt="" />
                 </div>
             </div>
         </section>
