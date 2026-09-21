@@ -2,6 +2,7 @@ import React, { useState, type FC } from "react";
 
 import NavLinkButton from "@/shared/components/NavLinkButton";
 import BurgerButton from "@/shared/components/BurgerButton";
+import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Header.module.scss";
 
@@ -19,11 +20,11 @@ const Header: FC = (): React.JSX.Element => {
                 <nav className={styles.mainNav}>
                     <NavLinkButton variant="navLinkButton" to="/">Главная</NavLinkButton>
                     <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
-                    {/* <NavLinkButton variant="navLinkButton">Услуги</LinkButton> */}
+                    <NavLinkButton variant="navLinkButton" to="/services">Услуги</NavLinkButton>
                 </nav>
 
                 <div className={styles.buttonArea}>
-                    {/* <LinkButton variant="primaryButton">Получить консультацию</LinkButton> */}
+                    <LinkButton variant="primaryButton" to="/contacts">Получить консультацию</LinkButton>
                 </div>
 
                 <div className={styles.burgerButtonArea}>
@@ -39,8 +40,8 @@ const Header: FC = (): React.JSX.Element => {
             }`}>
                 <NavLinkButton variant="navLinkButton" to="/">Главная</NavLinkButton>
                 <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
-                {/* <NavLinkButton variant="navLinkButton">Услуги</NavLinkButton>
-                <NavLinkButton variant="navLinkButton">Получить консультацию</NavLinkButton> */}
+                <NavLinkButton variant="navLinkButton" to="/services">Услуги</NavLinkButton>
+                <NavLinkButton variant="navLinkButton" to="/contacts">Получить консультацию</NavLinkButton>
             </div>
             
         </header>
