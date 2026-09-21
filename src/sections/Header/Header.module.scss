@@ -39,22 +39,35 @@
 }
 
 .mobileMenu {
-    display: none;
     position: fixed;
-    left: 0;
 
     width: 100%;
     height: 100vh;
+
     padding-top: 50px;
-
-    font-size: 2rem;
-
-    background-color: var(--color-surface);
-
     padding-inline: var(--gl-pad-in);
 
+    display: flex;
     flex-direction: column;
     gap: 40px;
+
+    font-size: 2rem;
+    background-color: var(--color-surface);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s;
+}
+
+.mobileMenu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 @media (max-width: 850px) {
