@@ -1,6 +1,6 @@
 import React, { type FC } from "react";
 
-import LinkButton from "@/shared/components/LinkButton";
+import LinkButton from "@/shared/components/NavLinkButton";
 
 import styles from "./Footer.module.scss";
 
@@ -16,10 +16,10 @@ const Footer: FC = (): React.JSX.Element => {
                 <div className={styles.nav}>
                     <h4>Навигация</h4>
                     <ul>
-                        <li><LinkButton variant="inlineButton">Главная</LinkButton></li>
+                        {/* <li><LinkButton variant="inlineButton">Главная</LinkButton></li>
                         <li><LinkButton variant="inlineButton">О клинике</LinkButton></li>
                         <li><LinkButton variant="inlineButton">Услуги</LinkButton></li>
-                        <li><LinkButton variant="inlineButton">Получить консультацию</LinkButton></li>
+                        <li><LinkButton variant="inlineButton">Получить консультацию</LinkButton></li> */}
                     </ul>
                 </div>
 

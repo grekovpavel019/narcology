@@ -4,16 +4,16 @@ export type ButtonVariant =
     | "navLinkButton" 
     | "inlineButton";
 
-export type ButtonLinkProps =
-    | {
-        variant: "navLinkButton";
-        children: string;
-        active?: boolean;
-    }
-    | {
-        variant: "primaryButton" | "secondaryButton" | "inlineButton";
-        children: string;
-    };
+export type LinkProps = {
+    variant: ButtonVariant,
+    children: string,
+    to: string
+}
+
+export type NavLinkProps = LinkProps & {
+    variant: ButtonVariant | "navLinkButton" 
+    // onClick: () => void;
+}
 
 export type BurgerButtonProps = {
     isOpen: boolean;

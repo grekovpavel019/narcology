@@ -1,6 +1,6 @@
 import React, { useState, type FC } from "react";
 
-import LinkButton from "@/shared/components/LinkButton";
+import NavLinkButton from "@/shared/components/NavLinkButton";
 import BurgerButton from "@/shared/components/BurgerButton";
 
 import styles from "./Header.module.scss";
@@ -17,13 +17,13 @@ const Header: FC = (): React.JSX.Element => {
                 </div>
 
                 <nav className={styles.mainNav}>
-                    <LinkButton variant="navLinkButton">Главная</LinkButton>
-                    <LinkButton variant="navLinkButton">О клинике</LinkButton>
-                    <LinkButton variant="navLinkButton">Услуги</LinkButton>
+                    <NavLinkButton variant="navLinkButton" to="/">Главная</NavLinkButton>
+                    <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
+                    {/* <NavLinkButton variant="navLinkButton">Услуги</LinkButton> */}
                 </nav>
 
                 <div className={styles.buttonArea}>
-                    <LinkButton variant="primaryButton">Получить консультацию</LinkButton>
+                    {/* <LinkButton variant="primaryButton">Получить консультацию</LinkButton> */}
                 </div>
 
                 <div className={styles.burgerButtonArea}>
@@ -37,10 +37,10 @@ const Header: FC = (): React.JSX.Element => {
             <div className={`${styles.mobileMenu} ${
                 isMenuOpen ? styles.open : ""
             }`}>
-                <LinkButton variant="navLinkButton" active={true}>Главная</LinkButton>
-                <LinkButton variant="navLinkButton" active={false}>О клинике</LinkButton>
-                <LinkButton variant="navLinkButton" active={false}>Услуги</LinkButton>
-                <LinkButton variant="navLinkButton" active={false}>Получить консультацию</LinkButton>
+                <NavLinkButton variant="navLinkButton" to="/">Главная</NavLinkButton>
+                <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
+                {/* <NavLinkButton variant="navLinkButton">Услуги</NavLinkButton>
+                <NavLinkButton variant="navLinkButton">Получить консультацию</NavLinkButton> */}
             </div>
             
         </header>

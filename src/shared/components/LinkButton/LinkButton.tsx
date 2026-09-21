@@ -1,18 +1,24 @@
 import React, { type FC } from "react";
 
-import type { ButtonLinkProps } from "@/shared/types/Button";
+import { Link } from "react-router-dom";
 
-const LinkButton: FC<ButtonLinkProps> = (props: ButtonLinkProps): React.JSX.Element => {
-    
+import type { LinkProps } from "@/shared/types/Button";
+
+const LinkButton: FC<LinkProps> = (props: LinkProps): React.JSX.Element => {
+
     const {
         variant,
         children,
+        to
     } = props;
 
     return (
-        <a className={`${variant}`}>
+        <Link
+            to={to}
+            className={variant}
+        >
             {children}
-        </a>
+        </Link>
     );
 };
 

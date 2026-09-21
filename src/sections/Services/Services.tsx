@@ -5,7 +5,6 @@ import MessageIcon from "@/shared/icons/MessageIcon";
 import LightningIcon from "@/shared/icons/LightningIcon";
 import ShieldIcon from "@/shared/icons/ShieldIcon";
 import UserIcon from "@/shared/icons/UserIcon";
-import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Services.module.scss";
 
@@ -50,7 +49,7 @@ const Services: FC = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.buttonArea}>
-                    <LinkButton variant="primaryButton">Подробнее</LinkButton>
+                    {/* <LinkButton variant="primaryButton">Подробнее</LinkButton> */}
                 </div>
             </div>
         </section>
