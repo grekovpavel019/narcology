@@ -1,6 +1,6 @@
 import React, { type FC } from "react";
 
-import LinkButton from "@/shared/components/NavLinkButton";
+import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Footer.module.scss";
 
@@ -16,19 +16,30 @@ const Footer: FC = (): React.JSX.Element => {
                 <div className={styles.nav}>
                     <h4>Навигация</h4>
                     <ul>
-                        {/* <li><LinkButton variant="inlineButton">Главная</LinkButton></li>
-                        <li><LinkButton variant="inlineButton">О клинике</LinkButton></li>
-                        <li><LinkButton variant="inlineButton">Услуги</LinkButton></li>
-                        <li><LinkButton variant="inlineButton">Получить консультацию</LinkButton></li> */}
+                        <li><LinkButton variant="inlineButton" to="/">Главная</LinkButton></li>
+                        <li><LinkButton variant="inlineButton" to="/about">О клинике</LinkButton></li>
+                        <li><LinkButton variant="inlineButton" to="/services">Услуги</LinkButton></li>
+                        <li><LinkButton variant="inlineButton" to="/contacts">Получить консультацию</LinkButton></li>
                     </ul>
                 </div>
 
                 <div className={styles.contacts}>
                     <h4>Контакты</h4>
                     <ul>
-                        <li>г. Брянск, ул. Харьковская, д. 10</li>
-                        <li>+7 (903) 819-87-23</li>
-                        <li>grekovpavel065@gmail.com</li>
+                        <li>
+                            <address>
+                                г. Брянск, ул. Харьковская, д. 10
+                            </address>
+                        </li>
+                        <li>
+                            <a href="tel:+70000000000"></a>
+                            +7 (000) 000-00-00
+                        </li>
+                        <li>
+                            <a href="mailto:burmalda@gmail.com">
+                                burmalda@gmail.com
+                            </a>
+                        </li>
                         <li>Ежедневно, 9:00-21:00</li>
                     </ul>
                 </div>
