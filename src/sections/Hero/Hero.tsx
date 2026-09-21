@@ -2,6 +2,7 @@ import React, { type FC } from "react";
 
 import ShieldIcon from "@/shared/icons/ShieldIcon";
 import PlusIcon from "@/shared/icons/PlusIcon";
+import LinkButton from "@/shared/components/LinkButton";
 
 import heroImage from "@/assets/img/hero.jpg";
 
@@ -25,8 +26,8 @@ const Hero: FC = (): React.JSX.Element => {
                     </p>
 
                     <div className={styles.actions}>
-                        {/* <LinkButton variant="primaryButton">Получить консультацию</LinkButton>
-                        <LinkButton variant="secondaryButton">Наши услуги</LinkButton> */}
+                        <LinkButton variant="primaryButton" to="/contacts">Получить консультацию</LinkButton>
+                        <LinkButton variant="secondaryButton" to="/services">Наши услуги</LinkButton>
                     </div>
 
                     <div className={styles.note}>
