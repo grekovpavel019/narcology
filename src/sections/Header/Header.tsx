@@ -1,4 +1,6 @@
-import React, { useState, type FC } from "react";
+import React, { useState, useEffect, type FC } from "react";
+
+import { useLocation } from "react-router-dom";
 
 import NavLinkButton from "@/shared/components/NavLinkButton";
 import BurgerButton from "@/shared/components/BurgerButton";
@@ -9,6 +11,11 @@ import styles from "./Header.module.scss";
 const Header: FC = (): React.JSX.Element => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location.pathname])
 
     return (
         <header className={styles.siteHeader}>
