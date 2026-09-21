@@ -7,12 +7,12 @@ import Location from "@/sections/Location";
 
 const HomePage: FC = (): React.JSX.Element => {
     return (
-        <main>
+        <>
             <Hero />
             <Benefits />
             <Services />
             <Location />
-        </main>
+        </>
     );
 };
 
