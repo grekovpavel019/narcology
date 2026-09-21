@@ -32,8 +32,9 @@ const Footer: FC = (): React.JSX.Element => {
                             </address>
                         </li>
                         <li>
-                            <a href="tel:+70000000000"></a>
-                            +7 (000) 000-00-00
+                            <a href="tel:+70000000000">
+                                +7 (000) 000-00-00
+                            </a>
                         </li>
                         <li>
                             <a href="mailto:burmalda@gmail.com">
