@@ -39,7 +39,7 @@
     position: fixed;
 
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
 
     padding-top: 50px;
     padding-inline: var(--gl-pad-in);
@@ -82,5 +82,16 @@
 
     .mobileMenu.open {
         display: flex;
+    }
+}
+
+@media print {
+    .siteHeader {
+        display: none !important;
+    }
+
+    .mobileMenu,
+    .burgerButtonArea {
+        display: none !important;
     }
 }
