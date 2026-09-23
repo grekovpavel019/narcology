@@ -18,7 +18,7 @@ const App: FC = (): React.JSX.Element => {
             {/* Корневой роут, который содержить layout */}
             <Route path="/" element={ <Layout />}>
 
-                {/* Индексная страница */}
+                {/* Индексная страница, доступная по / */}
                 <Route index element={ <HomePage /> } />
                 <Route path="/about" element={ <AboutPage /> } />
                 <Route path="/services" element={ <ServicesPage /> } />
