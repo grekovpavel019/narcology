@@ -4,6 +4,10 @@
     @include mixins.feature-card; 
 
     box-shadow: var(--shadow);
+
+    & h3 {
+        font-size: clamp(1.2rem, 3.4vw, 1.1rem);
+    }
 }
 
 .icon {
