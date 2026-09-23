@@ -10,9 +10,11 @@ import styles from "./Header.module.scss";
 
 const Header: FC = (): React.JSX.Element => {
 
+    // состояние открытого окна
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 
+    // каждый раз при изменении URL, мы будем закрывать mobile menu
     useEffect(() => {
         setIsMenuOpen(false);
     }, [location.pathname])
@@ -42,6 +44,7 @@ const Header: FC = (): React.JSX.Element => {
                 </div>
             </div>
             
+            {/* Добавляем класс отображения меню (с анимацией) если меню открыто */}
             <div className={`${styles.mobileMenu} ${
                 isMenuOpen ? styles.open : ""
             }`}>
