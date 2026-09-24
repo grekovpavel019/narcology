@@ -11,25 +11,36 @@ import styles from "./Benefits.module.scss";
 const Benefits: FC = (): React.JSX.Element => {
     return (
         <section className={`${styles.benefits}`}>
-            <div className={`${styles.benefitsInner} container`}>
+            <div className={`${styles["benefits__inner"]} container`}>
                 <h2>Почему обращаются к нам</h2>
-                <div className={styles.benefitsGrid}>
+                <div className={styles["benefits__grid"]}>
                     <BenefitCard
                         title="Конфиденциальность"
                         icon={<LockIcon />}
-                    >Обращение и личные данные пациента защищены на всех этапах.</BenefitCard>
+                    >
+                        Обращение и личные данные пациента защищены на всех этапах.
+                    </BenefitCard>
+
                     <BenefitCard
                         title="Индивидуальный подход"
                         icon={<UserIcon />}
-                    >Программа помощи подбирается для каждого пациента отдельно.</BenefitCard>
+                    >
+                        Программа помощи подбирается для каждого пациента отдельно.
+                    </BenefitCard>
+
                     <BenefitCard
                         title="Консультация специалиста"
                         icon={<MessageIcon />}
-                    >Перед выбором программы вы получаете подробную консультацию.</BenefitCard>
+                    >
+                        Перед выбором программы вы получаете подробную консультацию.
+                    </BenefitCard>
+                    
                     <BenefitCard
                         title="Современные методы"
                         icon={<LightningIcon />}
-                    >Используем актуальные подходы к работе с зависимостью.</BenefitCard>
+                    >
+                        Используем актуальные подходы к работе с зависимостью.
+                    </BenefitCard>
                 </div>
             </div>
         </section>

@@ -2,16 +2,17 @@
     padding-top: var(--sec-p-top);
 }
 
-.benefitsInner {
+.benefits__inner {
     & h2 {
         text-align: center;
     }
 }
 
-.benefitsGrid {
+.benefits__grid {
     margin-top: 48px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 
+        repeat(auto-fit, minmax(250px, 1fr)); // автоматически перераспределяет копоненты в зависимости от ширины
     gap: 20px;
 }
