@@ -4,13 +4,13 @@
     padding-top: var(--sec-p-top);
 }
 
-.heroInner {
+.hero__inner {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 56px;
 }
 
-.heroIntro {
+.hero__intro {
 
     max-width: 520px;
 

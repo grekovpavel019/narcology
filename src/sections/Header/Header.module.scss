@@ -1,4 +1,4 @@
-.siteHeader {
+.header {
     position: sticky;
     top: 0;
     z-index: 100;
@@ -11,7 +11,7 @@
     backdrop-filter: blur(10px);
 }
 
-.headerInner {
+.header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,7 +39,7 @@
     position: fixed;
 
     width: 100%;
-    height: 100dvh;
+    height: 100dvh; // динамическое определение viewport 
 
     padding-top: 50px;
     padding-inline: var(--gl-pad-in);
