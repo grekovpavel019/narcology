@@ -4,7 +4,8 @@
     padding-top: calc(2 * var(--sec-p-top));
 }
 
-.servicesInner {
+.services__inner {
+    // непосредственный дочерний элемент
     & > p {
         max-width: 640px;
         margin-top: 12px;
@@ -13,16 +14,12 @@
     }   
 }
 
-.servicesGrid {
+.services__grid {
     margin-top: 28px;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
-}
-
-.buttonArea {
-    margin-top: 28px;
 }
 
 @media (max-width: 460px) {

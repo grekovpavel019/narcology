@@ -5,17 +5,16 @@ import MessageIcon from "@/shared/icons/MessageIcon";
 import LightningIcon from "@/shared/icons/LightningIcon";
 import ShieldIcon from "@/shared/icons/ShieldIcon";
 import UserIcon from "@/shared/icons/UserIcon";
-import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Services.module.scss";
 
 const Services: FC = (): React.JSX.Element => {
     return (
         <section className={`${styles.services}`}>
-            <div className={`${styles.servicesInner} container`}>
+            <div className={`${styles["services__inner"]} container`}>
                 <h2>Наши услуги</h2>
                 <p>Каждое направление начинается с консультации — так специалист может предложить подходящий именно вам вариант помощи.</p>
-                <div className={styles.servicesGrid}>
+                <div className={styles["services__grid"]}>
                     <ServiceCard
                         title="Консультация специалиста"
                         icon={<MessageIcon />}
@@ -47,10 +46,6 @@ const Services: FC = (): React.JSX.Element => {
                     >
                         Поддержка на этапе восстановления после прохождения основной программы помощи.
                     </ServiceCard>
-                </div>
-
-                <div className={styles.buttonArea}>
-                    <LinkButton variant="primaryButton" to="/services">Подробнее</LinkButton>
                 </div>
             </div>
         </section>
