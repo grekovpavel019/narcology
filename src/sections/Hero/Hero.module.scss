@@ -104,3 +104,13 @@
         flex-direction: column;
     }
 }
+
+@media print {
+    .eyebrow {
+        display: none;
+    }
+
+    .actions {
+        display: none;
+    }
+}

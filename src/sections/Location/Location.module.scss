@@ -26,3 +26,9 @@
         min-height: 400px;
     }
 }
+
+@media print {
+    .location {
+        padding-top: var(--sec-p-top);
+    }
+}

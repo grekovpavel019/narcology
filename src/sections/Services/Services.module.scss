@@ -29,3 +29,17 @@
         gap: 20px;
     }
 }
+
+@media print {
+    .services {
+        padding-top: var(--sec-p-top);
+    }
+
+    .services__inner svg {
+        display: none;
+    }
+
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

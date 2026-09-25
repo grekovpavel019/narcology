@@ -11,7 +11,7 @@ const Map: FC = (): React.JSX.Element => {
             style={{ border: 0 }}
             className={styles.map}
             allowFullScreen
-            loading="lazy"
+            // loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
         />
     );

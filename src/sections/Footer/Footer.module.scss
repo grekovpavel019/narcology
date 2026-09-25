@@ -53,3 +53,9 @@
         gap: 40px;
     }
 }
+
+@media print {
+    .footer {
+        display: none;
+    }
+}
