@@ -3,14 +3,17 @@ import React, { type FC } from "react";
 import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Footer.module.scss";
+import { CLINIC_ADDRESS, CLINIC_EMAIL, CLINIC_HOURS, CLINIC_TELEPHONE } from "@/shared/constants/contacts";
 
 const Footer: FC = (): React.JSX.Element => {
     return (
-        <footer className={`${styles.siteFooter}`}>
-            <div className={`${styles.footerInline} container`}>
+        <footer className={`${styles.footer}`}>
+            <div className={`${styles.footer__inline} container`}>
                 <div>
                     <h3>Алкоклиник</h3>
-                    <p className={styles.desc}>Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.</p>
+                    <p className={styles.desc}>
+                        Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.
+                    </p>
                 </div>
 
                 <div className={styles.nav}>
@@ -27,21 +30,15 @@ const Footer: FC = (): React.JSX.Element => {
                     <h4>Контакты</h4>
                     <ul>
                         <li>
-                            <address>
-                                г. Брянск, ул. Харьковская, д. 10
-                            </address>
+                            <address>{CLINIC_ADDRESS}</address>
                         </li>
                         <li>
-                            <a href="tel:+70000000000">
-                                +7 (000) 000-00-00
-                            </a>
+                            <a href={`tel:${CLINIC_TELEPHONE.href}`}>{CLINIC_TELEPHONE.label}</a>
                         </li>
                         <li>
-                            <a href="mailto:burmalda@gmail.com">
-                                burmalda@gmail.com
-                            </a>
+                            <a href={`mailto:${CLINIC_EMAIL}`}>{CLINIC_EMAIL}</a>
                         </li>
-                        <li>Ежедневно, 9:00-21:00</li>
+                        <li>{CLINIC_HOURS}</li>
                     </ul>
                 </div>
             </div>

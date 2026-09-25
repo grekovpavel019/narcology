@@ -10,11 +10,11 @@ import styles from "./Services.module.scss";
 
 const Services: FC = (): React.JSX.Element => {
     return (
-        <section className={`${styles.services}`}>
-            <div className={`${styles["services__inner"]} container`}>
+        <section className={styles.services}>
+            <div className={`${styles.services__inner} container`}>
                 <h2>Наши услуги</h2>
                 <p>Каждое направление начинается с консультации — так специалист может предложить подходящий именно вам вариант помощи.</p>
-                <div className={styles["services__grid"]}>
+                <div className={styles.services__grid}>
                     <ServiceCard
                         title="Консультация специалиста"
                         icon={<MessageIcon />}

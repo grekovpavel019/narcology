@@ -20,8 +20,8 @@ const Header: FC = (): React.JSX.Element => {
     }, [location.pathname])
 
     return (
-        <header className={styles["header"]}>
-            <div className={`container ${styles["header__inner"]}`}>
+        <header className={styles.header}>
+            <div className={`container ${styles.header__inner}`}>
                 <div className={styles.logo}>
                     Алкоклиник
                 </div>

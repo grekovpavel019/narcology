@@ -11,8 +11,8 @@ import styles from "./Hero.module.scss";
 const Hero: FC = (): React.JSX.Element => {
     return (
         <section className={`${styles.hero} container`}>
-            <div className={`${styles["hero__inner"]} container`}>
-                <div className={styles["hero__intro"]}>
+            <div className={`${styles.hero__inner} container`}>
+                <div className={styles.hero__intro}>
                     <span className={styles.eyebrow}>
                         <PlusIcon /> Частная Клиника "Алкоклиник"
                     </span>

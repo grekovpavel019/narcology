@@ -11,9 +11,9 @@ import styles from "./Benefits.module.scss";
 const Benefits: FC = (): React.JSX.Element => {
     return (
         <section className={`${styles.benefits}`}>
-            <div className={`${styles["benefits__inner"]} container`}>
+            <div className={`${styles.benefits__inner} container`}>
                 <h2>Почему обращаются к нам</h2>
-                <div className={styles["benefits__grid"]}>
+                <div className={styles.benefits__grid}>
                     <BenefitCard
                         title="Конфиденциальность"
                         icon={<LockIcon />}

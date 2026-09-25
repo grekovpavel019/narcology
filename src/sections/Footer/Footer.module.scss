@@ -1,4 +1,4 @@
-.siteFooter {
+.footer {
 
     margin-top: calc(2 * var(--sec-p-top));
     padding-inline: var(--gl-pad-in);
@@ -7,7 +7,7 @@
     background-color: var(--color-deep);
 }
 
-.footerInline {
+.footer__inline {
     display: flex;
     justify-content: space-between;
     gap: 10px;

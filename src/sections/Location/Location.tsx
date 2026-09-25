@@ -7,7 +7,7 @@ import styles from "./Location.module.scss";
 const Location: FC = (): React.JSX.Element => {
     return (
         <section className={`${styles.location}`}>
-            <div className={`${styles.locationInner} container`}>
+            <div className={`${styles["location__inner"]} container`}>
                 <h2>Как нас найти</h2>
                 <div className={styles.wrap}>
                     <Map />
