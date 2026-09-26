@@ -1,0 +1,11 @@
+.overview {
+    padding-top: calc(1.5 * var(--sec-p-top));
+}
+
+.overview__intro {
+    max-width: 520px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

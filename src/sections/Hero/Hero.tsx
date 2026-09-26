@@ -4,6 +4,9 @@ import ShieldIcon from "@/shared/icons/ShieldIcon";
 import PlusIcon from "@/shared/icons/PlusIcon";
 import LinkButton from "@/shared/components/LinkButton";
 
+import Title from "@/shared/components/typography/Title";
+import Text from "@/shared/components/typography/Text";
+
 import heroImage from "@/assets/img/hero.jpg";
 
 import styles from "./Hero.module.scss";
@@ -17,13 +20,18 @@ const Hero: FC = (): React.JSX.Element => {
                         <PlusIcon /> Частная Клиника "Алкоклиник"
                     </span>
 
-                    <h1>
+                    <Title
+                        variant="h1"
+                    >
                         Помощь в борьбе с алкогольной зависимостью
-                    </h1>
+                    </Title>
 
-                    <p>
+
+                        
+
+                    <Text>
                         Консультация специалистов, лечение алкогольной зависимости и программы кодирования с индивидуальным подходом к каждому пациенту.
-                    </p>
+                    </Text>
 
                     <div className={styles.actions}>
                         <LinkButton variant="primaryButton" to="/contacts">Получить консультацию</LinkButton>
