@@ -13,7 +13,7 @@ import styles from "./Hero.module.scss";
 
 const Hero: FC = (): React.JSX.Element => {
     return (
-        <section className={`${styles.hero} container`}>
+        <section className={`${styles.hero}`}>
             <div className={`${styles.hero__inner} container`}>
                 <div className={styles.hero__intro}>
                     <span className={styles.eyebrow}>
@@ -25,9 +25,6 @@ const Hero: FC = (): React.JSX.Element => {
                     >
                         Помощь в борьбе с алкогольной зависимостью
                     </Title>
-
-
-                        
 
                     <Text>
                         Консультация специалистов, лечение алкогольной зависимости и программы кодирования с индивидуальным подходом к каждому пациенту.

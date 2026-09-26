@@ -1,5 +1,8 @@
 .benefits {
-    padding-top: var(--sec-p-top);
+    margin-top: var(--sec-p-top);
+    padding-block: calc(var(--sec-p-top) / 2);
+
+    background-color: var(--color-surface);
 }
 
 .benefits__inner {

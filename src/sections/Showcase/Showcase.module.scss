@@ -1,0 +1,44 @@
+.showcase__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+}
+
+.image {
+    display: flex;
+
+    & img {
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+    }
+}
+
+.showcase__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.showcase__history {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.showcase__education {
+    & svg {
+        width: 1rem;
+        height: 1rem;
+
+        color: var(--color-primary);
+    }
+
+    & li {
+        margin-top: 8px;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}

@@ -3,9 +3,10 @@
 }
 
 .overview__intro {
-    max-width: 520px;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    padding-bottom: var(--sec-p-top);
 }
