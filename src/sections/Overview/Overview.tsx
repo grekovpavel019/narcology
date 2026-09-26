@@ -6,21 +6,34 @@ import Breadcrumb from "@/shared/components/Breadcrumb";
 
 import styles from "./Overview.module.scss";
 
-const Overview: FC = (): React.JSX.Element => {
+type OverviewProps = {
+    children: string;
+    title: string;
+    path: string
+}
+
+const Overview: FC<OverviewProps> = (props: OverviewProps): React.JSX.Element => {
+    
+    const {
+        children,
+        title,
+        path
+    } = props;
+
     return (
         <section className={styles.overview}>
             <div className={`${styles.overview__intro} container`}>
                 
-                <Breadcrumb>О клинике</Breadcrumb>
+                <Breadcrumb>{path}</Breadcrumb>
 
                 <Title
                     variant="h1"
                 >
-                    О клинике "Алкоклиник"
+                    {title}
                 </Title>
                 
                 <Text>
-                    Частная клиника, специализирующаяся на помощи людям с алкогольной зависимостью и их родственникам — от первичной консультации до восстановления.
+                    {children}
                 </Text>
             </div>
         </section>

@@ -29,7 +29,7 @@ const Footer: FC = (): React.JSX.Element => {
                 </div>
 
                 <div className={styles.contacts}>
-                    <h4>Контакты</h4>
+                    <Title variant="h4">Контакты</Title>
                     <ul>
                         <li>
                             <address>{CLINIC_ADDRESS}</address>
