@@ -1,0 +1,8 @@
+.breadcrumb {
+    & a {
+        color: var(--color-secondary);
+        font-weight: bold;
+    }
+
+    color: var(--color-text-muted);
+}

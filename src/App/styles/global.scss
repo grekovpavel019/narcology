@@ -75,7 +75,7 @@ h2 {
 
     transition: background .25s linear, color .25s linear;
 
-    &:hover {
+    &:hover:not(.active) {
         background-color: var(--color-border-soft);
         color: var(--color-text-primary);
     }
