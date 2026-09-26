@@ -47,7 +47,7 @@
 }
 
 @media (max-width: 850px) {
-    .footerInline {
+    .footer__inline {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 40px;

@@ -5,6 +5,7 @@ import MessageIcon from "@/shared/icons/MessageIcon";
 import LightningIcon from "@/shared/icons/LightningIcon";
 import ShieldIcon from "@/shared/icons/ShieldIcon";
 import UserIcon from "@/shared/icons/UserIcon";
+import Text from "@/shared/components/typography/Text";
 
 import styles from "./Services.module.scss";
 
@@ -13,7 +14,7 @@ const Services: FC = (): React.JSX.Element => {
         <section className={styles.services}>
             <div className={`${styles.services__inner} container`}>
                 <h2>Наши услуги</h2>
-                <p>Каждое направление начинается с консультации — так специалист может предложить подходящий именно вам вариант помощи.</p>
+                <Text>Каждое направление начинается с консультации — так специалист может предложить подходящий именно вам вариант помощи.</Text>
                 <div className={styles.services__grid}>
                     <ServiceCard
                         title="Консультация специалиста"

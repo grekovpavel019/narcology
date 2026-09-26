@@ -1,3 +1,7 @@
+.showcase {
+    padding-top: var(--sec-p-top);
+}
+
 .showcase__inner {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
@@ -5,7 +9,7 @@
 }
 
 .image {
-    display: flex;
+    max-width: 100%;;
 
     & img {
         border-radius: 20px;
@@ -40,5 +44,12 @@
         display: flex;
         align-items: center;
         gap: 8px;
+    }
+}
+
+@media (max-width: 850px) {
+    .showcase__inner {
+        display: flex;
+        flex-direction: column;
     }
 }
