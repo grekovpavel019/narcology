@@ -2,7 +2,7 @@ import React, { type FC } from "react";
 
 import styles from "./Typography.module.scss";
 
-type TitleVariant = "h1" | "h2" | "h3";
+type TitleVariant = "h1" | "h2" | "h3" | "h4";
 
 type TitleProps = {
     children: React.ReactNode;
@@ -36,6 +36,13 @@ const Title: FC<TitleProps> = (props: TitleProps): React.JSX.Element => {
                 <h3 className={styles.h3}>
                     {children}
                 </h3>
+            );
+
+        case "h4":
+            return (
+                <h4 className={styles.h4}>
+                    {children}
+                </h4>
             );
     }
 };

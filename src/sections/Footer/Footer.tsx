@@ -1,8 +1,10 @@
 import React, { type FC } from "react";
 
 import LinkButton from "@/shared/components/LinkButton";
+import Title from "@/shared/components/typography/Title";
 
 import styles from "./Footer.module.scss";
+
 import { CLINIC_ADDRESS, CLINIC_EMAIL, CLINIC_HOURS, CLINIC_TELEPHONE } from "@/shared/constants/contacts";
 
 const Footer: FC = (): React.JSX.Element => {
@@ -10,14 +12,14 @@ const Footer: FC = (): React.JSX.Element => {
         <footer className={`${styles.footer}`}>
             <div className={`${styles.footer__inline} container`}>
                 <div>
-                    <h3>Алкоклиник</h3>
+                    <Title variant="h3">Алкоклиник</Title>
                     <p className={styles.desc}>
                         Частная клиника помощи при алкогольной зависимости. Консультации, лечение, кодирование и поддержка родственников.
                     </p>
                 </div>
 
                 <div className={styles.nav}>
-                    <h4>Навигация</h4>
+                    <Title variant="h4">Навигация</Title>
                     <ul>
                         <li><LinkButton variant="inlineButton" to="/">Главная</LinkButton></li>
                         <li><LinkButton variant="inlineButton" to="/about">О клинике</LinkButton></li>

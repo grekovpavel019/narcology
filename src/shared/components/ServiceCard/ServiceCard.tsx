@@ -1,5 +1,8 @@
 import React, { type FC } from "react";
 
+import Title from "../typography/Title";
+import Text from "../typography/Text";
+
 import styles from "./ServiceCard.module.scss";
 
 type ServiceCardProps = {
@@ -23,8 +26,10 @@ const ServiceCard: FC<ServiceCardProps> = (props: ServiceCardProps): React.JSX.E
             <div className={styles.icon}>
                 {icon}
             </div>
-            <h3>{title}</h3>
-            <p>{children}</p>
+            
+            <Title variant="h3">{title}</Title>
+            <Text>{children}</Text>
+
             <div className={styles.who}>
                 <b>Кому подходит: </b>
                 {who}

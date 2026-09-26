@@ -10,7 +10,7 @@
         max-width: 640px;
         margin-top: 12px;
 
-        @include mixins.lede;
+        font-size: 1.1rem;
     }   
 }
 
@@ -20,14 +20,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
-}
-
-@media (max-width: 460px) {
-    .servicesGrid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-    }
 }
 
 @media print {

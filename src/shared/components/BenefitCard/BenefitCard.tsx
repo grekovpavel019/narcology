@@ -1,5 +1,8 @@
 import React, { type FC } from "react";
 
+import Text from "../typography/Text";
+import Title from "../typography/Title";
+
 import styles from "./BenefitCard.module.scss";
 
 type BenefitCardProps = {
@@ -21,8 +24,10 @@ const BenefitCard: FC<BenefitCardProps> = (props: BenefitCardProps): React.JSX.E
             <div className={styles.icon}>
                 {icon}
             </div>
-            <h3>{title}</h3>
-            <p>{children}</p>
+
+            <Title variant="h3">{title}</Title>
+            <Text>{children}</Text>
+            
         </div>
     );
 };
