@@ -2,6 +2,7 @@ import React, { type FC } from "react";
 
 import Services from "@/sections/Services";
 import Overview from "@/sections/Overview";
+import ServicesTable from "@/sections/ServicesTable";
 
 const ServicesPage: FC = (): React.JSX.Element => {
     return (
@@ -14,7 +15,7 @@ const ServicesPage: FC = (): React.JSX.Element => {
             </Overview>
 
             <Services />
-                
+            <ServicesTable />
         </>
     );
 };
