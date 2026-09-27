@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 
 import Title from "@/shared/components/typography/Title";
-import Map from "@/shared/components/Map/Map";
+import Map from "@/shared/components/Map";
 
 import styles from "./Location.module.scss";
 

@@ -30,6 +30,7 @@ const Header: FC = (): React.JSX.Element => {
                     <NavLinkButton variant="navLinkButton" to="/">Главная</NavLinkButton>
                     <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
                     <NavLinkButton variant="navLinkButton" to="/services">Услуги</NavLinkButton>
+                    <NavLinkButton variant="navLinkButton" to="/contacts">Контакты</NavLinkButton>
                 </nav>
 
                 <div className={styles.buttonArea}>
