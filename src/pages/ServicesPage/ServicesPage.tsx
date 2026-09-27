@@ -1,4 +1,4 @@
-import React, { type FC, useState } from "react";
+import React, { type FC } from "react";
 
 import Services from "@/sections/Services";
 import Overview from "@/sections/Overview";

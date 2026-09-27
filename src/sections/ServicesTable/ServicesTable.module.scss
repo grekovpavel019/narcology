@@ -8,6 +8,41 @@
     overflow:auto;
 }
 
+.sort {
+    margin-bottom: 8px;
+    padding: 16px 22px;
+
+    background-color: var(--color-surface);
+}
+
+.sort__dropdown {
+    
+}
+
+// .table-hint {
+//     display: flex;
+//     // justify-content: end;
+// }
+
+// .table-sort-select {
+//     margin-bottom: 8px;
+//     padding: 16px 22px;
+
+//     border: 1px solid var(--color-border);
+//     border-radius: 20px;
+
+//     background: 
+//         var(--color-surface) 
+//         url("@/shared/icons/ChevronDown.svg")
+//         no-repeat
+//         right 12px
+//         center;
+//     background-size: 1.5rem;
+
+//     appearance: none;
+
+// }
+
 .table-content {
     width: 100%;
     min-width: 600px;

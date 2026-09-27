@@ -1,5 +1,7 @@
 import React, { type FC } from "react";
 
+import Select from "@/shared/components/Select";
+
 import styles from "./ServicesTable.module.scss";
 
 import type { Service } from "@/shared/types/Service";
@@ -18,14 +20,16 @@ const ServicesTable: FC<ServiceTableProps> = (props: ServiceTableProps): React.J
         <section className={styles.servicesTable}>
             <div className={`${styles.servicesTable__inner} container`}>
 
-                <div className={styles["table-hint"]}>
+                {/* <div className={styles["table-hint"]}>
                     <select className={styles["table-sort-select"]} name="tableSortSelect" id="tableSortSelect">
                         <option value="default">По умолчанию</option>
                         <option value="expensive">Сначала дорогие</option>
                         <option value="cheap">Сначала дешевые</option>
                         <option value="alphabet">По алфавиту</option>
                     </select>
-                </div>
+                </div> */}
+
+                <Select />
 
                 <div className={styles["table-scroll"]}>
                     <table className={styles["table-content"]}>
