@@ -13,6 +13,8 @@
 .burgerButton {
     width: 26px;
     height: 26px;
+
+    color: #15323C;
 }
 
 .iconArea {
@@ -23,6 +25,9 @@
     position: relative;
 
     & svg {
+        width: 24px;
+        height: 24px;
+
         animation-duration: .2s;
         animation-name: burger;
     }
