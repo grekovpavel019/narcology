@@ -22,6 +22,14 @@
     gap: 20px;
 }
 
+@media (max-width: 460px) {
+    .services__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+}
+
 @media print {
     .services {
         padding-top: var(--sec-p-top);
