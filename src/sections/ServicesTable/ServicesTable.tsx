@@ -1,4 +1,4 @@
-import React, { type Dispatch, type FC, type SetStateAction } from "react";
+import React, { type FC, useState, useEffect } from "react";
 
 import Select from "@/shared/components/Select";
 
@@ -6,19 +6,74 @@ import styles from "./ServicesTable.module.scss";
 
 import type { Service, sortVariants } from "@/shared/types/Service";
 
-type ServiceTableProps = {
-    services: Service[],
-    sort: sortVariants,
-    setSort: Dispatch<SetStateAction<sortVariants>>
-}
+const services: Service[] = [
+        {
+            id: 1,
+            description: "Консультация нарколога",
+            price: 2000
+        },
+        {
+            id: 2,
+            description: "Повторная консультация",
+            price: 1500
+        },
+        {
+            id: 3,
+            description: "Консультация для родственников",
+            price: 2000
+        },
+        {
+            id: 4,
+            description: "Выезд специалиста на дом",
+            price: 3500
+        },
+        {
+            id: 5,
+            description: "Кодирование от алкоголя",
+            price: 8000
+        },
+        {
+            id: 6,
+            description: "Капельница для снятия алкогольной интоксикации",
+            price: 4500
+        },
+        {
+            id: 7,
+            description: "Прерывание запоя (в стационаре)",
+            price: 6000
+        },
+        {
+            id: 8,
+            description: "Психологическая поддержка (сессия)",
+            price: 3000
+        },
+        {
+            id: 9,
+            description: "Реабилитационная программа (базовый курс)",
+            price: 15000
+        },
+        {
+            id: 10,
+            description: "Тестирование на содержание алкоголя",
+            price: 1200
+        }
+    ];
 
-const ServicesTable: FC<ServiceTableProps> = (props: ServiceTableProps): React.JSX.Element => {
+const ServicesTable: FC = (): React.JSX.Element => {
 
-    const {
-        services,
-        sort,
-        setSort
-    } = props;
+    const [sort, setSort] = useState<sortVariants>(() => {
+        const savedSort = localStorage.getItem("sort");
+
+        if (savedSort) {
+            return savedSort as sortVariants;
+        }
+
+        return "default";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("sort", sort);
+    }, [sort]);
 
     let sortedServices: Service[];
 
@@ -29,17 +84,17 @@ const ServicesTable: FC<ServiceTableProps> = (props: ServiceTableProps): React.J
         }
 
         case "expensive": {
-            sortedServices = services.sort((a, b) => b.price - a.price);
+            sortedServices = [...services].sort((a, b) => b.price - a.price);
             break;
         }
 
         case "cheap": {
-            sortedServices = services.sort((a, b) => a.price - b.price);
+            sortedServices = [...services].sort((a, b) => a.price - b.price);
             break;
         }
         
         case "alphabet": {
-            sortedServices = services.sort((a, b) => a.description.localeCompare(b.description));
+            sortedServices = [...services].sort((a, b) => a.description.localeCompare(b.description));
             break;
         }
     }

@@ -17,7 +17,6 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
     } = props;
 
     let currentOption: string;
-
     switch (option) {
         case "default": currentOption = "По умолчанию"; break;
         case "expensive": currentOption = "Сначала дорогие"; break;
@@ -26,9 +25,7 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
     }
     
     const [isOpen, setIsOpen] = useState(false);
-
     const selectRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
 
         const handleClickOutside = (event: MouseEvent) => {
@@ -47,9 +44,7 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
 
     const handleSelect = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
-        
         setIsOpen(false);
-
         setOption(target.value as sortVariants);
     };
 
