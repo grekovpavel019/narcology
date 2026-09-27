@@ -30,7 +30,7 @@ const Showcase: FC = (): React.JSX.Element => {
                         </Text>
                     </div>
 
-                    <div className={styles.showcase__education}>
+                    <div className={styles.showcase__principes}>
                         <Title
                             variant="h3"
                         >

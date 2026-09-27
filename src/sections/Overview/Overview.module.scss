@@ -16,3 +16,19 @@
         max-width: 600px;
     }
 }
+
+@media print {
+
+    .overview {
+        border: none;
+        padding: 0;
+    }
+
+    .overview__intro {
+        padding: 0;
+    }
+
+    .overview__intro:first-child {
+        display: none;
+    }
+}

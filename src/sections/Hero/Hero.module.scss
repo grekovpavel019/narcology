@@ -89,6 +89,7 @@
 }
 
 @media (max-width: 850px) {
+
     .hero__inner {
         display: flex;
         flex-direction: column-reverse;
@@ -101,6 +102,19 @@
 }
 
 @media print {
+
+    .hero__intro p {
+        font-size: 1rem;
+    }
+    
+    .card {
+        width: 90%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .eyebrow {
         display: none;
     }
