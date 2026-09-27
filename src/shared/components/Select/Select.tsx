@@ -1,12 +1,32 @@
-import React, { type FC, useEffect, useState, useRef, type SyntheticEvent, type MouseEventHandler } from "react";
+import React, { type FC, useEffect, useState, useRef } from "react";
+
+import type { sortVariants } from "@/shared/types/Service";
 
 import styles from "./Select.module.scss";
 
-const Select: FC = (): React.JSX.Element => {
+type SelectProps = {
+    setOption: (sort: sortVariants) => void;
+    option: sortVariants
+}
 
-    const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState("По умолчанию")
+const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
+
+    const {
+        setOption,
+        option
+    } = props;
+
+    let currentOption: string;
+
+    switch (option) {
+        case "default": currentOption = "По умолчанию"; break;
+        case "expensive": currentOption = "Сначала дорогие"; break;
+        case "cheap": currentOption = "Сначала дешевые"; break;
+        case "alphabet": currentOption = "По алфавиту"; break;
+    }
     
+    const [isOpen, setIsOpen] = useState(false);
+
     const selectRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -28,9 +48,9 @@ const Select: FC = (): React.JSX.Element => {
     const handleSelect = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         
-        setSelected(target.textContent.trim());
         setIsOpen(false);
 
+        setOption(target.value as sortVariants);
     };
 
     return (
@@ -38,7 +58,7 @@ const Select: FC = (): React.JSX.Element => {
             <button 
                 className={styles.sort__button}
                 onClick={() => setIsOpen(prev => !prev)}>
-                {selected}
+                { currentOption }
             </button>
 
             {
@@ -46,28 +66,28 @@ const Select: FC = (): React.JSX.Element => {
                     <button 
                         onClick={handleSelect} 
                         value={"default"} 
-                        className={`${styles.sort__button} ${selected.trim() === "По умолчанию" ? styles.active : ""}`}
+                        className={`${styles.sort__button} ${option.trim() === "default" ? styles.active : ""}`}
                     >
                             По умолчанию
                     </button>
                     <button 
                         onClick={handleSelect} 
                         value={"expensive"} 
-                        className={`${styles.sort__button} ${selected.trim() === "Сначала дорогие" ? styles.active : ""}`}
+                        className={`${styles.sort__button} ${option.trim() === "expensive" ? styles.active : ""}`}
                     >
                             Сначала дорогие
                     </button>
                     <button 
                         onClick={handleSelect} 
                         value={"cheap"} 
-                        className={`${styles.sort__button} ${selected.trim() === "Сначала дешевые" ? styles.active : ""}`}
+                        className={`${styles.sort__button} ${option.trim() === "cheap" ? styles.active : ""}`}
                     >
                             Сначала дешевые
                     </button>
                     <button 
                         onClick={handleSelect} 
                         value={"alphabet"} 
-                        className={`${styles.sort__button} ${selected.trim() === "По алфавиту" ? styles.active : ""}`}
+                        className={`${styles.sort__button} ${option.trim() === "alphabet" ? styles.active : ""}`}
                     >
                             По алфавиту
                     </button>

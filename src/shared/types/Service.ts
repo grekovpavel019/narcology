@@ -3,3 +3,9 @@ export type Service = {
     description: string,
     price: number
 }
+
+export type sortVariants = 
+    | "default"
+    | "expensive"
+    | "cheap"
+    | "alphabet"

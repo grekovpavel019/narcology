@@ -1,35 +1,57 @@
-import React, { type FC } from "react";
+import React, { type Dispatch, type FC, type SetStateAction } from "react";
 
 import Select from "@/shared/components/Select";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Service } from "@/shared/types/Service";
+import type { Service, sortVariants } from "@/shared/types/Service";
 
 type ServiceTableProps = {
-    services: Service[]
+    services: Service[],
+    sort: sortVariants,
+    setSort: Dispatch<SetStateAction<sortVariants>>
 }
 
 const ServicesTable: FC<ServiceTableProps> = (props: ServiceTableProps): React.JSX.Element => {
 
     const {
-        services
+        services,
+        sort,
+        setSort
     } = props;
+
+    let sortedServices: Service[];
+
+    switch (sort) {
+        case "default": {
+            sortedServices = services;
+            break;
+        }
+
+        case "expensive": {
+            sortedServices = services.sort((a, b) => b.price - a.price);
+            break;
+        }
+
+        case "cheap": {
+            sortedServices = services.sort((a, b) => a.price - b.price);
+            break;
+        }
+        
+        case "alphabet": {
+            sortedServices = services.sort((a, b) => a.description.localeCompare(b.description));
+            break;
+        }
+    }
 
     return (
         <section className={styles.servicesTable}>
             <div className={`${styles.servicesTable__inner} container`}>
 
-                {/* <div className={styles["table-hint"]}>
-                    <select className={styles["table-sort-select"]} name="tableSortSelect" id="tableSortSelect">
-                        <option value="default">По умолчанию</option>
-                        <option value="expensive">Сначала дорогие</option>
-                        <option value="cheap">Сначала дешевые</option>
-                        <option value="alphabet">По алфавиту</option>
-                    </select>
-                </div> */}
-
-                <Select />
+                <Select 
+                    setOption={setSort}
+                    option={sort}
+                />
 
                 <div className={styles["table-scroll"]}>
                     <table className={styles["table-content"]}>
@@ -43,7 +65,7 @@ const ServicesTable: FC<ServiceTableProps> = (props: ServiceTableProps): React.J
 
                         <tbody>
                             {
-                                services.map(serv => (
+                                sortedServices.map(serv => (
                                     <tr key={serv.id}>
                                         <td className={styles["col-id"]}>{serv.id}</td>
                                         <td className={styles["col-desc"]}>{serv.description}</td>

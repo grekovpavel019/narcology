@@ -1,12 +1,26 @@
-import React, { type FC } from "react";
+import React, { type FC, useState, useEffect } from "react";
 
 import Services from "@/sections/Services";
 import Overview from "@/sections/Overview";
 import ServicesTable from "@/sections/ServicesTable";
 
-import type { Service } from "@/shared/types/Service";
+import type { Service, sortVariants } from "@/shared/types/Service";
 
 const ServicesPage: FC = (): React.JSX.Element => {
+
+    const [sort, setSort] = useState<sortVariants>(() => {
+        const savedSort = localStorage.getItem("sort");
+
+        if (savedSort) {
+            return savedSort as sortVariants;
+        }
+
+        return "default";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("sort", sort);
+    }, [sort]);
 
     const services: Service[] = [
         {
@@ -73,6 +87,8 @@ const ServicesPage: FC = (): React.JSX.Element => {
             <Services />
             <ServicesTable 
                 services={services}
+                sort={sort}
+                setSort={setSort}
             />
         </>
     );
