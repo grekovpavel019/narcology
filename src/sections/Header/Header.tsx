@@ -17,7 +17,21 @@ const Header: FC = (): React.JSX.Element => {
     // каждый раз при изменении URL, мы будем закрывать mobile menu
     useEffect(() => {
         setIsMenuOpen(false);
-    }, [location.pathname])
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const handleCloseMobileMenu = (): void => {
+            if (window.innerWidth >= 850) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        window.addEventListener("resize", handleCloseMobileMenu);
+
+        return () => {
+            window.removeEventListener("resize", handleCloseMobileMenu);
+        }
+    }, []);
 
     return (
         <header className={styles.header}>
