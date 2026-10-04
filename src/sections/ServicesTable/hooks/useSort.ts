@@ -2,11 +2,11 @@ import{ useState, useEffect } from "react";
 
 import type { Service, SortVariants } from "@/shared/types/Service";
 
-type useSortProps = {
+type UseSortProps = {
     services: Service[]
 }
 
-export const useSort = (props: useSortProps) => {
+export const useSort = (props: UseSortProps) => {
     const {
         services
     } = props;

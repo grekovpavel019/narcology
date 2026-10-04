@@ -1,4 +1,4 @@
-import React, { type FC, useState, useEffect } from "react";
+import React, { type FC } from "react";
 
 import Select from "@/shared/components/Select";
 import Title from "@/shared/components/typography/Title";
@@ -6,8 +6,9 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Service, SortVariants, Filters } from "@/shared/types/Service";
+import type { Service } from "@/shared/types/Service";
 import { useSort } from "../hooks/useSort";
+import { useFilters } from "../hooks/useFilters";
 
 
 const services: Service[] = [
@@ -283,9 +284,17 @@ const services: Service[] = [
     }
 ];
 
-
 const ServicesTable: FC = (): React.JSX.Element => {
+    
+    const {
+        filters,
+        filteredServices,
 
+        handleInputChange,
+        isFilterAvailable,
+        resetFilters
+        
+    } = useFilters({ services })
     const {
         sort,
         sortedServices,
@@ -293,123 +302,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
         setSort,
         resetSort
 
-    } = useSort({ services });
-
-    const [filters, setFilters] = useState<Filters>(() => {
-        const savedFiltes = localStorage.getItem("filters");
-
-        if (savedFiltes) {
-            return JSON.parse(savedFiltes);
-        }
-
-        return {
-            category: [],
-            audience: [],
-            format: []
-        };
-    });
-
-    useEffect(() => {
-        localStorage.setItem("filters", JSON.stringify(filters))
-    })
-
-    const handleInputChange = (
-        type: keyof Filters,
-        value: string
-    ) => {
-        setFilters(prev => {
-
-            const values = prev[type];
-
-            return {
-                ...prev,
-                [type]: values.includes(value) 
-                    ? values.filter(item => item !== value) 
-                    : [...values, value]
-            }
-        });
-    }
-
-    const filteredServices = services.filter((serv) => {
-        const categoryMatches = 
-            filters.category.length === 0 ||
-            filters.category.includes(serv.category)
-        
-        const audienceMatches = 
-            filters.audience.length === 0 ||
-            filters.audience.includes(serv.audience)
-       
-        const formatMatches = 
-            filters.format.length === 0 ||
-            filters.format.includes(serv.format)
-
-        return categoryMatches && audienceMatches && formatMatches;
-    });
-
-    // const [sort, setSort] = useState<SortVariants>(() => {
-    //     const savedSort = localStorage.getItem("sort");
-
-    //     if (savedSort) {
-    //         return savedSort as SortVariants;
-    //     }
-
-    //     return "default";
-    // });
-
-    // useEffect(() => {
-    //     localStorage.setItem("sort", sort);
-    // }, [sort]);
-
-    // let sortedServices: Service[];;
-
-    // switch (sort) {
-    //     case "default": {
-    //         sortedServices = filteredServices;
-    //         break;
-    //     }
-
-    //     case "expensive": {
-    //         sortedServices = [...filteredServices].sort((a, b) => b.price - a.price);
-    //         break;
-    //     }
-
-    //     case "cheap": {
-    //         sortedServices = [...filteredServices].sort((a, b) => a.price - b.price);
-    //         break;
-    //     }
-        
-    //     case "alphabet": {
-    //         sortedServices = [...filteredServices].sort((a, b) => a.description.localeCompare(b.description));
-    //         break;
-    //     }
-    // }
-
-    const isFilterAvailable = (
-        type: keyof Filters,
-        value: string
-    ) => {
-        return filteredServices.some((serv) => {
-            const categoryMatches = 
-                type === "category" 
-                    ? value === serv.category
-                    : filters.category.length === 0 ||
-                      filters.category.includes(serv.category);
-
-            const audienceMatches = 
-                type === "audience" 
-                    ? value === serv.audience
-                    : filters.audience.length === 0 ||
-                      filters.audience.includes(serv.audience);
-
-            const formatMatches = 
-                type === "format" 
-                    ? value === serv.format
-                    : filters.format.length === 0 ||
-                      filters.format.includes(serv.format);
-
-            return categoryMatches && formatMatches && audienceMatches;
-        });
-    }
+    } = useSort({ services: filteredServices });
 
     return (
         <section className={styles.servicesTable}>
@@ -421,12 +314,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                         <button 
                             className={styles.reset__filters} 
                             onClick={() => {
-                                setFilters({
-                                    format: [], 
-                                    category: [], 
-                                    audience: []
-                                });
-
+                                resetFilters();
                                 resetSort()
                             }}
                         >

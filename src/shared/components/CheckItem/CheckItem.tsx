@@ -33,7 +33,7 @@ const CheckItem: FC<CheckItemProps> = (props: CheckItemProps): React.JSX.Element
             className={
                 `${styles.check} 
                 ${isDisabled ? styles.disabled : ""} 
-                ${isChecked ? styles.checked : ""}`
+                ${isChecked && !isDisabled ? styles.checked : ""}`
             } 
             htmlFor={id}>
             <input onChange={handleInputChange} type="checkbox" id={id}/>
