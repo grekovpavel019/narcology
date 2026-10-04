@@ -329,7 +329,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="consultation"
                                 isChecked={filters.category.includes("Консультация")}
-                                isDisabled={!isFilterAvailable("category", "Консультация")}
+                                isDisabled={!isFilterAvailable("category", "Консультация") && !filters.category.includes("Консультация")}
                                 onChange={() => handleInputChange("category", "Консультация")}
                             >
                                 Консультация
@@ -337,7 +337,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="detox"
                                 isChecked={filters.category.includes("Детоксикация")}
-                                isDisabled={!isFilterAvailable("category", "Детоксикация")}
+                                isDisabled={!isFilterAvailable("category", "Детоксикация") && !filters.category.includes("Детоксикация")}
                                 onChange={() => handleInputChange("category", "Детоксикация")}
                             >
                                 Детоксикация
@@ -345,7 +345,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="treatment"
                                 isChecked={filters.category.includes("Лечение")}
-                                isDisabled={!isFilterAvailable("category", "Лечение")}
+                                isDisabled={!isFilterAvailable("category", "Лечение") && !filters.category.includes("Лечение")}
                                 onChange={() => handleInputChange("category", "Лечение")}
                             >
                                 Лечение
@@ -353,7 +353,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="rehabilitation"
                                 isChecked={filters.category.includes("Реабилитация")}
-                                isDisabled={!isFilterAvailable("category", "Реабилитация")}
+                                isDisabled={!isFilterAvailable("category", "Реабилитация") && !filters.category.includes("Реабилитация")}
                                 onChange={() => handleInputChange("category", "Реабилитация")}
                             >
                                 Реабилитация
@@ -364,7 +364,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="patient"
                                 isChecked={filters.audience.includes("Пациент")}
-                                isDisabled={!isFilterAvailable("audience", "Пациент")}
+                                isDisabled={!isFilterAvailable("audience", "Пациент") && !filters.audience.includes("Пациент")}
                                 onChange={() => handleInputChange("audience", "Пациент")}
                             >
                                 Пациент
@@ -372,7 +372,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="relatives"
                                 isChecked={filters.audience.includes("Родственники")}
-                                isDisabled={!isFilterAvailable("audience", "Родственники")}
+                                isDisabled={!isFilterAvailable("audience", "Родственники") && !filters.audience.includes("Родственники")}
                                 onChange={() => handleInputChange("audience", "Родственники")}
                             >
                                 Родственники
@@ -380,7 +380,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="companion"
                                 isChecked={filters.audience.includes("Сопровождающий")}
-                                isDisabled={!isFilterAvailable("audience", "Сопровождающий")}
+                                isDisabled={!isFilterAvailable("audience", "Сопровождающий") && !filters.audience.includes("Сопровождающий")}
                                 onChange={() => handleInputChange("audience", "Сопровождающий")}
                             >
                                 Сопровождающий
@@ -391,7 +391,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="clinic"
                                 isChecked={filters.format.includes("В клинике")}
-                                isDisabled={!isFilterAvailable("format", "В клинике")}
+                                isDisabled={!isFilterAvailable("format", "В клинике") && !filters.format.includes("В клинике")}
                                 onChange={() => handleInputChange("format", "В клинике")}
                             >
                                 В клинике
@@ -399,7 +399,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="home"
                                 isChecked={filters.format.includes("На дому")}
-                                isDisabled={!isFilterAvailable("format", "На дому")}
+                                isDisabled={!isFilterAvailable("format", "На дому") && !filters.format.includes("На дому")}
                                 onChange={() => handleInputChange("format", "На дому")}
                             >
                                 На дому
@@ -407,7 +407,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="outpatient"
                                 isChecked={filters.format.includes("Амбулаторно")}
-                                isDisabled={!isFilterAvailable("format", "Амбулаторно")}
+                                isDisabled={!isFilterAvailable("format", "Амбулаторно") && !filters.format.includes("Амбулаторно")}
                                 onChange={() => handleInputChange("format", "Амбулаторно")}
                             >
                                 Амбулаторно
@@ -415,7 +415,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <CheckItem
                                 id="inpatient"
                                 isChecked={filters.format.includes("В стационаре")}
-                                isDisabled={!isFilterAvailable("format", "В стационаре")}
+                                isDisabled={!isFilterAvailable("format", "В стационаре") && !filters.format.includes("В стационаре")}
                                 onChange={() => handleInputChange("format", "В стационаре")}
                             >
                                 В стационаре

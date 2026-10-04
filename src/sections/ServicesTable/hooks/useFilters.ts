@@ -51,7 +51,7 @@ export const useFilters = (props: UseFiltersProps) => {
     const matchesFilters = (service: Service, filters: Filters) => {
 
         // истина если: массив категорий пуст (иначе тогда фильтры не имеют смысла)
-        // или выбранный фильтр включает в себя фильтр какой-то услуги
+        // или выбранный фильтр включает в себя ТЭГ (описание) какой-то услуги
         const categoryMatches = 
             filters.category.length === 0 || 
             filters.category.includes(service.category);
