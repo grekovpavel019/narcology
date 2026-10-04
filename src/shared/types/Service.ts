@@ -24,8 +24,14 @@ export type Service = {
         | "В стационаре"
 }
 
-export type sortVariants = 
+export type SortVariants = 
     | "default"
     | "expensive"
     | "cheap"
     | "alphabet"
+
+export type Filters = {
+    category: string[],
+    audience: string[],
+    format: string[]
+}

@@ -1,41 +1,62 @@
-import React from "react";
+import{ useState, useEffect } from "react";
 
-export const useSort = ( ) => {
-    const [sort, setSort] = useState<sortVariants>(() => {
-    const savedSort = localStorage.getItem("sort");
+import type { Service, SortVariants } from "@/shared/types/Service";
+
+type useSortProps = {
+    services: Service[]
+}
+
+export const useSort = (props: useSortProps) => {
+    const {
+        services
+    } = props;
+
+    // текущий ключ сортировки, который мы получаем из localStorage
+    const [sort, setSort] = useState<SortVariants>(() => {
+
+        const savedSort = localStorage.getItem("sort");
 
         if (savedSort) {
-            return savedSort as sortVariants;
+            return savedSort as SortVariants;
         }
 
         return "default";
     });
 
+    // запись в localStorage
     useEffect(() => {
         localStorage.setItem("sort", sort);
     }, [sort]);
 
     let sortedServices: Service[];;
 
+    // сама функция сортировки, которая возвращает нужный массив в зависимости от ключа
     switch (sort) {
         case "default": {
-            sortedServices = filteredServices;
+            sortedServices = services;
             break;
         }
 
         case "expensive": {
-            sortedServices = [...filteredServices].sort((a, b) => b.price - a.price);
+            sortedServices = [...services].sort((a, b) => b.price - a.price);
             break;
         }
 
         case "cheap": {
-            sortedServices = [...filteredServices].sort((a, b) => a.price - b.price);
+            sortedServices = [...services].sort((a, b) => a.price - b.price);
             break;
         }
         
         case "alphabet": {
-            sortedServices = [...filteredServices].sort((a, b) => a.description.localeCompare(b.description));
+            sortedServices = [...services].sort((a, b) => a.description.localeCompare(b.description));
             break;
         }
+    }
+
+    return {
+        sort,
+        setSort,
+        sortedServices,
+
     }
 };

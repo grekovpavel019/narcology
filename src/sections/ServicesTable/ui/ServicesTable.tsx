@@ -6,13 +6,8 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Service, sortVariants } from "@/shared/types/Service";
+import type { Service, SortVariants, Filters } from "@/shared/types/Service";
 
-type Filters = {
-    category: string[],
-    audience: string[],
-    format: string[]
-}
 
 const services: Service[] = [
     {
@@ -341,7 +336,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
         return categoryMatches && audienceMatches && formatMatches;
     });
 
-    const [sort, setSort] = useState<sortVariants>(() => {
+    const [sort, setSort] = useState<SortVariants>(() => {
         const savedSort = localStorage.getItem("sort");
 
         if (savedSort) {
