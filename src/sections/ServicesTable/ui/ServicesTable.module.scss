@@ -2,6 +2,67 @@
     padding-top: var(--sec-p-top);
 }
 
+.servicesTable__filters {
+    padding: 20px 40px;
+    margin-bottom: 30px;
+
+    background-color: var(--color-surface);
+
+    box-shadow: var(--shadow-sm);
+
+    border-radius: 14px;
+}
+
+.filters__head {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+
+    & h3 {
+        font-size: 1.5rem;
+    }
+}
+
+.reset__filters {
+    font-weight: bold;
+    color: var(--color-secondary);
+
+    transition: opacity .2s linear;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.filters__grid {
+    margin-top: 34px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+
+    color: var(--color-text-secondary);
+    
+    & h4 {
+        color: var(--color-text-primary);
+        font-size: 1.1rem;
+    }
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.servicesTable__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .table-scroll {
     width: 100%;
 

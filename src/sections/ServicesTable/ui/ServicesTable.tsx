@@ -1,10 +1,18 @@
 import React, { type FC, useState, useEffect } from "react";
 
 import Select from "@/shared/components/Select";
+import Title from "@/shared/components/typography/Title";
+import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
 import type { Service, sortVariants } from "@/shared/types/Service";
+
+type Filters = {
+    category: string[],
+    audience: string[],
+    format: string[]
+}
 
 const services: Service[] = [
     {
@@ -279,7 +287,59 @@ const services: Service[] = [
     }
 ];
 
+
 const ServicesTable: FC = (): React.JSX.Element => {
+
+    const [filters, setFilters] = useState<Filters>(() => {
+        const savedFiltes = localStorage.getItem("filters");
+
+        if (savedFiltes) {
+            return JSON.parse(savedFiltes);
+        }
+
+        return {
+            category: [],
+            audience: [],
+            format: []
+        };
+    });
+
+    useEffect(() => {
+        localStorage.setItem("filters", JSON.stringify(filters))
+    })
+
+    const handleInputChange = (
+        type: keyof Filters,
+        value: string
+    ) => {
+        setFilters(prev => {
+
+            const values = prev[type];
+
+            return {
+                ...prev,
+                [type]: values.includes(value) 
+                    ? values.filter(item => item !== value) 
+                    : [...values, value]
+            }
+        });
+    }
+
+    const filteredServices = services.filter((serv) => {
+        const categoryMatches = 
+            filters.category.length === 0 ||
+            filters.category.includes(serv.category)
+        
+        const audienceMatches = 
+            filters.audience.length === 0 ||
+            filters.audience.includes(serv.audience)
+       
+        const formatMatches = 
+            filters.format.length === 0 ||
+            filters.format.includes(serv.format)
+
+        return categoryMatches && audienceMatches && formatMatches;
+    });
 
     const [sort, setSort] = useState<sortVariants>(() => {
         const savedSort = localStorage.getItem("sort");
@@ -295,38 +355,194 @@ const ServicesTable: FC = (): React.JSX.Element => {
         localStorage.setItem("sort", sort);
     }, [sort]);
 
-    let sortedServices: Service[];
+    let sortedServices: Service[];;
 
     switch (sort) {
         case "default": {
-            sortedServices = services;
+            sortedServices = filteredServices;
             break;
         }
 
         case "expensive": {
-            sortedServices = [...services].sort((a, b) => b.price - a.price);
+            sortedServices = [...filteredServices].sort((a, b) => b.price - a.price);
             break;
         }
 
         case "cheap": {
-            sortedServices = [...services].sort((a, b) => a.price - b.price);
+            sortedServices = [...filteredServices].sort((a, b) => a.price - b.price);
             break;
         }
         
         case "alphabet": {
-            sortedServices = [...services].sort((a, b) => a.description.localeCompare(b.description));
+            sortedServices = [...filteredServices].sort((a, b) => a.description.localeCompare(b.description));
             break;
         }
+    }
+
+    const isFilterAvailable = (
+        type: keyof Filters,
+        value: string
+    ) => {
+        return filteredServices.some((serv) => {
+            const categoryMatches = 
+                type === "category" 
+                    ? value === serv.category
+                    : filters.category.length === 0 ||
+                      filters.category.includes(serv.category);
+
+            const audienceMatches = 
+                type === "audience" 
+                    ? value === serv.audience
+                    : filters.audience.length === 0 ||
+                      filters.audience.includes(serv.audience);
+
+            const formatMatches = 
+                type === "format" 
+                    ? value === serv.format
+                    : filters.format.length === 0 ||
+                      filters.format.includes(serv.format);
+
+            return categoryMatches && formatMatches && audienceMatches;
+        });
     }
 
     return (
         <section className={styles.servicesTable}>
             <div className={`${styles.servicesTable__inner} container`}>
 
-                <Select 
-                    setOption={setSort}
-                    option={sort}
-                />
+                <div className={styles.servicesTable__filters}>
+                    <div className={styles.filters__head}>
+                        <Title variant="h3">Фильтры</Title>
+                        <button 
+                            className={styles.reset__filters} 
+                            onClick={() => {
+                                setFilters({
+                                    format: [], 
+                                    category: [], 
+                                    audience: []
+                                });
+
+                                setSort("default");
+                            }}
+                        >
+                            Сбросить фильтры
+            
+                        </button>
+                    </div>
+                
+                    <div className={styles.filters__grid}>
+                        <div className={`${styles["filter-item"]}`}>
+                            <Title variant="h4">Направление</Title>
+                            <CheckItem
+                                id="consultation"
+                                isChecked={filters.category.includes("Консультация")}
+                                isDisabled={!isFilterAvailable("category", "Консультация")}
+                                onChange={() => handleInputChange("category", "Консультация")}
+                            >
+                                Консультация
+                            </CheckItem>
+                            <CheckItem
+                                id="detox"
+                                isChecked={filters.category.includes("Детоксикация")}
+                                isDisabled={!isFilterAvailable("category", "Детоксикация")}
+                                onChange={() => handleInputChange("category", "Детоксикация")}
+                            >
+                                Детоксикация
+                            </CheckItem>
+                            <CheckItem
+                                id="treatment"
+                                isChecked={filters.category.includes("Лечение")}
+                                isDisabled={!isFilterAvailable("category", "Лечение")}
+                                onChange={() => handleInputChange("category", "Лечение")}
+                            >
+                                Лечение
+                            </CheckItem>
+                            <CheckItem
+                                id="rehabilitation"
+                                isChecked={filters.category.includes("Реабилитация")}
+                                isDisabled={!isFilterAvailable("category", "Реабилитация")}
+                                onChange={() => handleInputChange("category", "Реабилитация")}
+                            >
+                                Реабилитация
+                            </CheckItem>
+                        </div>
+                        <div className={`${styles["filter-item"]}`}>
+                            <Title variant="h4">Для кого</Title>
+                            <CheckItem
+                                id="patient"
+                                isChecked={filters.audience.includes("Пациент")}
+                                isDisabled={!isFilterAvailable("audience", "Пациент")}
+                                onChange={() => handleInputChange("audience", "Пациент")}
+                            >
+                                Пациент
+                            </CheckItem>
+                            <CheckItem
+                                id="relatives"
+                                isChecked={filters.audience.includes("Родственники")}
+                                isDisabled={!isFilterAvailable("audience", "Родственники")}
+                                onChange={() => handleInputChange("audience", "Родственники")}
+                            >
+                                Родственники
+                            </CheckItem>
+                            <CheckItem
+                                id="companion"
+                                isChecked={filters.audience.includes("Сопровождающий")}
+                                isDisabled={!isFilterAvailable("audience", "Сопровождающий")}
+                                onChange={() => handleInputChange("audience", "Сопровождающий")}
+                            >
+                                Сопровождающий
+                            </CheckItem>
+                        </div>
+                        <div className={`${styles["filter-item"]}`}>
+                            <Title variant="h4">Формат помощи</Title>
+                            <CheckItem
+                                id="clinic"
+                                isChecked={filters.format.includes("В клинике")}
+                                isDisabled={!isFilterAvailable("format", "В клинике")}
+                                onChange={() => handleInputChange("format", "В клинике")}
+                            >
+                                В клинике
+                            </CheckItem>
+                            <CheckItem
+                                id="home"
+                                isChecked={filters.format.includes("На дому")}
+                                isDisabled={!isFilterAvailable("format", "На дому")}
+                                onChange={() => handleInputChange("format", "На дому")}
+                            >
+                                На дому
+                            </CheckItem>
+                            <CheckItem
+                                id="outpatient"
+                                isChecked={filters.format.includes("Амбулаторно")}
+                                isDisabled={!isFilterAvailable("format", "Амбулаторно")}
+                                onChange={() => handleInputChange("format", "Амбулаторно")}
+                            >
+                                Амбулаторно
+                            </CheckItem>
+                            <CheckItem
+                                id="inpatient"
+                                isChecked={filters.format.includes("В стационаре")}
+                                isDisabled={!isFilterAvailable("format", "В стационаре")}
+                                onChange={() => handleInputChange("format", "В стационаре")}
+                            >
+                                В стационаре
+                            </CheckItem>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className={styles.servicesTable__info}>
+
+                    <p>
+                        Найдено услуг: <b>{filteredServices.length}</b>
+                    </p>
+
+                    <Select 
+                        setOption={setSort}
+                        option={sort}
+                    />
+                </div>
 
                 <div className={styles["table-scroll"]}>
                     <table className={styles["table-content"]}>
@@ -334,8 +550,8 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <tr className={styles["row-head"]}>
                                 <th className={styles["col-id"]}>Номер</th>
                                 <th className={styles["col-desc"]}>Описание</th>
+                                <th className={styles["col-desc"]}>Категория</th>
                                 <th className={styles["col-cat"]}>Направление</th>
-                                <th className={styles["col-format"]}>Формат</th>
                                 <th className={styles["col-price"]}>Цена</th>
                             </tr>
                         </thead>

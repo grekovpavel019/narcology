@@ -1,0 +1,43 @@
+.check {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.1rem;
+
+    transition: all .2s ease;
+
+    cursor: pointer;
+    user-select: none;
+
+    & input[type="checkbox"] {
+        appearance: none;
+
+        cursor: pointer;
+
+        width: 1em;
+        height: 1em;
+        border-radius: 5px;
+        border: 1px solid var(--color-primary);
+
+        margin-right: 10px;
+
+        transition: background .2s ease;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+}
+
+.checked {
+
+    color: var(--color-text-primary);
+
+    & input[type="checkbox"] {
+        background-color: var(--color-primary);
+    }
+}

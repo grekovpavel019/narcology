@@ -1,1 +1,1 @@
-export { default } from "./ServicesTable";
+export { default } from "./ui/ServicesTable";
