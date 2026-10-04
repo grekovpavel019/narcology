@@ -53,10 +53,15 @@ export const useSort = (props: useSortProps) => {
         }
     }
 
+    const resetSort = () => {
+        setSort("default");
+    }
+
     return {
         sort,
-        setSort,
         sortedServices,
 
+        setSort,
+        resetSort
     }
 };
