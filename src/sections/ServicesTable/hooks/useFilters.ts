@@ -69,7 +69,7 @@ export const useFilters = (props: UseFiltersProps) => {
 
     const filteredServices = services.filter((service) => matchesFilters(service, filters));
 
-    const isFilterAvailable = (
+    const isFilterNotAvailable = (
         type: keyof Filters,
         value: string
     ) => {
@@ -82,7 +82,10 @@ export const useFilters = (props: UseFiltersProps) => {
 
         // проверяем: есть ли шанс на то, 
         // что хотя бы одна услуга существует при уже выбранных (...filters) плюс наш [type]: [value]
-        return services.some((service) => matchesFilters(service, tempFilters)); 
+        return ( 
+            !services.some((service) => matchesFilters(service, tempFilters)) 
+            && !filters[type].includes(value) // и наш фильтр уже не находиться в активных
+        ); 
     }
 
     const resetFilters = () => {
@@ -98,7 +101,7 @@ export const useFilters = (props: UseFiltersProps) => {
         filteredServices,
 
         handleInputChange,
-        isFilterAvailable,
+        isFilterNotAvailable,
         resetFilters
     }
 };

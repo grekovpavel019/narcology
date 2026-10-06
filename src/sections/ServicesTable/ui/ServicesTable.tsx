@@ -21,7 +21,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
         filteredServices,
 
         handleInputChange,
-        isFilterAvailable,
+        isFilterNotAvailable,
         resetFilters
         
     } = useFilters({ services })
@@ -68,7 +68,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                                             id={id}
                                             key={id}
                                             isChecked={filters[group].includes(value)}
-                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            isDisabled={isFilterNotAvailable(group, value)}
                                             onChange={() => handleInputChange(group, value)}
                                         >
                                             {value}
@@ -92,7 +92,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                                             id={id}
                                             key={id}
                                             isChecked={filters[group].includes(value)}
-                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            isDisabled={isFilterNotAvailable(group, value)}
                                             onChange={() => handleInputChange(group, value)}
                                         >
                                             {value}
@@ -115,7 +115,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                                             id={id}
                                             key={id}
                                             isChecked={filters[group].includes(value)}
-                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            isDisabled={isFilterNotAvailable(group, value)}
                                             onChange={() => handleInputChange(group, value)}
                                         >
                                             {value}
