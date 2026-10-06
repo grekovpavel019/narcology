@@ -14,6 +14,8 @@
 }
 
 .filters__head {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -36,6 +38,22 @@
 
     &:hover {
         opacity: .8;
+    }
+}
+
+.active-filters {
+    position: absolute;
+    top: 3px;
+    left: 125px;
+}
+
+.current-filter {
+    margin-right: 10px;
+
+    transition: opacity .2s linear;
+
+    &:hover {
+        opacity: .6;
     }
 }
 
@@ -88,7 +106,7 @@
 
     border-collapse: collapse;
 
-    & tbody tr {
+    & tbody tr:not(.empty-message) {
 
         transition: background .2s linear;
         
@@ -134,4 +152,24 @@
 
 .col-price {
     text-align: center;
+}
+
+.accent {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background-color: var(--color-primary-soft);
+
+    color: var(--color-primary);
+}
+
+.empty-message {
+    width: 100%;
+    max-width: 100%;
+
+    & td {
+        margin: 0 auto;
+        text-align: center;
+    }
 }

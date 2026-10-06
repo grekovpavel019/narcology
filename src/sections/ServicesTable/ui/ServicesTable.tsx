@@ -13,7 +13,6 @@ import { useFilters } from "../hooks/useFilters";
 import { services } from "@/shared/constants/services";
 import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";
 
-
 const ServicesTable: FC = (): React.JSX.Element => {
     
     const {
@@ -34,6 +33,10 @@ const ServicesTable: FC = (): React.JSX.Element => {
 
     } = useSort({ services: filteredServices });
 
+
+
+    const totalServices: number = sortedServices.length;
+
     return (
         <section className={styles.servicesTable}>
             <div className={`${styles.servicesTable__inner} container`}>
@@ -51,6 +54,21 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             Сбросить фильтры
             
                         </button>
+
+                        <div className={styles["active-filters"]}>
+                            {
+                                Object.entries(filters).map(([group, value]) => (
+                                    value.map((value) => (
+                                        <button 
+                                            onClick={() => handleInputChange(group as keyof Filters, value)} 
+                                            className={`${styles.accent} ${styles["current-filter"]}`}
+                                        >
+                                            {value}
+                                        </button>
+                                    ))
+                                ))
+                            }
+                        </div>
                     </div>
                 
                     <div className={styles.filters__grid}>
@@ -131,7 +149,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                 <div className={styles.servicesTable__info}>
 
                     <span>
-                        Найдено услуг: <b>{filteredServices.length}</b>
+                        Найдено услуг: <b>{totalServices}</b>
                     </span>
 
                     <Select 
@@ -154,15 +172,22 @@ const ServicesTable: FC = (): React.JSX.Element => {
 
                         <tbody>
                             {
+                                totalServices > 0 ?
                                 sortedServices.map(serv => (
                                     <tr key={serv.id}>
                                         <td className={styles["col-id"]}>{serv.id}</td>
                                         <td className={styles["col-desc"]}>{serv.description}</td>
-                                        <td className={styles["col-cat"]}>{serv.category}</td>
-                                        <td className={styles["col-format"]}>{serv.format}</td>
+                                        <td className={styles["col-cat"]}> <span className={styles.accent}>{serv.category}</span></td>
+                                        <td className={styles["col-format"]}><span className={styles.accent}>{serv.format}</span></td>
                                         <td className={styles["col-price"]}>{serv.price} р.</td>
                                     </tr>
                                 ))
+                                :
+                                <tr className={styles["empty-message"]}>
+                                    <td colSpan={5}>
+                                        Ничего не найдено
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
