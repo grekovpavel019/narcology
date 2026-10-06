@@ -6,7 +6,7 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Service } from "@/shared/types/Service";
+import type { Filters, Service } from "@/shared/types/Service";
 import { useSort } from "../hooks/useSort";
 import { useFilters } from "../hooks/useFilters";
 
@@ -284,6 +284,70 @@ const services: Service[] = [
     }
 ];
 
+const categoryFilters = [
+    {
+        id: "consultation",
+        group: "category",
+        value: "Консультация",
+    },
+    {
+        id: "detox",
+        group: "category",
+        value: "Детоксикация",
+    },
+    {
+        id: "treatment",
+        group: "category",
+        value: "Лечение",
+    },
+    {
+        id: "rehabilitation",
+        group: "category",
+        value: "Реабилитация",
+    },
+];
+
+const audienceFilters = [
+    {
+        id: "patient",
+        group: "audience",
+        value: "Пациент",
+    },
+    {
+        id: "relatives",
+        group: "audience",
+        value: "Родственники",
+    },
+    {
+        id: "companion",
+        group: "audience",
+        value: "Сопровождающий",
+    },
+];
+
+const formatFilters = [
+    {
+        id: "clinic",
+        group: "format",
+        value: "В клинике",
+    },
+    {
+        id: "home",
+        group: "format",
+        value: "На дому",
+    },
+    {
+        id: "outpatient",
+        group: "format",
+        value: "Амбулаторно",
+    },
+    {
+        id: "inpatient",
+        group: "format",
+        value: "В стационаре",
+    },
+];
+
 const ServicesTable: FC = (): React.JSX.Element => {
     
     const {
@@ -326,100 +390,73 @@ const ServicesTable: FC = (): React.JSX.Element => {
                     <div className={styles.filters__grid}>
                         <div className={`${styles["filter-item"]}`}>
                             <Title variant="h4">Направление</Title>
-                            <CheckItem
-                                id="consultation"
-                                isChecked={filters.category.includes("Консультация")}
-                                isDisabled={!isFilterAvailable("category", "Консультация") && !filters.category.includes("Консультация")}
-                                onChange={() => handleInputChange("category", "Консультация")}
-                            >
-                                Консультация
-                            </CheckItem>
-                            <CheckItem
-                                id="detox"
-                                isChecked={filters.category.includes("Детоксикация")}
-                                isDisabled={!isFilterAvailable("category", "Детоксикация") && !filters.category.includes("Детоксикация")}
-                                onChange={() => handleInputChange("category", "Детоксикация")}
-                            >
-                                Детоксикация
-                            </CheckItem>
-                            <CheckItem
-                                id="treatment"
-                                isChecked={filters.category.includes("Лечение")}
-                                isDisabled={!isFilterAvailable("category", "Лечение") && !filters.category.includes("Лечение")}
-                                onChange={() => handleInputChange("category", "Лечение")}
-                            >
-                                Лечение
-                            </CheckItem>
-                            <CheckItem
-                                id="rehabilitation"
-                                isChecked={filters.category.includes("Реабилитация")}
-                                isDisabled={!isFilterAvailable("category", "Реабилитация") && !filters.category.includes("Реабилитация")}
-                                onChange={() => handleInputChange("category", "Реабилитация")}
-                            >
-                                Реабилитация
-                            </CheckItem>
+                            {
+                                categoryFilters.map(item => {
+
+                                    const id = item.id;
+                                    const group = item.group as keyof Filters;
+                                    const value = item.value;
+
+                                    return ( 
+                                        <CheckItem
+                                            id={id}
+                                            key={id}
+                                            isChecked={filters[group].includes(value)}
+                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            onChange={() => handleInputChange(group, value)}
+                                        >
+                                            {value}
+                                        </CheckItem>
+                                    )
+                                })
+                            }
+                            
                         </div>
                         <div className={`${styles["filter-item"]}`}>
                             <Title variant="h4">Для кого</Title>
-                            <CheckItem
-                                id="patient"
-                                isChecked={filters.audience.includes("Пациент")}
-                                isDisabled={!isFilterAvailable("audience", "Пациент") && !filters.audience.includes("Пациент")}
-                                onChange={() => handleInputChange("audience", "Пациент")}
-                            >
-                                Пациент
-                            </CheckItem>
-                            <CheckItem
-                                id="relatives"
-                                isChecked={filters.audience.includes("Родственники")}
-                                isDisabled={!isFilterAvailable("audience", "Родственники") && !filters.audience.includes("Родственники")}
-                                onChange={() => handleInputChange("audience", "Родственники")}
-                            >
-                                Родственники
-                            </CheckItem>
-                            <CheckItem
-                                id="companion"
-                                isChecked={filters.audience.includes("Сопровождающий")}
-                                isDisabled={!isFilterAvailable("audience", "Сопровождающий") && !filters.audience.includes("Сопровождающий")}
-                                onChange={() => handleInputChange("audience", "Сопровождающий")}
-                            >
-                                Сопровождающий
-                            </CheckItem>
+                            {
+                                audienceFilters.map(item => {
+
+                                    const id = item.id;
+                                    const group = item.group as keyof Filters;
+                                    const value = item.value;
+
+                                    return ( 
+                                        <CheckItem
+                                            id={id}
+                                            key={id}
+                                            isChecked={filters[group].includes(value)}
+                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            onChange={() => handleInputChange(group, value)}
+                                        >
+                                            {value}
+                                        </CheckItem>
+                                    )
+                                })
+                            }
                         </div>
                         <div className={`${styles["filter-item"]}`}>
                             <Title variant="h4">Формат помощи</Title>
-                            <CheckItem
-                                id="clinic"
-                                isChecked={filters.format.includes("В клинике")}
-                                isDisabled={!isFilterAvailable("format", "В клинике") && !filters.format.includes("В клинике")}
-                                onChange={() => handleInputChange("format", "В клинике")}
-                            >
-                                В клинике
-                            </CheckItem>
-                            <CheckItem
-                                id="home"
-                                isChecked={filters.format.includes("На дому")}
-                                isDisabled={!isFilterAvailable("format", "На дому") && !filters.format.includes("На дому")}
-                                onChange={() => handleInputChange("format", "На дому")}
-                            >
-                                На дому
-                            </CheckItem>
-                            <CheckItem
-                                id="outpatient"
-                                isChecked={filters.format.includes("Амбулаторно")}
-                                isDisabled={!isFilterAvailable("format", "Амбулаторно") && !filters.format.includes("Амбулаторно")}
-                                onChange={() => handleInputChange("format", "Амбулаторно")}
-                            >
-                                Амбулаторно
-                            </CheckItem>
-                            <CheckItem
-                                id="inpatient"
-                                isChecked={filters.format.includes("В стационаре")}
-                                isDisabled={!isFilterAvailable("format", "В стационаре") && !filters.format.includes("В стационаре")}
-                                onChange={() => handleInputChange("format", "В стационаре")}
-                            >
-                                В стационаре
-                            </CheckItem>
+                            {
+                                formatFilters.map(item => {
+
+                                    const id = item.id;
+                                    const group = item.group as keyof Filters;
+                                    const value = item.value;
+
+                                    return ( 
+                                        <CheckItem
+                                            id={id}
+                                            key={id}
+                                            isChecked={filters[group].includes(value)}
+                                            isDisabled={!isFilterAvailable(group, value) && !filters[group].includes(value)}
+                                            onChange={() => handleInputChange(group, value)}
+                                        >
+                                            {value}
+                                        </CheckItem>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -427,9 +464,9 @@ const ServicesTable: FC = (): React.JSX.Element => {
 
                 <div className={styles.servicesTable__info}>
 
-                    <p>
+                    <span>
                         Найдено услуг: <b>{filteredServices.length}</b>
-                    </p>
+                    </span>
 
                     <Select 
                         setOption={setSort}

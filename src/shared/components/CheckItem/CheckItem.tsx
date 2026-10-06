@@ -21,7 +21,6 @@ const CheckItem: FC<CheckItemProps> = (props: CheckItemProps): React.JSX.Element
         onChange
     } = props;
 
-
     const handleInputChange = () => {
         if (isDisabled) return;
 
