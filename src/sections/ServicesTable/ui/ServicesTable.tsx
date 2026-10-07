@@ -33,8 +33,6 @@ const ServicesTable: FC = (): React.JSX.Element => {
 
     } = useSort({ services: filteredServices });
 
-
-
     const totalServices: number = sortedServices.length;
 
     return (
@@ -134,7 +132,7 @@ const ServicesTable: FC = (): React.JSX.Element => {
                         {
                             Object.entries(filters).map(([group, value]) => (
                                 value.map((value) => (
-                                    <span className={`${styles.accent} ${styles["current-filter"]}`}>
+                                    <span key={value} className={`${styles.accent} ${styles["current-filter"]}`}>
                                         {value}
                                         <button 
                                             onClick={() => handleInputChange(group as keyof Filters, value)} 

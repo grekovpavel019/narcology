@@ -1,12 +1,12 @@
 import React, { type FC, useEffect, useState, useRef } from "react";
 
-import type { sortVariants } from "@/shared/types/Service";
+import type { SortVariants } from "@/shared/types/Service";
 
 import styles from "./Select.module.scss";
 
 type SelectProps = {
-    setOption: (sort: sortVariants) => void;
-    option: sortVariants
+    setOption: (sort: SortVariants) => void;
+    option: SortVariants
 }
 
 const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
@@ -45,7 +45,7 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
     const handleSelect = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         setIsOpen(false);
-        setOption(target.value as sortVariants);
+        setOption(target.value as SortVariants);
     };
 
     return (
