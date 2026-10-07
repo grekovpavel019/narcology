@@ -55,20 +55,6 @@ const ServicesTable: FC = (): React.JSX.Element => {
             
                         </button>
 
-                        <div className={styles["active-filters"]}>
-                            {
-                                Object.entries(filters).map(([group, value]) => (
-                                    value.map((value) => (
-                                        <button 
-                                            onClick={() => handleInputChange(group as keyof Filters, value)} 
-                                            className={`${styles.accent} ${styles["current-filter"]}`}
-                                        >
-                                            {value}
-                                        </button>
-                                    ))
-                                ))
-                            }
-                        </div>
                     </div>
                 
                     <div className={styles.filters__grid}>
@@ -143,6 +129,24 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             }
                         </div>
                     </div>
+
+                    <div className={styles["active-filters"]}>
+                        {
+                            Object.entries(filters).map(([group, value]) => (
+                                value.map((value) => (
+                                    <span className={`${styles.accent} ${styles["current-filter"]}`}>
+                                        {value}
+                                        <button 
+                                            onClick={() => handleInputChange(group as keyof Filters, value)} 
+                                        >
+                                            ×
+                                        </button>
+                                    </span>
+
+                                ))
+                            ))
+                        }
+                    </div>
                 </div>
 
 
@@ -164,8 +168,8 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             <tr className={styles["row-head"]}>
                                 <th className={styles["col-id"]}>Номер</th>
                                 <th className={styles["col-desc"]}>Описание</th>
-                                <th className={styles["col-desc"]}>Категория</th>
-                                <th className={styles["col-cat"]}>Направление</th>
+                                <th className={styles["col-cat"]}>Категория</th>
+                                <th className={styles["col-format"]}>Направление</th>
                                 <th className={styles["col-price"]}>Цена</th>
                             </tr>
                         </thead>
