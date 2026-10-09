@@ -10,9 +10,13 @@ export type LinkProps = {
     to: string
 }
 
+export type SubmitButtonProps = {
+    children: string;
+    variant: ButtonVariant;
+}
+
 export type NavLinkProps = LinkProps & {
     variant: ButtonVariant | "navLinkButton" 
-    // onClick: () => void;
 }
 
 export type BurgerButtonProps = {

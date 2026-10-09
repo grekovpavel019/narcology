@@ -11,6 +11,8 @@ import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
 import ContactsPage from "@/pages/ContactsPage";
 
+import LoginPage from "@/pages/LoginPage";
+
 const App: FC = (): React.JSX.Element => {
     return (
         // Роуты на SPA
@@ -24,6 +26,8 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/services" element={ <ServicesPage /> } />
                 <Route path="/contacts" element={ <ContactsPage /> } />
             </Route>
+            
+            <Route path="/login" element={ <LoginPage /> }/>
         </Routes>
     );
 };
