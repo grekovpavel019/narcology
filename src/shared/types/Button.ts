@@ -1,8 +1,8 @@
 export type ButtonVariant = 
     "primaryButton"
     | "secondaryButton" 
-    | "navLinkButton" 
-    | "inlineButton";
+    | "inlineButton"
+    | "blueText";
 
 export type LinkProps = {
     variant: ButtonVariant,
