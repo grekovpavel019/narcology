@@ -1,8 +1,8 @@
 import React, { type FC } from "react";
 
-import Benefits from "@/sections/Benefits";
-import Overview from "@/sections/Overview";
-import Showcase from "@/sections/Showcase";
+import Benefits from "@/widgets/Benefits";
+import Overview from "@/widgets/Overview";
+import Showcase from "@/widgets/Showcase";
 
 const AboutPage: FC = (): React.JSX.Element => {
     return (

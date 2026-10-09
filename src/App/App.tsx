@@ -5,7 +5,7 @@ import "./styles/global.scss"
 import "./styles/reset.scss"
 import "./styles/variables.scss"
 
-import Layout from "@/sections/Layout";
+import Layout from "@/widgets/Layout";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";

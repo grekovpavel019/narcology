@@ -63,8 +63,6 @@
 
     transition: opacity .2s linear;
 
-    font-weight: bold;
-
     & button {
         color: inherit;
         font-weight: bold;
@@ -180,6 +178,8 @@
     background-color: var(--color-primary-soft);
 
     color: var(--color-primary);
+    font-weight: bold;
+
 }
 
 .empty-message {
@@ -189,13 +189,6 @@
     & td {
         margin: 0 auto;
         text-align: center;
-    }
-}
-
-
-@media (max-width: 400px) {
-    .reset__filters {
-        text-align: start;
     }
 }
 

@@ -1,8 +1,8 @@
 import React, { type FC } from "react";
 
-import Services from "@/sections/Services";
-import Overview from "@/sections/Overview";
-import ServicesTable from "@/sections/ServicesTable";
+import Services from "@/widgets/Services";
+import Overview from "@/widgets/Overview";
+import ServicesTable from "@/widgets/ServicesTable";
 
 
 const ServicesPage: FC = (): React.JSX.Element => {

@@ -1,8 +1,8 @@
 import React, { type FC } from "react";
 
-import Hero from "@/sections/Hero";
-import Benefits from "@/sections/Benefits";
-import Services from "@/sections/Services";
+import Hero from "@/widgets/Hero";
+import Benefits from "@/widgets/Benefits";
+import Services from "@/widgets/Services";
 
 const HomePage: FC = (): React.JSX.Element => {
     return (

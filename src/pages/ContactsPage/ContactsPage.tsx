@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 
-import Overview from "@/sections/Overview";
-import Contacts from "@/sections/Contacts";
+import Overview from "@/widgets/Overview";
+import Contacts from "@/widgets/Contacts";
 
 const ContactsPage: FC = (): React.JSX.Element => {
     return (
