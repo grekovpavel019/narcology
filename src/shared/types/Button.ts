@@ -15,7 +15,7 @@ export type SubmitButtonProps = {
     variant: ButtonVariant;
 }
 
-export type NavLinkProps = LinkProps & {
+export type NavLinkProps = Omit<LinkProps, "variant"> & {
     variant: ButtonVariant | "navLinkButton" 
 }
 

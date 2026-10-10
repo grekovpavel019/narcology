@@ -1,0 +1,31 @@
+.shell {
+    min-height: 100dvh;
+
+    display: grid;
+    grid-template-columns: 264px minmax(0, 1fr);
+}
+
+.sidebar {
+    height: 100dvh  ;
+
+    position: sticky;
+    top: 0;
+
+    background-color: var(--color-surface);
+}
+
+$padding: 40px 20px;
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    
+    padding: $padding;
+}
+
+.content {
+    height: 10000px;
+
+    padding: $padding;
+}
