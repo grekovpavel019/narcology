@@ -50,7 +50,7 @@ const LoginForm: FC = (): React.JSX.Element => {
                 </form>
 
                 <div className={styles.login__footer}>
-                    <span>Нет аккаунта? <LinkButton variant="blueText" to="/">Зарегестрироваться</LinkButton></span>
+                    <span>Нет аккаунта? <LinkButton variant="blueText" to="/register">Зарегестрироваться</LinkButton></span>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ import ServicesPage from "@/pages/ServicesPage";
 import ContactsPage from "@/pages/ContactsPage";
 
 import LoginPage from "@/pages/LoginPage";
+import RegisterPage from "@/pages/RegisterPage";
 
 const App: FC = (): React.JSX.Element => {
     return (
@@ -27,7 +28,8 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/contacts" element={ <ContactsPage /> } />
             </Route>
             
-            <Route path="/login" element={ <LoginPage /> }/>
+            <Route path="/login" element={ <LoginPage /> } />
+            <Route path="/register" element={ <RegisterPage /> } />
         </Routes>
     );
 };
