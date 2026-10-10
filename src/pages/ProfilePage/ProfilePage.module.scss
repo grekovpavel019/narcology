@@ -1,0 +1,72 @@
+.content {
+    max-width: 800px;
+
+    & p {
+        margin-top: 10px;
+    }
+}
+
+.user-card {
+    margin-top: 32px;
+
+    padding: 28px;
+
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+
+    background-color: var(--color-deep);
+
+    border-radius: 20px;
+}
+
+.avatar {
+    width: 88px;
+    height: 88px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-primary-soft);
+
+    border-radius: 50%;
+
+    font-size: 1.8rem;
+}
+
+.full-name {
+    color: var(--color-surface);
+
+    font-size: 1.5rem;
+}
+
+.user-card__meta {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & dt {
+        font-size: 0.9rem;
+
+        color: var(--color-deep-soft);
+    }
+
+    & dd {
+        margin: 0;
+
+        color: var(--color-surface);
+    }
+}
+
+.badge {
+    padding: 5px 10px;
+
+    font-weight: 700;
+    color: var(--color-primary);
+
+    background-color: var(--color-primary-soft);
+
+    border-radius: 20px;
+}
