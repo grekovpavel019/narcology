@@ -10,12 +10,14 @@ const NavLinkButton: FC<NavLinkProps> = (props: NavLinkProps): React.JSX.Element
         to,
         variant,
         children,
+        end
     } = props;
 
     return (
         <NavLink
             to={to}
             className={`${variant}`}
+            end={end}
         >
             {children}
         </NavLink>

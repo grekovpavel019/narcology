@@ -2,7 +2,7 @@ import React, { type FC } from "react";
 
 import Title from "@/shared/components/typography/Title";
 import Text from "@/shared/components/typography/Text";
-import SubmitButton from "@/shared/components/SubmitButton";
+import Button from "@/shared/components/Button";
 import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./LoginForm.module.scss";
@@ -41,11 +41,12 @@ const LoginForm: FC = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.button__area}>
-                        <SubmitButton
+                        <Button
                             variant="primaryButton"
+                            type="submit"
                         >
                             Войти
-                        </SubmitButton>
+                        </Button>
                     </div>
                 </form>
 

@@ -3,7 +3,7 @@ import React, { type FC, type SyntheticEvent } from "react";
 import Title from "@/shared/components/typography/Title";
 import Text from "@/shared/components/typography/Text";
 import LinkButton from "@/shared/components/LinkButton";
-import SubmitButton from "@/shared/components/SubmitButton";
+import Button from "@/shared/components/Button";
 
 import styles from "./RegisterForm.module.scss";
 
@@ -54,11 +54,12 @@ const RegisterForm: FC = (): React.JSX.Element => {
                     </div>
 
                     <div className={styles.button__area}>
-                        <SubmitButton
+                        <Button
                             variant="primaryButton"
+                            type="submit"
                         >
                             Зарегестрироваться
-                        </SubmitButton>
+                        </Button>
                     </div>
                 </form>
 

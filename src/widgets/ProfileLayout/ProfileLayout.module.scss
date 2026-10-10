@@ -17,11 +17,19 @@
 $padding: 40px 20px;
 
 .sidenav {
+    padding: $padding;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidenavLinks {
     display: flex;
     flex-direction: column;
     gap: 19px;
-    
-    padding: $padding;
 }
 
 .content {

@@ -10,13 +10,23 @@ export type LinkProps = {
     to: string
 }
 
-export type SubmitButtonProps = {
+export type ButtonProps = {
     children: string;
     variant: ButtonVariant;
-}
+} & (
+    {
+        type: "submit";
+        onClick?: never;
+    }
+    | {
+        type?: "button";
+        onClick: () => void;
+    }
+)
 
 export type NavLinkProps = Omit<LinkProps, "variant"> & {
-    variant: ButtonVariant | "navLinkButton" 
+    variant: ButtonVariant | "navLinkButton";
+    end?: boolean;
 }
 
 export type BurgerButtonProps = {

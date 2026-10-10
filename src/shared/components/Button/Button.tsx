@@ -1,9 +1,8 @@
 import React, { type FC } from "react";
 
-import type { SubmitButtonProps } from "@/shared/types/Button";
+import type { ButtonProps } from "@/shared/types/Button";
 
-
-const SubmitButton: FC<SubmitButtonProps> = (props: SubmitButtonProps): React.JSX.Element => {
+const Button: FC<ButtonProps> = (props: ButtonProps): React.JSX.Element => {
     
     const {
         variant,
@@ -20,4 +19,4 @@ const SubmitButton: FC<SubmitButtonProps> = (props: SubmitButtonProps): React.JS
     );
 };
 
-export default SubmitButton;
+export default Button;
