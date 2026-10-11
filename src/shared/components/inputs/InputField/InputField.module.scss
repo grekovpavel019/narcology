@@ -1,0 +1,10 @@
+.input__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & label {
+        font-weight: bold;
+        font-size: 0.95rem;
+    }
+}

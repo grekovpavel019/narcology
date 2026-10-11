@@ -5,6 +5,7 @@ import LinkButton from "@/shared/components/LinkButton";
 
 import Input from "@/shared/components/inputs/Input";
 import PasswordInput from "@/shared/components/inputs/PasswordInput";
+import InputField from "@/shared/components/inputs/InputField";
 
 import AuthCard from "@/shared/components/AuthCard";
 
@@ -30,18 +31,18 @@ const LoginForm: FC = (): React.JSX.Element => {
                 action="post" 
                 onSubmit={submitForm}
             >
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="login">Логин</label>
                     <Input type="text" id="login" /> 
-                </div>
+                </InputField>
 
-                <div className={styles.input__area}>
+                <InputField>
                     <div className={styles.field__row}>
                         <label htmlFor="password">Пароль</label>
                         <LinkButton variant="blueText" to="/">Забыли пароль?</LinkButton>
                     </div>
                     <PasswordInput id="password" />
-                </div>
+                </InputField>
 
                 <div className={styles.button__area}>
                     <Button

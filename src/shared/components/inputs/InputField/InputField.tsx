@@ -1,23 +1,23 @@
-import React, { type FC } from "react";
+import React from "react";
+
+import styles from "./InputField.module.scss";
 
 type InputFieldProps = {
-    id: string;
-    label: string;
     children: React.ReactNode;
+    errors?: string;
 }
 
 const InputField = (props: InputFieldProps): React.JSX.Element => {
     const {
-        id,
-        label,
-        children
+        children,
+        errors
     } = props;
 
     return (
-        <div>
-            <label htmlFor={id}>{label}</label>
-
+        <div className={styles.input__field}>
             {children}
+
+            {errors ?? <span>{errors}</span>}
         </div>
     );
 };

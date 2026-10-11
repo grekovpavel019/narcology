@@ -5,6 +5,7 @@ import Button from "@/shared/components/Button";
 import AuthCard from "@/shared/components/AuthCard";
 import Input from "@/shared/components/inputs/Input";
 import PasswordInput from "@/shared/components/inputs/PasswordInput";
+import InputField from "@/shared/components/inputs/InputField";
 
 import styles from "./RegisterForm.module.scss";
 
@@ -28,30 +29,30 @@ const RegisterForm: FC = (): React.JSX.Element => {
                 action="post" 
                 onSubmit={submitForm}
             >
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="login">Логин</label>
                     <Input type="text" id="login"/>
-                </div>
+                </InputField>
 
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="fullName">ФИО</label>
                     <Input type="text" id="fullname"/>
-                </div>
+                </InputField>
 
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="email">Электаронная почта</label>
                     <Input type="email" id="email"/>
-                </div>
+                </InputField>
 
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="password">Пароль</label>
                     <PasswordInput id="password"/>
-                </div>
+                </InputField>
 
-                <div className={styles.input__area}>
+                <InputField>
                     <label htmlFor="confirm">Подтверждение пароля</label>
                     <PasswordInput id="confirm"/>
-                </div>
+                </InputField>
 
                 <div className={styles.button__area}>
                     <Button
