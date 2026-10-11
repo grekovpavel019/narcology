@@ -1,0 +1,38 @@
+.auth {
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth__inner {
+    max-width: 440px;
+    width: 100%;
+
+    padding: 18px 32px;
+
+    background-color: var(--color-surface);
+
+    box-shadow: var(--shadow);
+
+    border-radius: 20px;
+}
+
+.auth__intro {
+    padding-top: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth__footer {
+    margin-top: 30px;
+    padding-block: 20px;
+
+    border-top: 1px solid var(--color-border);
+
+    display: flex;
+    justify-content: center;
+}

@@ -1,17 +1,5 @@
 @use "@/shared/styles/form-mixins.scss" as form;
 
-.login {
-    @include form.auth;
-}
-
-.login__inner {
-    @include form.auth__inner;
-}
-
-.login__intro {
-    @include form.auth__intro;
-}
-
 .login__form {
     @include form.auth__form;
 }
@@ -28,8 +16,4 @@
 
 .button__area {
     @include form.button__area;
-}
-
-.login__footer {
-    @include form.auth__footer;
 }

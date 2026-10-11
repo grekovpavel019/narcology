@@ -7,7 +7,7 @@ import styles from "./ProfilePage.module.scss";
 
 const ProfilePage: FC = (): React.JSX.Element => {
     return (
-        <div className={styles.content}>
+        <div className={styles.profile}>
             <Title variant="h1">Личный кабинет</Title>
             <Text>Здесь можно изменить данные аккаунта, пароль и выйти из системы.</Text>
 

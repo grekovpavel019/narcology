@@ -1,19 +1,7 @@
 @use "@/shared/styles/form-mixins.scss" as form;
 
-.register {
-    @include form.auth;
-}
-
-.register__inner {
-    @include form.auth__inner;
-}
-
 .register__form {
     @include form.auth__form;
-}
-
-.register__intro {
-    @include form.auth__intro;
 }
 
 .input__area {
@@ -22,8 +10,4 @@
 
 .button__area {
     @include form.button__area;
-}
-
-.register__footer {
-    @include form.auth__footer;
 }

@@ -14,10 +14,8 @@
     background-color: var(--color-surface);
 }
 
-$padding: 40px 20px;
-
 .sidenav {
-    padding: $padding;
+    padding: 40px 20px;
 
     height: 100%;
 
@@ -33,7 +31,7 @@ $padding: 40px 20px;
 }
 
 .content {
-    height: 10000px;
+    padding: 40px 60px;
 
-    padding: $padding;
+    max-width: 800px;
 }
