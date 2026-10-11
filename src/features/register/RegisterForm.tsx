@@ -2,9 +2,11 @@ import React, { type FC, type SyntheticEvent } from "react";
 
 import LinkButton from "@/shared/components/LinkButton";
 import Button from "@/shared/components/Button";
+import AuthCard from "@/shared/components/AuthCard";
+import Input from "@/shared/components/inputs/Input";
+import PasswordInput from "@/shared/components/inputs/PasswordInput";
 
 import styles from "./RegisterForm.module.scss";
-import AuthCard from "@/shared/components/AuthCard";
 
 const RegisterForm: FC = (): React.JSX.Element => {
 
@@ -28,27 +30,27 @@ const RegisterForm: FC = (): React.JSX.Element => {
             >
                 <div className={styles.input__area}>
                     <label htmlFor="login">Логин</label>
-                    <input type="text" id="login" />
+                    <Input type="text" id="login"/>
                 </div>
 
                 <div className={styles.input__area}>
                     <label htmlFor="fullName">ФИО</label>
-                    <input type="text" id="fullName" />
+                    <Input type="text" id="fullname"/>
                 </div>
 
                 <div className={styles.input__area}>
                     <label htmlFor="email">Электаронная почта</label>
-                    <input type="email" id="email" />
+                    <Input type="email" id="email"/>
                 </div>
 
                 <div className={styles.input__area}>
                     <label htmlFor="password">Пароль</label>
-                    <input type="password" id="password" />
+                    <PasswordInput id="password"/>
                 </div>
 
                 <div className={styles.input__area}>
                     <label htmlFor="confirm">Подтверждение пароля</label>
-                    <input type="password" id="confirm" />
+                    <PasswordInput id="confirm"/>
                 </div>
 
                 <div className={styles.button__area}>
