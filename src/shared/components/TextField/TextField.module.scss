@@ -4,6 +4,12 @@
     gap: 6px;
 }
 
+.control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .label {
     font-weight: bold;
     font-size: 0.95rem;
@@ -31,8 +37,13 @@
 
     &:focus {
         border-color: $border;
-        box-shadow: 5px 5px 0 var(--color-primary);
+        box-shadow: var(--focus-ring);
     }
+}
+
+.hint {
+    color: var(--color-text-secondary);
+    font-size: .85rem;
 }
 
 .error {

@@ -3,6 +3,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 
 import TextField from "@/shared/components/TextField";
 import Button from "@/shared/components/Button";
+import LinkButton from "@/shared/components/LinkButton";
 
 import { loginRules } from "../model/rules";
 import type { LoginFormValues } from "../model/types";
@@ -35,6 +36,9 @@ const LoginForm: FC = (): React.JSX.Element => {
             <TextField 
                 label="Пароль"
                 error={errors.password?.message}
+                endSlot={
+                    <LinkButton variant="blueText" to="/register">Забыли пароль?</LinkButton>
+                }
                 {...register("password", loginRules.password)}
             />
 

@@ -30,21 +30,26 @@ const RegisterForm: FC = (): React.JSX.Element => {
             <TextField 
                 label="Логин"
                 error={errors.login?.message}
+                hint="Латинские буквы, цифры, точка, дефис и подчёркивание. Логин потом нельзя изменить."
                 {...register("login", registerRules.login)}
             />
             <TextField 
                 label="ФИО"
                 error={errors.fullname?.message}
+                placeholder="Иванов Иван Иванович"
                 {...register("fullname", registerRules.fullname)}
             />
             <TextField 
                 label="Электронная почта"
                 error={errors.email?.message}
+                placeholder="name@example.com"
+                hint="На этот адрес придёт ссылка, если вы забудете пароль."
                 {...register("email", registerRules.email)}
             />
             <TextField 
                 label="Пароль"
                 error={errors.password?.message}
+                hint="На этот адрес придёт ссылка, если вы забудете пароль."
                 {...register("password", registerRules.password)}
             />
             <TextField 

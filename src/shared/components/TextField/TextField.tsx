@@ -5,12 +5,16 @@ import styles from "./TextField.module.scss";
 type TextFieldProps = Omit<ComponentPropsWithRef<"input">, "id"> & {
     label: string;
     error?: string;
+    endSlot?: React.ReactNode;
+    hint?: string;
 }
 
 const TextField = (props: TextFieldProps): React.JSX.Element => {
     const {
         label,
         error,
+        endSlot,
+        hint,
         ...inputProps
     } = props;
 
@@ -19,12 +23,17 @@ const TextField = (props: TextFieldProps): React.JSX.Element => {
 
     return (
         <div className={styles.text__field}>
-            <label 
-                htmlFor={id}
-                className={styles.label}
-            >
-                {label}
-            </label>
+
+            <div className={styles.control}>
+                <label 
+                    htmlFor={id}
+                    className={styles.label}
+                    >
+                    {label}
+                </label>
+
+                { endSlot }
+            </div>
             
             <input 
                 id={id}
@@ -32,11 +41,15 @@ const TextField = (props: TextFieldProps): React.JSX.Element => {
                 className={styles.input}
             />
 
+            <p className={styles.hint}>
+                { hint }
+            </p>
+
             <p
                 className={styles.error}
                 id={errorId}
             >
-                {error ? error : ""}
+                { error }
             </p>
         </div>
     );
