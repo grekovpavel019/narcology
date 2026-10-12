@@ -32,14 +32,12 @@ const TextField = (props: TextFieldProps): React.JSX.Element => {
                 className={styles.input}
             />
 
-            {error && (
-                <p
-                    className={styles.error}
-                    id={errorId}
-                >
-                        {error}
-                </p>
-            )}
+            <p
+                className={styles.error}
+                id={errorId}
+            >
+                {error ? error : ""}
+            </p>
         </div>
     );
 };

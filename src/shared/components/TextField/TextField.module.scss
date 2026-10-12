@@ -36,7 +36,9 @@
 }
 
 .error {
-    display: block;
+    padding-top: 2px;
 
-    color: red;
+    color: var(--color-danger);
+    font-weight: bold;
+    font-size: .85rem;
 }
