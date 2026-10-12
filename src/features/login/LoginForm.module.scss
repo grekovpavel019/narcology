@@ -4,10 +4,6 @@
     @include form.auth__form;
 }
 
-.input__area {
-    @include form.input__area;
-}
-
 .field__row {
     display: flex;
     justify-content: space-between;

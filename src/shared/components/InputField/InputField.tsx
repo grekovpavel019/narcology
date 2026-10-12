@@ -17,7 +17,7 @@ const InputField = (props: InputFieldProps): React.JSX.Element => {
         <div className={styles.input__field}>
             {children}
 
-            {errors ?? <span>{errors}</span>}
+            <span className={styles.errors}>{errors ?? errors}</span>
         </div>
     );
 };

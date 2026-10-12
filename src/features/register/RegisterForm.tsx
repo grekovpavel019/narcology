@@ -1,20 +1,33 @@
 import React, { type FC, type SyntheticEvent } from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
 
 import LinkButton from "@/shared/components/LinkButton";
 import Button from "@/shared/components/Button";
 import AuthCard from "@/shared/components/AuthCard";
-import Input from "@/shared/components/inputs/Input";
-import PasswordInput from "@/shared/components/inputs/PasswordInput";
-import InputField from "@/shared/components/inputs/InputField";
+import InputField from "@/shared/components/InputField";
+
+import { passwordRules } from "@/shared/validation/passwordRules";
+import { loginRules } from "@/shared/validation/loginRules";
 
 import styles from "./RegisterForm.module.scss";
 
+type RegisterFormValues = {
+    login: string;
+    fullname: string;
+    email: string;
+    password: string;
+    confirm: string;
+}
+
 const RegisterForm: FC = (): React.JSX.Element => {
 
-    const submitForm = (event: SyntheticEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        
-        console.log(2);
+    const { register, handleSubmit, formState } = useForm<RegisterFormValues>();
+
+    const loginError = formState.errors["login"]?.message;
+    const passwordError = formState.errors["password"]?.message;
+
+    const submitForm: SubmitHandler<RegisterFormValues> = (data) => {
+        console.log(data);
     }
 
     return (
@@ -27,31 +40,31 @@ const RegisterForm: FC = (): React.JSX.Element => {
             <form 
                 className={styles.register__form}
                 action="post" 
-                onSubmit={submitForm}
+                onSubmit={handleSubmit(submitForm)}
             >
                 <InputField>
                     <label htmlFor="login">Логин</label>
-                    <Input type="text" id="login"/>
+                    <input type="text" id="login" {...register("login", loginRules)}/>
                 </InputField>
 
                 <InputField>
                     <label htmlFor="fullName">ФИО</label>
-                    <Input type="text" id="fullname"/>
+                    <input type="text" id="fullname"/>
                 </InputField>
 
                 <InputField>
                     <label htmlFor="email">Электаронная почта</label>
-                    <Input type="email" id="email"/>
+                    <input type="email" id="email"/>
                 </InputField>
 
                 <InputField>
                     <label htmlFor="password">Пароль</label>
-                    <PasswordInput id="password"/>
+                    <input id="password"/>
                 </InputField>
 
                 <InputField>
                     <label htmlFor="confirm">Подтверждение пароля</label>
-                    <PasswordInput id="confirm"/>
+                    <input id="confirm"/>
                 </InputField>
 
                 <div className={styles.button__area}>

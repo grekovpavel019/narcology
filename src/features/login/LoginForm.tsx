@@ -1,21 +1,33 @@
 import React, { type FC } from "react";
+import { useForm } from "react-hook-form";
 
 import Button from "@/shared/components/Button";
 import LinkButton from "@/shared/components/LinkButton";
 
-import Input from "@/shared/components/inputs/Input";
-import PasswordInput from "@/shared/components/inputs/PasswordInput";
-import InputField from "@/shared/components/inputs/InputField";
+import InputField from "@/shared/components/InputField";
 
 import AuthCard from "@/shared/components/AuthCard";
 
+import type { SubmitHandler } from "react-hook-form";
+import { loginRules } from "@/shared/validation/loginRules";
+import { passwordRules } from "@/shared/validation/passwordRules";
+
 import styles from "./LoginForm.module.scss";
+
+type LoginFormValues = {
+    login: string;
+    password: string;
+}
 
 const LoginForm: FC = (): React.JSX.Element => {
 
-    const submitForm = (event: React.SyntheticEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(1);
+    const { register, handleSubmit, formState } = useForm<LoginFormValues>();
+
+    const loginError = formState.errors["login"]?.message;
+    const passwordError = formState.errors["password"]?.message;
+
+    const submitForm: SubmitHandler<LoginFormValues> = (data) => {
+        console.log(data);
     }
 
     return (
@@ -29,19 +41,30 @@ const LoginForm: FC = (): React.JSX.Element => {
             <form 
                 className={styles.login__form}
                 action="post" 
-                onSubmit={submitForm}
+                onSubmit={handleSubmit(submitForm)}
             >
-                <InputField>
+                <InputField
+                    errors={loginError ?? loginError}
+                >
                     <label htmlFor="login">Логин</label>
-                    <Input type="text" id="login" /> 
+                    <input 
+                        type="text" 
+                        id="login" 
+                        {...register("login", loginRules)}
+                    /> 
                 </InputField>
 
-                <InputField>
+                <InputField
+                    errors={passwordError ?? passwordError}                >
                     <div className={styles.field__row}>
                         <label htmlFor="password">Пароль</label>
                         <LinkButton variant="blueText" to="/">Забыли пароль?</LinkButton>
                     </div>
-                    <PasswordInput id="password" />
+                    <input 
+                        type="password" 
+                        id="password"
+                        {...register("password", passwordRules)}
+                    />
                 </InputField>
 
                 <div className={styles.button__area}>
