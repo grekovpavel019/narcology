@@ -11,7 +11,11 @@ import styles from "./LoginForm.module.scss";
 
 const LoginForm: FC = (): React.JSX.Element => {
 
-    const {register, handleSubmit, formState: { errors }} = useForm<LoginFormValues>();
+    const {
+        register, 
+        handleSubmit,
+        formState: { errors }
+    } = useForm<LoginFormValues>();
 
     const onSubmit: SubmitHandler<LoginFormValues> = (data: LoginFormValues) => {
         console.log(data);
@@ -22,13 +26,12 @@ const LoginForm: FC = (): React.JSX.Element => {
             className={styles.login__form}
             onSubmit={handleSubmit(onSubmit)}
         >
-            
             <TextField 
                 label="Логин"
                 error={errors.login?.message}
                 {...register("login", loginRules.login)}
             />
-            
+
             <TextField 
                 label="Пароль"
                 error={errors.password?.message}
