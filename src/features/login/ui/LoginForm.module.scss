@@ -4,12 +4,6 @@
     @include form.auth__form;
 }
 
-.field__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .button__area {
     @include form.button__full-width;
 }

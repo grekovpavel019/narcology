@@ -1,8 +1,9 @@
 import React, { type FC } from "react";
 
+import LoginForm from "@/features/login";
+
 import AuthCard from "@/shared/components/AuthCard";
 import LinkButton from "@/shared/components/LinkButton";
-import LoginForm from "@/features/login";
 
 const LoginPage: FC = (): React.JSX.Element => {
     return (

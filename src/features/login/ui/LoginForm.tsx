@@ -4,8 +4,8 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import TextField from "@/shared/components/TextField";
 import Button from "@/shared/components/Button";
 
-import { loginRules } from "./model/rules";
-import type { LoginFormValues } from "./model/types";
+import { loginRules } from "../model/rules";
+import type { LoginFormValues } from "../model/types";
 
 import styles from "./LoginForm.module.scss";
 
@@ -20,7 +20,6 @@ const LoginForm: FC = (): React.JSX.Element => {
     return (
         <form 
             className={styles.login__form}
-            action="post" 
             onSubmit={handleSubmit(onSubmit)}
         >
             
@@ -29,6 +28,7 @@ const LoginForm: FC = (): React.JSX.Element => {
                 error={errors.login?.message}
                 {...register("login", loginRules.login)}
             />
+            
             <TextField 
                 label="Пароль"
                 error={errors.password?.message}
