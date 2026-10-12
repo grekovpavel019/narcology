@@ -12,7 +12,6 @@ import ServicesPage from "@/pages/ServicesPage";
 import ContactsPage from "@/pages/ContactsPage";
 
 import LoginPage from "@/pages/LoginPage";
-import RegisterPage from "@/pages/RegisterPage";
 import ProfileLayout from "@/widgets/ProfileLayout/ProfileLayout";
 import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import ProfileSettingsPage from "@/pages/ProfileSettingsPage";
@@ -34,7 +33,6 @@ const App: FC = (): React.JSX.Element => {
             
             <Route element={ <AuthLayout /> }>
                 <Route path="/login" element={ <LoginPage /> } />
-                <Route path="/register" element={ <RegisterPage /> } />
             </Route>
 
             <Route path="/profile" element={ <ProfileLayout /> }>

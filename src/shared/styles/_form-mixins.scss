@@ -6,20 +6,10 @@
     gap: 30px;
 }
 
-@mixin button__area {
+@mixin button__full-width {
     width: 100%;
 
     & button {
         width: 100%;
     }
-}
-
-@mixin auth__footer {
-    margin-top: 30px;
-    padding-block: 20px;
-
-    border-top: 1px solid var(--color-border);
-
-    display: flex;
-    justify-content: center;
 }

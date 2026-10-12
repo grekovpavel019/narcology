@@ -1,9 +1,0 @@
-@use "@/shared/styles/form-mixins.scss" as form;
-
-.register__form {
-    @include form.auth__form;
-}
-
-.button__area {
-    @include form.button__area;
-}

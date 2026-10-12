@@ -11,5 +11,5 @@
 }
 
 .button__area {
-    @include form.button__area;
+    @include form.button__full-width;
 }
