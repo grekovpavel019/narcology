@@ -16,6 +16,7 @@ import RegisterPage from "@/pages/RegisterPage";
 import ProfileLayout from "@/widgets/ProfileLayout/ProfileLayout";
 import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import ProfileSettingsPage from "@/pages/ProfileSettingsPage";
+import AuthLayout from "./Layouts/AuthLayout/AuthLayout";
 
 const App: FC = (): React.JSX.Element => {
     return (
@@ -31,8 +32,10 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/contacts" element={ <ContactsPage /> } />
             </Route>
             
-            <Route path="/login" element={ <LoginPage /> } />
-            <Route path="/register" element={ <RegisterPage /> } />
+            <Route element={ <AuthLayout /> }>
+                <Route path="/login" element={ <LoginPage /> } />
+                <Route path="/register" element={ <RegisterPage /> } />
+            </Route>
 
             <Route path="/profile" element={ <ProfileLayout /> }>
                 <Route index element={ <ProfilePage /> } />

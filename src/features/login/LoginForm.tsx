@@ -6,8 +6,6 @@ import LinkButton from "@/shared/components/LinkButton";
 
 import InputField from "@/shared/components/InputField";
 
-import AuthCard from "@/shared/components/AuthCard";
-
 import type { SubmitHandler } from "react-hook-form";
 import { loginRules } from "@/shared/validation/loginRules";
 import { passwordRules } from "@/shared/validation/passwordRules";
@@ -31,52 +29,44 @@ const LoginForm: FC = (): React.JSX.Element => {
     }
 
     return (
-        <AuthCard
-            title="Вход в аккаунт"
-            description="Введите логин и пароль, чтобы открыть личный кабинет."
-            footer= {
-                <span>Нет аккаунта? <LinkButton variant="blueText" to="/register">Зарегестрироваться</LinkButton></span>
-            }
+        <form 
+            className={styles.login__form}
+            action="post" 
+            onSubmit={handleSubmit(submitForm)}
         >
-            <form 
-                className={styles.login__form}
-                action="post" 
-                onSubmit={handleSubmit(submitForm)}
+            <InputField
+                errors={loginError ?? loginError}
             >
-                <InputField
-                    errors={loginError ?? loginError}
-                >
-                    <label htmlFor="login">Логин</label>
-                    <input 
-                        type="text" 
-                        id="login" 
-                        {...register("login", loginRules)}
-                    /> 
-                </InputField>
+                <label htmlFor="login">Логин</label>
+                <input 
+                    type="text" 
+                    id="login" 
+                    {...register("login", loginRules)}
+                /> 
+            </InputField>
 
-                <InputField
-                    errors={passwordError ?? passwordError}                >
-                    <div className={styles.field__row}>
-                        <label htmlFor="password">Пароль</label>
-                        <LinkButton variant="blueText" to="/">Забыли пароль?</LinkButton>
-                    </div>
-                    <input 
-                        type="password" 
-                        id="password"
-                        {...register("password", passwordRules)}
-                    />
-                </InputField>
-
-                <div className={styles.button__area}>
-                    <Button
-                        variant="primaryButton"
-                        type="submit"
-                    >
-                        Войти
-                    </Button>
+            <InputField
+                errors={passwordError ?? passwordError}                >
+                <div className={styles.field__row}>
+                    <label htmlFor="password">Пароль</label>
+                    <LinkButton variant="blueText" to="/">Забыли пароль?</LinkButton>
                 </div>
-            </form> 
-        </AuthCard>
+                <input 
+                    type="password" 
+                    id="password"
+                    {...register("password", passwordRules)}
+                />
+            </InputField>
+
+            <div className={styles.button__area}>
+                <Button
+                    variant="primaryButton"
+                    type="submit"
+                >
+                    Войти
+                </Button>
+            </div>
+        </form> 
     );
 };
 

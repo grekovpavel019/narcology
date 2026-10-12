@@ -1,4 +1,4 @@
-import React, { type FC, type SyntheticEvent } from "react";
+import React, { type FC } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
 import LinkButton from "@/shared/components/LinkButton";
@@ -6,7 +6,6 @@ import Button from "@/shared/components/Button";
 import AuthCard from "@/shared/components/AuthCard";
 import InputField from "@/shared/components/InputField";
 
-import { passwordRules } from "@/shared/validation/passwordRules";
 import { loginRules } from "@/shared/validation/loginRules";
 
 import styles from "./RegisterForm.module.scss";
@@ -31,7 +30,6 @@ const RegisterForm: FC = (): React.JSX.Element => {
     }
 
     return (
-
         <AuthCard
             title="Создание аккаунта"
             description="Заполните данные, чтобы получить доступ к личному кабинету."

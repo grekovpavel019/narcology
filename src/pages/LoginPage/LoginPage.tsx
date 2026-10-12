@@ -1,9 +1,20 @@
 import React, { type FC } from "react";
+
+import AuthCard from "@/shared/components/AuthCard";
+import LinkButton from "@/shared/components/LinkButton";
 import LoginForm from "@/features/login";
 
 const LoginPage: FC = (): React.JSX.Element => {
     return (
-        <LoginForm />
+        <AuthCard
+            title="Вход в аккаунт"
+            description="Введите логин и пароль, чтобы открыть личный кабинет."
+            footer= {
+                <span>Нет аккаунта? <LinkButton variant="blueText" to="/register">Зарегестрироваться</LinkButton></span>
+            }
+        >
+            <LoginForm />
+        </AuthCard>
     );
 };
 

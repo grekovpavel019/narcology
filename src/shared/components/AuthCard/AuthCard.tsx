@@ -24,20 +24,20 @@ const AuthCard = (props: AuthCardProps): React.JSX.Element => {
     } = props;
 
     return (
-        <div className={styles.auth}>
-            <div className={styles.auth__inner}>
-                <div className={styles.auth__intro}>
-                    <Title variant="h2">{title}</Title>
-                    <Text>{description}</Text>
-                </div>
+        <div className={styles.auth__inner}>
+            <div className={styles.auth__intro}>
+                <Title variant="h2">{title}</Title>
+                <Text>{description}</Text>
+            </div>
 
-                {children}
+            {
+                children
+            }
 
-                <div className={styles.auth__footer}>
-                    {
-                        footer
-                    }
-                </div>
+            <div className={styles.auth__footer}>
+                {
+                    footer
+                }
             </div>
         </div>
     );
