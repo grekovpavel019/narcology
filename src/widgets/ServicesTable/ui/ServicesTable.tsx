@@ -6,10 +6,11 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-
 import type { Filters } from "../model/types";
 import { useSort } from "../model/useSort";
 import { useFilters } from "../model/useFilters";
+
+import { SORT_OPTIONS } from "../model/constants";
 
 import { services } from "@/shared/constants/services";
 import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";
@@ -156,8 +157,9 @@ const ServicesTable: FC = (): React.JSX.Element => {
                     </span>
 
                     <Select 
-                        setOption={setSort}
-                        option={sort}
+                        options={SORT_OPTIONS}
+                        value={sort}
+                        onChange={setSort}
                     />
                 </div>
 

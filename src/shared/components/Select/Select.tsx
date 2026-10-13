@@ -1,32 +1,22 @@
-import React, { type FC, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-// import type { SortVariants } from "@/shared/types/Service";
-import type { SortVariants } from "@/widgets/ServicesTable/model/types";
+import type { SelectProps } from "./model/types";
 
 import styles from "./Select.module.scss";
 
-type SelectProps = {
-    setOption: (sort: SortVariants) => void;
-    option: SortVariants;
-}
-
-const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
+const Select = <T extends string,>(props:  SelectProps<T>): React.JSX.Element => {
 
     const {
-        setOption,
-        option
+        options,
+        value,
+        onChange
     } = props;
 
-    let currentOption: string;
-    switch (option) {
-        case "default": currentOption = "По умолчанию"; break;
-        case "expensive": currentOption = "Сначала дорогие"; break;
-        case "cheap": currentOption = "Сначала дешевые"; break;
-        case "alphabet": currentOption = "По алфавиту"; break;
-    }
+    const currentOption = options.find(option => option.value === value)
     
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
+    
     useEffect(() => {
 
         const handleClickOutside = (event: MouseEvent) => {
@@ -43,10 +33,9 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
         }
     }, []);
 
-    const handleSelect = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const target = event.currentTarget;
+    const handleSelect = (nextValue: T) => {
         setIsOpen(false);
-        setOption(target.value as SortVariants);
+        onChange(nextValue);
     };
 
     return (
@@ -54,39 +43,24 @@ const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
             <button 
                 className={styles.sort__button}
                 onClick={() => setIsOpen(prev => !prev)}>
-                { currentOption }
+                { currentOption?.label }
             </button>
 
             {
                 <div className={`${styles.sort__dropdown} ${isOpen ? styles.visible : ""}`}>
-                    <button 
-                        onClick={handleSelect} 
-                        value={"default"} 
-                        className={`${styles.sort__button} ${option.trim() === "default" ? styles.active : ""}`}
-                    >
-                            По умолчанию
-                    </button>
-                    <button 
-                        onClick={handleSelect} 
-                        value={"expensive"} 
-                        className={`${styles.sort__button} ${option.trim() === "expensive" ? styles.active : ""}`}
-                    >
-                            Сначала дорогие
-                    </button>
-                    <button 
-                        onClick={handleSelect} 
-                        value={"cheap"} 
-                        className={`${styles.sort__button} ${option.trim() === "cheap" ? styles.active : ""}`}
-                    >
-                            Сначала дешевые
-                    </button>
-                    <button 
-                        onClick={handleSelect} 
-                        value={"alphabet"} 
-                        className={`${styles.sort__button} ${option.trim() === "alphabet" ? styles.active : ""}`}
-                    >
-                            По алфавиту
-                    </button>
+                    {
+                        options.map((option) => {
+                            return (
+                                <button
+                                    key={option.value}
+                                    onClick={() => handleSelect(option.value)}
+                                    className={`${styles.sort__button} ${value === option.value ? styles.active : ""}`}
+                                >
+                                    {option.label}
+                                </button>
+                            )
+                        })
+                    }
                 </div>
             }
         </div>
