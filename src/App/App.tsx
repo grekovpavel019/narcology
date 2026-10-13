@@ -5,25 +5,26 @@ import "./styles/global.scss"
 import "./styles/reset.scss"
 import "./styles/variables.scss"
 
-import Layout from "@/widgets/Layout";
+import LandingLayout from "./Layouts/LandingLayout";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
 import ContactsPage from "@/pages/ContactsPage";
 
+import AuthLayout from "./Layouts/AuthLayout";
 import LoginPage from "@/pages/LoginPage";
-import ProfileLayout from "@/widgets/ProfileLayout/ProfileLayout";
+import RegisterPage from "@/pages/RegisterPage/RegisterPage";
+
+import ProfileLayout from "./Layouts/ProfileLayout/ProfileLayout";
 import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import ProfileSettingsPage from "@/pages/ProfileSettingsPage";
-import AuthLayout from "./Layouts/AuthLayout/AuthLayout";
-import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 
 const App: FC = (): React.JSX.Element => {
     return (
         // Роуты на SPA
         <Routes>
             {/* Корневой роут, который содержить layout */}
-            <Route path="/" element={ <Layout />}>
+            <Route path="/" element={ <LandingLayout />}>
 
                 {/* Индексная страница, доступная по / */}
                 <Route index element={ <HomePage /> } />

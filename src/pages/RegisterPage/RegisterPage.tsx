@@ -1,6 +1,6 @@
 import React, { type FC } from "react";
 
-import RegisterForm from "@/features/regitser";
+import RegisterForm from "@/features/register";
 
 import AuthCard from "@/shared/components/AuthCard";
 import LinkButton from "@/shared/components/LinkButton";
