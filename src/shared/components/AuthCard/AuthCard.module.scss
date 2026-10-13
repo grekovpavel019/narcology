@@ -1,3 +1,15 @@
+@keyframes pageFromSide {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .auth__inner {
     width: 100%;
 
@@ -8,6 +20,8 @@
     box-shadow: var(--shadow);
 
     border-radius: 20px;
+
+    animation: pageFromSide .5s ease both;
 }
 
 .auth__intro {

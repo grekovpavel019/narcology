@@ -41,6 +41,7 @@ const RegisterForm: FC = (): React.JSX.Element => {
             />
             <TextField 
                 label="Электронная почта"
+                type="email"
                 error={errors.email?.message}
                 placeholder="name@example.com"
                 hint="На этот адрес придёт ссылка, если вы забудете пароль."
@@ -49,11 +50,13 @@ const RegisterForm: FC = (): React.JSX.Element => {
             <TextField 
                 label="Пароль"
                 error={errors.password?.message}
-                hint="На этот адрес придёт ссылка, если вы забудете пароль."
+                hint="Минимум 8 символов, буквы и цифры."
+                type="password"
                 {...register("password", registerRules.password)}
             />
             <TextField 
                 label="Подтверждение пароля"
+                type="password"
                 error={errors.confirm?.message}
                 {...register("confirm", registerRules.confirm)}
             />
