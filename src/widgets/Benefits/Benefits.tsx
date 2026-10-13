@@ -4,7 +4,7 @@ import LockIcon from "@/shared/icons/LockIcon";
 import UserIcon from "@/shared/icons/UserIcon";
 import MessageIcon from "@/shared/icons/MessageIcon";
 import LightningIcon from "@/shared/icons/LightningIcon";
-import BenefitCard from "@/shared/components/BenefitCard";
+import BenefitCard from "./BenefitCard";
 
 import Title from "@/shared/components/typography/Title";
 

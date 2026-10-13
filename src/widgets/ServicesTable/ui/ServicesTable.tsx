@@ -6,9 +6,10 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Filters } from "@/shared/types/Service";
-import { useSort } from "../hooks/useSort";
-import { useFilters } from "../hooks/useFilters";
+
+import type { Filters } from "../model/types";
+import { useSort } from "../model/useSort";
+import { useFilters } from "../model/useFilters";
 
 import { services } from "@/shared/constants/services";
 import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";

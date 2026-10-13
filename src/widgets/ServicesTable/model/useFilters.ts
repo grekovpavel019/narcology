@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import type { Filters, Service } from "@/shared/types/Service";
+import type { Filters, Service } from "./types";
 
 type UseFiltersProps = {
     services: Service[]

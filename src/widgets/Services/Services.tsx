@@ -1,6 +1,6 @@
 import React, { type FC } from "react";
 
-import ServiceCard from "@/shared/components/ServiceCard";
+import ServiceCard from "./ServiceCard"
 import MessageIcon from "@/shared/icons/MessageIcon";
 import LightningIcon from "@/shared/icons/LightningIcon";
 import ShieldIcon from "@/shared/icons/ShieldIcon";

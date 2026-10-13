@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 
-import Title from "../typography/Title";
-import Text from "../typography/Text";
+import Title from "@/shared/components/typography/Title";
+import Text from "@/shared/components/typography/Text";
 
 import styles from "./ServiceCard.module.scss";
 

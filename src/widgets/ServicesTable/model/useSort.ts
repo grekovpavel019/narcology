@@ -1,6 +1,6 @@
 import{ useState, useEffect } from "react";
 
-import type { Service, SortVariants } from "@/shared/types/Service";
+import type { Service, SortVariants} from './types';
 
 type UseSortProps = {
     services: Service[]

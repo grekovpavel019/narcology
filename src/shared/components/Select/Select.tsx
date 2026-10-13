@@ -1,12 +1,13 @@
 import React, { type FC, useEffect, useState, useRef } from "react";
 
-import type { SortVariants } from "@/shared/types/Service";
+// import type { SortVariants } from "@/shared/types/Service";
+import type { SortVariants } from "@/widgets/ServicesTable/model/types";
 
 import styles from "./Select.module.scss";
 
 type SelectProps = {
     setOption: (sort: SortVariants) => void;
-    option: SortVariants
+    option: SortVariants;
 }
 
 const Select: FC<SelectProps> = (props: SelectProps): React.JSX.Element => {
