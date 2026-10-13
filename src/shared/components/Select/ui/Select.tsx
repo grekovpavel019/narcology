@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 
-import type { SelectProps } from "./model/types";
+import type { SelectProps } from "../model/types";
 
 import styles from "./Select.module.scss";
 
-const Select = <T extends string,>(props:  SelectProps<T>): React.JSX.Element => {
+const Select = <T extends string>(props:  SelectProps<T>): React.JSX.Element => {
 
     const {
         options,

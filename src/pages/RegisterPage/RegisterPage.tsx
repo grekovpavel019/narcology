@@ -13,6 +13,7 @@ const RegisterPage: FC = (): React.JSX.Element => {
             footer={
                 <span>Есть аккаунт? <LinkButton variant="blueText" to="/login">Войти</LinkButton></span>
             }
+            size="md"
         >
             <RegisterForm />
         </AuthCard>

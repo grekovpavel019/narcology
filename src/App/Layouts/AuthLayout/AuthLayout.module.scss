@@ -1,3 +1,5 @@
+@use "@/shared/styles/mixins.scss" as *;
+
 .auth {
     margin-top: 0;
     padding-block: 64px;
@@ -8,4 +10,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include pageIn;
 }

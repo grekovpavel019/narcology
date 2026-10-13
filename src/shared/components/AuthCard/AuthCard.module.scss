@@ -1,5 +1,4 @@
 .auth__inner {
-    max-width: 500px;
     width: 100%;
 
     padding: 18px 32px;
@@ -28,3 +27,6 @@
     display: flex;
     justify-content: center;
 }
+
+.sm { width: 440px }
+.md { width: 500px }

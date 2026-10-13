@@ -12,6 +12,8 @@ type AuthCardProps = {
     footer: React.ReactNode;
 
     children: React.ReactNode;
+
+    size?: "md" | "sm";
 }
 
 const AuthCard = (props: AuthCardProps): React.JSX.Element => {
@@ -20,11 +22,12 @@ const AuthCard = (props: AuthCardProps): React.JSX.Element => {
         title,
         description,
         footer,
-        children
+        children,
+        size = "sm"
     } = props;
 
     return (
-        <div className={styles.auth__inner}>
+        <div className={`${styles.auth__inner} ${styles[size]}`}>
             <div className={styles.auth__intro}>
                 <Title variant="h2">{title}</Title>
                 <Text>{description}</Text>
