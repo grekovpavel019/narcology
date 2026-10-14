@@ -1,3 +1,10 @@
 .section {
-    
+    margin-top: 34px;
+
+    display: flex;
+    flex-direction: column;
+
+    > :last-child {
+        margin-top: 16px;
+    }
 }
