@@ -9,10 +9,8 @@ const ProfileAside: FC = (): React.JSX.Element => {
     return (
         <aside className={styles.sidebar}>
             <nav className={styles.sidenav}>
-                <div className={styles.sidenavLinks}>
-                    <NavLinkButton variant="navLinkButton" to="/profile" end>Мой профиль</NavLinkButton>
-                    <NavLinkButton variant="navLinkButton" to="/profile/settings">Настройки</NavLinkButton>  
-                </div>
+                <NavLinkButton variant="navLinkButton" to="/profile" end>Профиль</NavLinkButton>
+                <NavLinkButton variant="navLinkButton" to="/profile/settings">Настройки</NavLinkButton>  
 
                 <Button
                     variant="primaryButton"
