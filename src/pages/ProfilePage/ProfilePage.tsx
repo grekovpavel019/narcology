@@ -4,7 +4,7 @@ import Title from "@/shared/components/typography/Title";
 import Text from "@/shared/components/typography/Text";
 
 import styles from "./ProfilePage.module.scss";
-import UserCard from "@/entities/User/ui/UserCard";
+import UserCard from "@/entities/User";
 
 const ProfilePage: FC = (): React.JSX.Element => {
     return (
