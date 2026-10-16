@@ -1,0 +1,15 @@
+@use "@/shared/styles/change_form-mixin.scss" as form;
+
+.form {
+    @include form.change_form;
+}
+
+.form__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form__actions {
+    margin-top: 20px;
+}

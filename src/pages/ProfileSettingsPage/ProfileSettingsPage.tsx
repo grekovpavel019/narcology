@@ -4,6 +4,7 @@ import Title from "@/shared/components/typography/Title";
 import Text from "@/shared/components/typography/Text";
 
 import ChangeDataForm from "@/features/change-data";
+import ChangePassForm from "@/features/change-pass";
 
 import styles from "./ProfileSettingsPage.module.scss";
 
@@ -17,6 +18,12 @@ const ProfileSettingsPage: FC = (): React.JSX.Element => {
                 <Text>Эти данные вы указали при регистрации.</Text>
                 <ChangeDataForm />
             </section>
+
+            <div className={styles.section}>
+                <Title variant="h3">Изменение пароля</Title>
+                <Text>Чтобы сменить пароль, сначала введите текущий.</Text>
+                <ChangePassForm />
+            </div>
         </div>
     );
 };
