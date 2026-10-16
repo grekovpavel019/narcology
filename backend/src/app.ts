@@ -1,12 +1,11 @@
 import express, { type Express, type Request, type Response } from "express";
+import authRouter from "./modules/auth/auth.routes.js";
 
 const app: Express = express();
 
 app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-    res.send("Hello world");
-});
+app.use("/api/auth", authRouter);
 
 app.get("/api/health", (req: Request, res: Response) => {
     res.json({
