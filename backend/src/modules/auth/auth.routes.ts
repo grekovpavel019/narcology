@@ -70,6 +70,35 @@ authRouter.post("/login", async (req: Request, res: Response) => {
             return;
         }
 
+        req.session.regenerate((err) => {
+            if (err) {
+                console.error(err);
+
+                res.status(500).json({
+                    message: "Ошибка создания сессии"
+                });
+                return;
+            }
+
+            req.session.userId = user.id;
+
+            req.session.save((err) => {
+                if (err) {
+                    console.error(err);
+
+                    res.status(500).json({
+                        message: "Ошибка создания сессии"
+                    });
+
+                    return;
+                }
+
+                res.status(200).json({
+                    message: "Успешно"
+                })
+            })
+        });
+
         res.status(200).json({
             message: "Успешно",
             user
@@ -82,6 +111,6 @@ authRouter.post("/login", async (req: Request, res: Response) => {
             message: "Ошибка авторизации"
         })
     }
-})
+});
 
 export default authRouter;
