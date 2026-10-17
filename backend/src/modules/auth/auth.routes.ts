@@ -4,6 +4,7 @@ import { registerSchema, loginSchema } from "./auth.schemas.js";
 import { registerUser, loginUser } from "./auth.services.js";
 
 import pool from "../../lib/db.js";
+import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 
 const authRouter = Router();
 
@@ -107,13 +108,28 @@ authRouter.post("/login", async (req: Request, res: Response) => {
     }
 });
 
-authRouter.get("/me", async (req: Request, res: Response) => {
-    if (!req.session.userId) {
-        return res.status(401).json({
-            message: "Не авторизован"
-        });
-    }
 
+authRouter.post("/logout", (req: Request, res: Response) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error(err);
+
+            return res.status(500).json({
+                message: "Ошибка выхода из аккаунта"
+            })
+        }
+    });
+
+    res.clearCookie("connect.sid", {
+        path: "/"
+    });
+
+    return res.status(200).json({
+        message: "Выход выполенен успешно"
+    })
+})
+
+authRouter.get("/me", requireAuth, async (req: Request, res: Response) => {
     try {
         const result = await pool.query(`
             SELECT id, login, email, fullname

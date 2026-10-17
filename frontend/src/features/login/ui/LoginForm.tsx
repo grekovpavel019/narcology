@@ -8,10 +8,14 @@ import LinkButton from "@/shared/components/LinkButton";
 import { loginRules } from "../model/rules";
 import type { LoginFormValues } from "../model/types";
 
-import styles from "./LoginForm.module.scss";
 import { loginUser } from "@/shared/api/auth";
+import { useNavigate } from "react-router-dom";
+
+import styles from "./LoginForm.module.scss";
 
 const LoginForm: FC = (): React.JSX.Element => {
+
+    const navigate = useNavigate();
 
     const {
         register, 
@@ -26,6 +30,8 @@ const LoginForm: FC = (): React.JSX.Element => {
                 login: data.login,
                 password: data.password
             });
+
+            navigate("/profile", { replace: true });
 
         } catch (e) {
 

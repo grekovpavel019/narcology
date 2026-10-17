@@ -10,8 +10,19 @@ export type LoginPayload = {
     password: string;
 }
 
+export type AuthUser = {
+    id: string;
+    login: string;
+    email: string;
+    fullname: string;
+}
+
 type ApiResponse = {
     message: string;
+}
+
+type MeResponse = {
+    user: AuthUser;
 }
 
 export async function registerUser(
@@ -61,4 +72,23 @@ export async function loginUser(
     }
     
     return result;
+}
+
+export async function getCurrentUser() {
+    const response = await fetch("http://localhost:3000/api/auth/me", {
+        method: "GET",
+        credentials: "include",
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            response.status === 401
+                ? "Не авторизован"
+                : "Не удалось получить пользователя"
+        )
+    }
+
+    const result: MeResponse = await response.json();
+
+    return result.user;
 }
