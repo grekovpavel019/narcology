@@ -1,10 +1,7 @@
 import { Router, type Request, type Response } from "express";
 
-import { registerUser } from "./register/register.service.js";
-import { loginUser } from "./login/login.service.js";
-
-import registerSchema from "./register/register.schema.js";
-import loginSchema from "./login/login.schema.js";
+import { registerSchema, loginSchema } from "./auth.schemas.js";
+import { registerUser, loginUser } from "./auth.services.js";
 
 import pool from "../../lib/db.js";
 
@@ -114,7 +111,5 @@ authRouter.post("/login", async (req: Request, res: Response) => {
         })
     }
 });
-
-authRouter.post("")
 
 export default authRouter;

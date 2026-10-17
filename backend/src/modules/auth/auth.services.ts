@@ -1,8 +1,10 @@
 import argon2 from "argon2";
-import pool from "../../../lib/db.js";
+import pool from "../../lib/db.js";
 
 import * as z from "zod";
-import loginSchema from "./login.schema.js"
+import { registerSchema, loginSchema } from "./auth.schemas.js";
+
+type RegisterData = z.infer<typeof registerSchema>;
 
 type LoginData = z.infer<typeof loginSchema>;
 
@@ -13,6 +15,19 @@ type PublicUser = {
     fullname: string;
 }
 
+// обработка регистрации
+export async function registerUser(data: RegisterData): Promise<void> {
+
+    const passwordHash = await argon2.hash(data.password);
+
+    await pool.query(`
+        INSERT INTO users (login, email, fullname, password_hash)
+        VALUES ($1, $2, $3, $4)
+    `, [data.login, data.email, data.fullname, passwordHash]);
+ 
+}
+
+// обработка логина
 export async function loginUser(data: LoginData): Promise<PublicUser | null> {
     const result = await pool.query(`
         SELECT id, login, email, fullname, password_hash

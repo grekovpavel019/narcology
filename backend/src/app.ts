@@ -5,14 +5,17 @@ import pool from "./lib/db.js";
 
 import authRouter from "./modules/auth/auth.routes.js";
 
-import "dotenv/config"
-import { PGStore } from "connect-pg-simple";
+import connectPgSimple from "connect-pg-simple";
+
+import { env } from "./config/env.js";
 
 const app: Express = express();
 
+const PGStore = connectPgSimple(session);
+
 // использование ресурсов между разными источниками
 app.use(cors({
-    origin: process.env.CLIENT_URL
+    origin: env.CLIENT_URL
 }))
 
 // поддержка json
@@ -21,7 +24,7 @@ app.use(express.json());
 // сессия, на основе куки
 app.use(
     session({
-        secret: process.env.SESSION_SECRET!,
+        secret: env.SESSION_SECRET,
         resave: false, // не перезаписываем сессию повторно при каждом запросе, если она не менялась
         saveUninitialized: false, // не сохраняем пустые сессии
         store: new PGStore({
