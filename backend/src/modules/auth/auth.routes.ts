@@ -6,6 +6,8 @@ import { loginUser } from "./login/login.service.js";
 import registerSchema from "./register/register.schema.js";
 import loginSchema from "./login/login.schema.js";
 
+import pool from "../../lib/db.js";
+
 const authRouter = Router();
 
 authRouter.post("/register", async (req: Request, res: Response) => {
@@ -112,5 +114,7 @@ authRouter.post("/login", async (req: Request, res: Response) => {
         })
     }
 });
+
+authRouter.post("")
 
 export default authRouter;
