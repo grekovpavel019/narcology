@@ -24,7 +24,7 @@ export async function registerUser(data: RegisterData): Promise<void> {
         INSERT INTO users (login, email, fullname, password_hash)
         VALUES ($1, $2, $3, $4)
     `, [data.login, data.email, data.fullname, passwordHash]);
- 
+
 }
 
 // обработка логина

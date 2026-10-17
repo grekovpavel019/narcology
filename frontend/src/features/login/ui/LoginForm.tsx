@@ -9,6 +9,7 @@ import { loginRules } from "../model/rules";
 import type { LoginFormValues } from "../model/types";
 
 import styles from "./LoginForm.module.scss";
+import { loginUser } from "@/shared/api/auth";
 
 const LoginForm: FC = (): React.JSX.Element => {
 
@@ -18,8 +19,17 @@ const LoginForm: FC = (): React.JSX.Element => {
         formState: { errors }
     } = useForm<LoginFormValues>();
 
-    const onSubmit: SubmitHandler<LoginFormValues> = (data: LoginFormValues) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<LoginFormValues> = async (data: LoginFormValues) => {
+
+        try {
+            const result = await loginUser({
+                login: data.login,
+                password: data.password
+            });
+
+        } catch (e) {
+
+        }
     }
 
     return (
