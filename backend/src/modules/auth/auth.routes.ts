@@ -23,9 +23,10 @@ authRouter.post("/register", async (req: Request, res: Response) => {
         await registerUser(result.data);
 
         res.status(201).json({
-            message: "Успешно"
+            message: "Успешно",
         });
-    } catch (e: unknown) {
+
+    } catch (e) {
         if (
             e !== null &&
             typeof e === "object" &&
@@ -73,6 +74,7 @@ authRouter.post("/login", async (req: Request, res: Response) => {
             message: "Успешно",
             user
         });
+        
     } catch (e) {
         console.error(e);
 

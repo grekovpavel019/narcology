@@ -1,16 +1,39 @@
 import express, { type Express, type Request, type Response } from "express";
 import cors from "cors";
+import session from "express-session";
+import pool from "./lib/db.js";
 
 import authRouter from "./modules/auth/auth.routes.js";
 
 import "dotenv/config"
+import { PGStore } from "connect-pg-simple";
 
 const app: Express = express();
 
+// использование ресурсов между разными источниками
 app.use(cors({
     origin: process.env.CLIENT_URL
 }))
+
+// поддержка json
 app.use(express.json());
+
+// сессия, на основе куки
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET!,
+        resave: false, // не перезаписываем сессию повторно при каждом запросе, если она не менялась
+        saveUninitialized: false, // не сохраняем пустые сессии
+        store: new PGStore({
+            pool,
+            createTableIfMissing: true // если таблицы нет: создать
+        }),
+        cookie: {
+            httpOnly: true,
+            sameSite: "lax", // подделка куки
+        }
+    })
+)
 
 app.use("/api/auth", authRouter);
 
