@@ -7,3 +7,13 @@
 .button__area {
     @include form.button__full-width;
 }
+
+.success {
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.alert {
+    color: var(--color-danger);
+    text-align: center;
+}

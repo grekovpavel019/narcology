@@ -1,4 +1,5 @@
-import React, { type FC } from "react";
+import React, { type FC, useState } from "react";
+import { registerUser } from "@/shared/api/auth";
 
 import { useForm, type SubmitHandler } from "react-hook-form";
 
@@ -18,8 +19,29 @@ const RegisterForm: FC = (): React.JSX.Element => {
         formState: { errors }
     } = useForm<RegisterFormValues>();
 
-    const onSubmit: SubmitHandler<RegisterFormValues> = (data: RegisterFormValues) => {
-        console.log(data);
+    const [serverError, setServerError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+
+    const onSubmit: SubmitHandler<RegisterFormValues> = async (data: RegisterFormValues) => {
+        setServerError("");
+        setSuccessMessage("");
+
+        try {
+            const result = await registerUser({
+                login: data.login,
+                email: data.email,
+                password: data.password,
+                fullname: data.fullname
+            });
+
+            setSuccessMessage(result.message);
+        } catch (e) {
+            setServerError(
+                e instanceof Error 
+                    ? e.message
+                    : "Не удалось выполнить запрос"
+            )
+        }
     }
 
     return (
@@ -60,6 +82,14 @@ const RegisterForm: FC = (): React.JSX.Element => {
                 error={errors.confirm?.message}
                 {...register("confirm", registerRules.confirm)}
             />
+
+            {serverError && (
+                <p className={styles.alert}>{serverError}</p>
+            )}
+
+            {successMessage && (
+                <p className={styles.success}>{successMessage}</p>
+            )}
 
             <div className={styles.button__area}>
                 <Button
