@@ -52,7 +52,7 @@ const RegisterForm: FC = (): React.JSX.Element => {
             <TextField 
                 label="Логин"
                 error={errors.login?.message}
-                hint="Латинские буквы, цифры, точка, дефис и подчёркивание. Логин потом нельзя изменить."
+                hint="Латинские буквы, цифры, точка, дефис и подчёркивание."
                 {...register("login", registerRules.login)}
             />
             <TextField 
