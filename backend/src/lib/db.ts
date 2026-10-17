@@ -9,12 +9,4 @@ const pool = new Pool({
     password: process.env.DB_PASS
 });
 
-pool.on("connect", (client) => {
-    console.log("Соединение с PostgreSQL установлено");
-});
-
-pool.on("error", (error) => {
-    console.error("Ошибка пула:", error.message);
-});
-
 export default pool;
