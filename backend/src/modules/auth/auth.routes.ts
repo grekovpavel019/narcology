@@ -1,13 +1,13 @@
 import { Router, type Request, type Response } from "express";
 
-import { registerUser } from "./auth.service.js";
+import { registerUser } from "./register/register.service.js";
 
-import authSchema from "./auth.schema.js";
+import registerSchema from "./register/register.schema.js";
 
 const authRouter = Router();
 
 authRouter.post("/register", async (req: Request, res: Response) => {
-    const result = authSchema.safeParse(req.body);
+    const result = registerSchema.safeParse(req.body);
 
     if (!result.success) {
         res.status(400).json({
