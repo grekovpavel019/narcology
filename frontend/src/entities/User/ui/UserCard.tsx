@@ -1,27 +1,31 @@
 import React, { type FC } from "react";
 
 import styles from "./UserCard.module.scss";
+import { useUserContext } from "../model/useUserContext";
 
 const UserCard: FC = (): React.JSX.Element => {
+    
+    const { user } = useUserContext();
+
     return (
         <section className={styles["user-card"]}>
             <div className={styles.avatar}>
-                <span>ИИ</span>
+                <span>{user?.fullname[0]}</span>
             </div>
 
             <div>
                 <h3 className={styles["full-name"]}>
-                    Иванов Иван
+                    {user?.fullname}
                 </h3>
 
                 <div className={styles["user-card__meta"]}>
                     <div>
                         <dt>Логин</dt>
-                        <dd>ivan123</dd>
+                        <dd>{user?.login}</dd>
                     </div>
                     <div>
                         <dt>Почта</dt>
-                        <dd>ivan@gmail.com</dd>
+                        <dd>{user?.email}</dd>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, { type FC } from "react";
 
 import ProfileAside from "@/widgets/ProfileAside";
 
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import styles from "./ProfileLayout.module.scss";
 
