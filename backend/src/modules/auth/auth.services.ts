@@ -16,15 +16,18 @@ type PublicUser = {
 }
 
 // обработка регистрации
-export async function registerUser(data: RegisterData): Promise<void> {
+export async function registerUser(data: RegisterData): Promise<PublicUser> {
 
     const passwordHash = await argon2.hash(data.password);
 
-    await pool.query(`
+    const result = await pool.query(`
         INSERT INTO users (login, email, fullname, password_hash)
         VALUES ($1, $2, $3, $4)
+        RETURNING id, login, email, fullname
     `, [data.login, data.email, data.fullname, passwordHash]);
 
+
+    return result.rows[0];
 }
 
 // обработка логина

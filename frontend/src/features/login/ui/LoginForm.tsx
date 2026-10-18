@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React, { type FC, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
 import TextField from "@/shared/components/TextField";
@@ -23,6 +23,8 @@ const LoginForm: FC = (): React.JSX.Element => {
         formState: { errors }
     } = useForm<LoginFormValues>();
 
+    const [serverError, setServerError] = useState("");
+
     const { login } = useUserContext();
 
     const onSubmit: SubmitHandler<LoginFormValues> = async (data: LoginFormValues) => {
@@ -32,6 +34,12 @@ const LoginForm: FC = (): React.JSX.Element => {
 
             navigate("/profile", { replace: true });
         } catch (e) {
+            setServerError(
+                e instanceof Error 
+                    ? e.message
+                    : "Не удалось выполнить запрос"
+            )
+
             console.error(e);
         }
     }
@@ -55,6 +63,10 @@ const LoginForm: FC = (): React.JSX.Element => {
                 }
                 {...register("password", loginRules.password)}
             />
+
+            {serverError && (
+                <p className={styles.alert}>{serverError}</p>
+            )}
 
             <div className={styles.button__area}>
                 <Button

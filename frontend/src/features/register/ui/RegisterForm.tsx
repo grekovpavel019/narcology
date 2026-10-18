@@ -11,6 +11,8 @@ import { registerRules } from "../model/rules";
 import styles from "./RegisterForm.module.scss";
 import { useUserContext } from "@/entities/User/model/useUserContext";
 
+import { useNavigate } from "react-router-dom";
+
 const RegisterForm: FC = (): React.JSX.Element => {
 
     const { 
@@ -20,23 +22,24 @@ const RegisterForm: FC = (): React.JSX.Element => {
     } = useForm<RegisterFormValues>();
 
     const [serverError, setServerError] = useState("");
-    const [successMessage, setSuccessMessage] = useState("");
+    
+    const navigate = useNavigate();
 
     const { register: registerAccount } = useUserContext();
 
     const onSubmit: SubmitHandler<RegisterFormValues> = async (data: RegisterFormValues) => {
         setServerError("");
-        setSuccessMessage("");
 
         try {
-            const result = await registerAccount({
+            await registerAccount({
                 login: data.login,
                 email: data.email,
                 password: data.password,
                 fullname: data.fullname
             });
 
-            setSuccessMessage(result.message);
+            navigate("/profile", { replace: true })
+
         } catch (e) {
             setServerError(
                 e instanceof Error 
@@ -87,10 +90,6 @@ const RegisterForm: FC = (): React.JSX.Element => {
 
             {serverError && (
                 <p className={styles.alert}>{serverError}</p>
-            )}
-
-            {successMessage && (
-                <p className={styles.success}>{successMessage}</p>
             )}
 
             <div className={styles.button__area}>

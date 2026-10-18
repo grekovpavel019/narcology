@@ -20,6 +20,7 @@ const API = {
     registerUser: (data: RegisterPayload) => {
         return fetch(`${URL}/api/auth/register`, {
             method: "POST",
+            credentials: "include",
             headers,
             body: JSON.stringify({
                 login: data.login,

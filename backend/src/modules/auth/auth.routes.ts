@@ -6,6 +6,8 @@ import { registerUser, loginUser } from "./auth.services.js";
 import pool from "../../lib/db.js";
 import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 
+import { createSession } from "../../middleware/createSession.middleware.js";
+
 const authRouter = Router();
 
 authRouter.post("/register", async (req: Request, res: Response) => {
@@ -20,10 +22,12 @@ authRouter.post("/register", async (req: Request, res: Response) => {
     }
 
     try {
-        await registerUser(result.data);
+        const user = await registerUser(result.data);
 
-        res.status(201).json({
-            message: "Успешно",
+        await createSession(req, user.id)
+
+        return res.status(201).json({
+            message: "Успешно"
         });
 
     } catch (e) {
@@ -70,33 +74,10 @@ authRouter.post("/login", async (req: Request, res: Response) => {
             return;
         }
 
-        req.session.regenerate((err) => {
-            if (err) {
-                console.error(err);
+        await createSession(req, user.id);
 
-                res.status(500).json({
-                    message: "Ошибка создания сессии"
-                });
-                return;
-            }
-
-            req.session.userId = user.id;
-
-            req.session.save((err) => {
-                if (err) {
-                    console.error(err);
-
-                    res.status(500).json({
-                        message: "Ошибка создания сессии"
-                    });
-
-                    return;
-                }
-
-                res.status(200).json({
-                    message: "Успешно"
-                })
-            })
+        return res.status(200).json({
+            message: "Успешно"
         });
         
     } catch (e) {
@@ -118,15 +99,16 @@ authRouter.post("/logout", (req: Request, res: Response) => {
                 message: "Ошибка выхода из аккаунта"
             })
         }
+
+        res.clearCookie("connect.sid", {
+            path: "/"
+        });
+    
+        return res.status(200).json({
+            message: "Выход выполенен успешно"
+        })
     });
 
-    res.clearCookie("connect.sid", {
-        path: "/"
-    });
-
-    return res.status(200).json({
-        message: "Выход выполенен успешно"
-    })
 })
 
 authRouter.get("/me", requireAuth, async (req: Request, res: Response) => {

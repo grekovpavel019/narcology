@@ -43,7 +43,11 @@ export const useUser = () => {
     }, []);
 
     const register = useCallback(async (data: RegisterPayload) => {
-        return await API.registerUser(data);
+        await API.registerUser(data);
+
+        const result = await API.getCurrentUser();
+        setUser(result.user);
+        setStatus("authenticated");
     }, [])
 
     useEffect(() => {

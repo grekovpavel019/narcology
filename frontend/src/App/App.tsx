@@ -19,6 +19,8 @@ import ProfileLayout from "./Layouts/ProfileLayout/ProfileLayout";
 import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import ProfileSettingsPage from "@/pages/ProfileSettingsPage";
 
+import ProtectedLayout from "./Layouts/ProtectedLayout";
+
 const App: FC = (): React.JSX.Element => {
     return (
         // Роуты на SPA
@@ -38,10 +40,15 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/register" element={ <RegisterPage /> } />
             </Route>
 
-            <Route path="/profile" element={ <ProfileLayout /> }>
-                <Route index element={ <ProfilePage /> } />
-                <Route path="/profile/settings" element={ <ProfileSettingsPage /> } />
+            <Route element={ <ProtectedLayout /> }>
+
+                <Route path="/profile" element={ <ProfileLayout /> }>
+                    <Route index element={ <ProfilePage /> } />
+                    <Route path="/profile/settings" element={ <ProfileSettingsPage /> } />
+                </Route>
+
             </Route>
+
         </Routes>
     );
 };
