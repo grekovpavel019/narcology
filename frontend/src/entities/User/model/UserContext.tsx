@@ -16,12 +16,13 @@ export const UserProvider = (props: UserProviderProps): React.JSX.Element => {
         user,
         status,
         login,
-        register
+        register,
+        logout
     } = useUser();
 
     return (
         <UserContext.Provider 
-            value={{ user, status, login, register }}
+            value={{ user, status, login, register, logout }}
         >
             {children}
         </UserContext.Provider>

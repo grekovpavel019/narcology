@@ -13,5 +13,6 @@ export type UserContextValue = {
     user: User | null;
     status: AuthStatus;
     login: (data: LoginPayload) => Promise<void>,
-    register: (data: RegisterPayload) => Promise<{ message: string }>
+    register: (data: RegisterPayload) => Promise<void>,
+    logout: () => Promise<void>
 }

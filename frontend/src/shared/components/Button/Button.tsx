@@ -1,18 +1,28 @@
-import React, { type FC } from "react";
+import React, { type FC, type ComponentPropsWithRef } from "react";
 
-import type { ButtonProps } from "@/shared/types/Button";
+export type ButtonProps = Omit<
+    ComponentPropsWithRef<"button">,
+    "className"
+> & {
+    variant: string;
+};
 
 const Button: FC<ButtonProps> = (props: ButtonProps): React.JSX.Element => {
     
     const {
         variant,
         children,
+        type,
+        onClick,
+        ...rest
     } = props;
 
     return (
         <button
             className={variant}
-            type="submit"
+            onClick={onClick}
+            type={type}
+            {...rest}
         >
             {children}
         </button>

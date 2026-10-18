@@ -50,6 +50,13 @@ export const useUser = () => {
         setStatus("authenticated");
     }, [])
 
+    const logout = useCallback(async () => {
+        await API.logoutUser();
+
+        setUser(null);
+        setStatus("unauthenticated");
+    }, [])
+
     useEffect(() => {
         checkUser()
     }, []);
@@ -59,6 +66,7 @@ export const useUser = () => {
         status,
         checkUser,
         login,
-        register
+        register,
+        logout
     }
 }

@@ -48,6 +48,13 @@ const API = {
             method: "GET",
             credentials: "include"
         }).then(parseResponse)
+    },
+
+    logoutUser: () => {
+         return fetch(`${URL}/api/auth/logout`, {
+            method: "POST",
+            credentials: "include"
+        }).then(parseResponse)
     }
 }
 

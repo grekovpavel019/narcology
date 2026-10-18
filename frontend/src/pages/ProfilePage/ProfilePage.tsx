@@ -6,11 +6,7 @@ import Text from "@/shared/components/typography/Text";
 import styles from "./ProfilePage.module.scss";
 import UserCard from "@/entities/User";
 
-// import { useUserContext } from "@/entities/User/model/useUserContext";
-
 const ProfilePage: FC = (): React.JSX.Element => {
-
-    // const { user, status } = useUserContext();
 
     return (
         <div className={styles.profile}>

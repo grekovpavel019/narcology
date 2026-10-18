@@ -7,8 +7,11 @@ import BurgerButton from "@/shared/components/BurgerButton";
 import LinkButton from "@/shared/components/LinkButton";
 
 import styles from "./Header.module.scss";
+import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const Header: FC = (): React.JSX.Element => {
+
+    const { user } = useUserContext();
 
     // состояние открытого окна
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +51,7 @@ const Header: FC = (): React.JSX.Element => {
                 </nav>
 
                 <div className={styles.buttonArea}>
-                    <LinkButton variant="primaryButton" to="/contacts">Получить консультацию</LinkButton>
+                    <LinkButton variant="primaryButton" to="/login">{user ? user.login : "Войти"}</LinkButton>
                 </div>
 
                 <div className={styles.burgerButtonArea}>
@@ -67,6 +70,7 @@ const Header: FC = (): React.JSX.Element => {
                 <NavLinkButton variant="navLinkButton" to="/about">О клинике</NavLinkButton>
                 <NavLinkButton variant="navLinkButton" to="/services">Услуги</NavLinkButton>
                 <NavLinkButton variant="navLinkButton" to="/contacts">Контакты</NavLinkButton>
+                <LinkButton variant="primaryButton" to="/login">{user ? user.login : "Войти"}</LinkButton>
             </div>
             
         </header>

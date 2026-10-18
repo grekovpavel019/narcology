@@ -6,13 +6,9 @@ import Services from "@/widgets/Services";
 import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const HomePage: FC = (): React.JSX.Element => {
-    const { user, status} = useUserContext();
 
     return (
         <>
-        <div>
-            статус {status}
-        </div>
             <Hero />
             <Benefits />
             <Services />
