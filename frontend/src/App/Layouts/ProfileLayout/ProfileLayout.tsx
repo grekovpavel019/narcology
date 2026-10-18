@@ -2,17 +2,19 @@ import React, { type FC } from "react";
 
 import ProfileAside from "@/widgets/ProfileAside";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./ProfileLayout.module.scss";
 
 const ProfileLayout: FC = (): React.JSX.Element => {
 
+    const location = useLocation();
+
     return (
         <div className={styles.shell}>
             <ProfileAside />
 
-            <div className={styles.content}>
+            <div key={location.pathname} className={styles.content}>
                 <Outlet />
             </div>
         </div>
