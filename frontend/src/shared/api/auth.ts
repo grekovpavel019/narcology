@@ -1,16 +1,16 @@
-export type RegisterPayload = {
+type RegisterPayload = {
     login: string;
     email: string;
     fullname: string;
     password: string;
 }
 
-export type LoginPayload = {
+type LoginPayload = {
     login: string;
     password: string;
 }
 
-export type AuthUser = {
+type AuthUserResponse = {
     id: string;
     login: string;
     email: string;
@@ -22,7 +22,7 @@ type ApiResponse = {
 }
 
 type MeResponse = {
-    user: AuthUser;
+    user: AuthUserResponse;
 }
 
 export async function registerUser(
