@@ -1,5 +1,4 @@
 import React, { type FC, useState } from "react";
-import { registerUser } from "@/shared/api/auth";
 
 import { useForm, type SubmitHandler } from "react-hook-form";
 
@@ -10,6 +9,7 @@ import type { RegisterFormValues } from "../model/types";
 import { registerRules } from "../model/rules";
 
 import styles from "./RegisterForm.module.scss";
+import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const RegisterForm: FC = (): React.JSX.Element => {
 
@@ -22,12 +22,14 @@ const RegisterForm: FC = (): React.JSX.Element => {
     const [serverError, setServerError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    const { register: registerAccount } = useUserContext();
+
     const onSubmit: SubmitHandler<RegisterFormValues> = async (data: RegisterFormValues) => {
         setServerError("");
         setSuccessMessage("");
 
         try {
-            const result = await registerUser({
+            const result = await registerAccount({
                 login: data.login,
                 email: data.email,
                 password: data.password,

@@ -1,3 +1,5 @@
+import type { LoginPayload, RegisterPayload } from "@/shared/api/types";
+
 export type User = {
     id: string;
     email: string;
@@ -10,4 +12,6 @@ export type AuthStatus = "loading" | "authenticated" | "unauthenticated" | "erro
 export type UserContextValue = {
     user: User | null;
     status: AuthStatus;
+    login: (data: LoginPayload) => Promise<void>,
+    register: (data: RegisterPayload) => Promise<{ message: string }>
 }

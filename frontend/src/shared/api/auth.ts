@@ -1,94 +1,53 @@
-type RegisterPayload = {
-    login: string;
-    email: string;
-    fullname: string;
-    password: string;
+import { type RegisterPayload, type LoginPayload } from "./types";
+
+const headers = {
+    "Content-Type": "application/json"
 }
 
-type LoginPayload = {
-    login: string;
-    password: string;
-}
+const URL = "http://localhost:3000";
 
-type AuthUserResponse = {
-    id: string;
-    login: string;
-    email: string;
-    fullname: string;
-}
-
-type ApiResponse = {
-    message: string;
-}
-
-type MeResponse = {
-    user: AuthUserResponse;
-}
-
-export async function registerUser(
-    data: RegisterPayload
-): Promise<ApiResponse> {
-    const response = await fetch("http://localhost:3000/api/auth/register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            login: data.login,
-            email: data.email,
-            fullname: data.fullname,
-            password: data.password
-        })
-    });
-
-    const result: ApiResponse = await response.json();
+const parseResponse = async (response: Response) => {
+    const result = await response.json();
 
     if (!response.ok) {
-        throw new Error(result.message || "Ошибка регистрации");
+        throw new Error(result.message || "Ошибка запроса к серверу");
     }
 
     return result;
 }
 
-export async function loginUser(
-    data: LoginPayload
-): Promise<ApiResponse> {
-    const response = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json", 
-        },
-        body: JSON.stringify({
-            login: data.login,
-            password: data.password
-        })
-    });
+const API = {
+    registerUser: (data: RegisterPayload) => {
+        return fetch(`${URL}/api/auth/register`, {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+                login: data.login,
+                email: data.email,
+                fullname: data.fullname,
+                password: data.password
+            })
+        }).then(parseResponse)
+    },
 
-    const result: ApiResponse = await response.json();
+    loginUser: (data: LoginPayload) => {
+        return fetch(`${URL}/api/auth/login`, {
+            method: "POST",
+            credentials: "include",
+            headers,
+            body: JSON.stringify({
+                login: data.login,
+                password: data.password
+            })
+        }).then(parseResponse)
+    },
 
-    if (!response.ok) {
-        throw new Error(result.message || "Ошибка входа")
+    getCurrentUser: () => {
+        return fetch(`${URL}/api/auth/me`, {
+            method: "GET",
+            credentials: "include"
+        }).then(parseResponse)
     }
-    
-    return result;
 }
 
-export async function getCurrentUser() {
-    const response = await fetch("http://localhost:3000/api/auth/me", {
-        method: "GET",
-        credentials: "include",
-    });
-
-    if (!response.ok) {
-        throw new Error(
-            response.status === 401
-                ? "Не авторизован"
-                : "Не удалось получить пользователя"
-        )
-    }
-
-    const result: MeResponse = await response.json();
-
-    return result.user;
-}
+export default API;

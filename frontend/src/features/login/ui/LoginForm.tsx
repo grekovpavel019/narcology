@@ -8,10 +8,10 @@ import LinkButton from "@/shared/components/LinkButton";
 import { loginRules } from "../model/rules";
 import type { LoginFormValues } from "../model/types";
 
-import { loginUser } from "@/shared/api/auth";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./LoginForm.module.scss";
+import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const LoginForm: FC = (): React.JSX.Element => {
 
@@ -23,18 +23,16 @@ const LoginForm: FC = (): React.JSX.Element => {
         formState: { errors }
     } = useForm<LoginFormValues>();
 
+    const { login } = useUserContext();
+
     const onSubmit: SubmitHandler<LoginFormValues> = async (data: LoginFormValues) => {
 
         try {
-            const result = await loginUser({
-                login: data.login,
-                password: data.password
-            });
+            await login(data);
 
             navigate("/profile", { replace: true });
-
         } catch (e) {
-
+            console.error(e);
         }
     }
 
