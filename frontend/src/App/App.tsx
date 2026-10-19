@@ -40,14 +40,14 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/register" element={ <RegisterPage /> } />
             </Route>
 
-            <Route element={ <ProtectedLayout /> }>
+            {/* <Route element={ <ProtectedLayout /> }> */}
 
                 <Route path="/profile" element={ <ProfileLayout /> }>
                     <Route index element={ <ProfilePage /> } />
                     <Route path="/profile/settings" element={ <ProfileSettingsPage /> } />
                 </Route>
 
-            </Route>
+            {/* </Route> */}
 
         </Routes>
     );
