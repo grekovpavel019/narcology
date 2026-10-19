@@ -11,7 +11,7 @@ import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const ChangeDataForm: FC = (): React.JSX.Element => {
 
-    const { user } = useUserContext();
+    const { user, updateUser } = useUserContext();
 
     const [newUserData, setNewUserData] = useState({
         fullname: "",
@@ -27,8 +27,22 @@ const ChangeDataForm: FC = (): React.JSX.Element => {
         })
     }, [user])
 
+    const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        try {
+            await updateUser({
+                fullname: newUserData.fullname,
+                email: newUserData.email
+            }) 
+
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     return (
-        <form className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.form__grid}>
                 <TextField 
                     label="Логин"
@@ -70,7 +84,7 @@ const ChangeDataForm: FC = (): React.JSX.Element => {
             </div>
 
             <div className={styles.form__actions}>
-                <Button onClick={() => console.log(newUserData)} variant="primaryButton">Сохранить изменения</Button>
+                <Button type="submit" variant="primaryButton">Сохранить изменения</Button>
                 <Button onClick={() => setNewUserData({
                     email: user?.email ?? "",
                     fullname: user?.fullname ?? ""
