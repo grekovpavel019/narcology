@@ -44,7 +44,7 @@ const API = {
     },
 
     getCurrentUser: () => {
-        return fetch(`${URL}/api/auth/me`, {
+        return fetch(`${URL}/api/users/me`, {
             method: "GET",
             credentials: "include"
         }).then(parseResponse)
