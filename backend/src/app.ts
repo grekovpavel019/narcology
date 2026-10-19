@@ -4,6 +4,7 @@ import session from "express-session";
 import pool from "./lib/db.js";
 
 import authRouter from "./modules/auth/auth.routes.js";
+import userRouter from "./modules/users/user.routes.js";
 
 import connectPgSimple from "connect-pg-simple";
 
@@ -40,6 +41,7 @@ app.use(
 )
 
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
 
 app.get("/api/health", (req: Request, res: Response) => {
     res.json({

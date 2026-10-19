@@ -7,6 +7,7 @@ import pool from "../../lib/db.js";
 import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 
 import { createSession } from "../../middleware/createSession.middleware.js";
+import { getCurrentUser } from "../users/user.services.js";
 
 const authRouter = Router();
 
@@ -109,32 +110,6 @@ authRouter.post("/logout", (req: Request, res: Response) => {
         })
     });
 
-})
-
-authRouter.get("/me", requireAuth, async (req: Request, res: Response) => {
-    try {
-        const result = await pool.query(`
-            SELECT id, login, email, fullname
-            FROM users
-            WHERE id = $1
-        `, [req.session.userId]);
-
-        if (result.rows.length === 0) {
-            return res.status(401).json({
-                message: "Пользователь не найден"
-            });
-        }
-
-        return res.status(200).json({
-            user: result.rows[0]
-        });
-    } catch (e) {
-        console.error(e);
-
-        return res.status(500).json({
-            message: "Ошибка получения пользователя"
-        });
-    }
 });
 
 export default authRouter;
