@@ -14,8 +14,6 @@ const ProfileAside: FC = (): React.JSX.Element => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-
-        console.log(1)
         try {
             await logout();
             navigate("/", { replace: true })
