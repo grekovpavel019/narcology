@@ -22,7 +22,7 @@ export const UserProvider = (props: UserProviderProps): React.JSX.Element => {
 
     return (
         <UserContext.Provider 
-            value={{ user, status, login, register, logout }}
+            value={{ user, status, login, register, logout, updateUser }}
         >
             {children}
         </UserContext.Provider>

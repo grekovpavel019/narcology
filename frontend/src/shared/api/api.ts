@@ -1,4 +1,4 @@
-import { type RegisterPayload, type LoginPayload } from "./types";
+import { type RegisterPayload, type LoginPayload, type UpdateUserPayload } from "./types";
 
 const headers = {
     "Content-Type": "application/json"
@@ -54,6 +54,18 @@ const API = {
          return fetch(`${URL}/api/auth/logout`, {
             method: "POST",
             credentials: "include"
+        }).then(parseResponse)
+    },
+
+    updateCurrentUser: (data: UpdateUserPayload) => {
+        return fetch(`${URL}/api/users/me`, {
+            method: "PATCH",
+            credentials: "include",
+            headers,
+            body: JSON.stringify({
+                fullname: data.fullname,
+                email: data.email
+            })
         }).then(parseResponse)
     }
 }

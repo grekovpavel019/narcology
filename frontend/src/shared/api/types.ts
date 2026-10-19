@@ -9,3 +9,8 @@ export type LoginPayload = {
     login: string;
     password: string;
 }
+
+export type UpdateUserPayload = {
+    fullname: string;
+    email: string;
+}

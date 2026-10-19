@@ -1,4 +1,4 @@
-import type { LoginPayload, RegisterPayload } from "@/shared/api/types";
+import type { LoginPayload, RegisterPayload, UpdateUserPayload } from "@/shared/api/types";
 
 export type User = {
     id: string;
@@ -14,5 +14,6 @@ export type UserContextValue = {
     status: AuthStatus;
     login: (data: LoginPayload) => Promise<void>,
     register: (data: RegisterPayload) => Promise<void>,
-    logout: () => Promise<void>
+    logout: () => Promise<void>,
+    updateUser: (data: UpdateUserPayload) => Promise<void>
 }

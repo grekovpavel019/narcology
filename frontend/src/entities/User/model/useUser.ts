@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { type User, type AuthStatus} from "./types";
-import API from "@/shared/api/auth";
-import type { LoginPayload, RegisterPayload } from "@/shared/api/types";
+import API from "@/shared/api/api";
+import type { LoginPayload, RegisterPayload, UpdateUserPayload } from "@/shared/api/types";
 
 
 export const useUser = () => {
@@ -57,6 +57,13 @@ export const useUser = () => {
         setStatus("unauthenticated");
     }, [])
 
+    const updateUser = useCallback(async (data: UpdateUserPayload) => {
+        const result = await API.updateCurrentUser(data);
+
+        setUser(result.user);
+        setStatus("authenticated");
+    }, []);
+
     useEffect(() => {
         checkUser()
     }, []);
@@ -67,6 +74,7 @@ export const useUser = () => {
         checkUser,
         login,
         register,
-        logout
+        logout,
+        updateUser
     }
 }
