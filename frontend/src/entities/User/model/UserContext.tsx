@@ -17,7 +17,8 @@ export const UserProvider = (props: UserProviderProps): React.JSX.Element => {
         status,
         login,
         register,
-        logout
+        logout,
+        updateUser
     } = useUser();
 
     return (

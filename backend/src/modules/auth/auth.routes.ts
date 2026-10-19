@@ -3,11 +3,7 @@ import { Router, type Request, type Response } from "express";
 import { registerSchema, loginSchema } from "./auth.schemas.js";
 import { registerUser, loginUser } from "./auth.services.js";
 
-import pool from "../../lib/db.js";
-import { requireAuth } from "../../middleware/requireAuth.middleware.js";
-
 import { createSession } from "../../middleware/createSession.middleware.js";
-import { getCurrentUser } from "../users/user.services.js";
 
 const authRouter = Router();
 
