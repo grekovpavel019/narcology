@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { type User, type AuthStatus} from "./types";
 import API from "@/shared/api/api";
-import type { LoginPayload, RegisterPayload, UpdateUserPayload } from "@/shared/api/types";
+import type { ChangePasswordPayload, LoginPayload, RegisterPayload, UpdateUserPayload } from "@/shared/api/types";
 
 
 export const useUser = () => {
@@ -64,6 +64,10 @@ export const useUser = () => {
         setStatus("authenticated");
     }, []);
 
+    const changePassword = useCallback(async (data: ChangePasswordPayload) => {
+        await API.changePassword(data);
+    }, [])
+
     useEffect(() => {
         checkUser()
     }, []);
@@ -75,6 +79,7 @@ export const useUser = () => {
         login,
         register,
         logout,
-        updateUser
+        updateUser,
+        changePassword
     }
 }

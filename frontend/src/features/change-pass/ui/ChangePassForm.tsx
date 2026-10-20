@@ -8,8 +8,11 @@ import styles from "./ChangePassForm.module.scss";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import type { ChangePasswordValues } from "../model/types";
 import { changePasswordRules } from "../model/rules";
+import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const ChangePassForm: FC = (): React.JSX.Element => {
+
+    const { changePassword } = useUserContext();
 
     const {
         register,
@@ -21,6 +24,15 @@ const ChangePassForm: FC = (): React.JSX.Element => {
 
     const onSubmit: SubmitHandler<ChangePasswordValues> = async (data: ChangePasswordValues) => {
         setServerError("");
+
+        try {
+            await changePassword({
+                currentPassword: data.currentPassword,
+                newPassword: data.newPassword
+            });
+        } catch (e) {
+            setServerError(e instanceof Error ? e.message : "Не удалось изменить пароль")
+        }
     }
 
     return (
@@ -49,6 +61,10 @@ const ChangePassForm: FC = (): React.JSX.Element => {
                 />
 
             </div>
+
+            {serverError && (
+                <p className={styles.alert}>{serverError}</p>
+            )}
 
             <div className={styles.form__actions}>
                 <Button onClick={() => console.log(1)} variant="primaryButton">Изменить пароль</Button>
