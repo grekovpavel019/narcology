@@ -1,1 +1,1 @@
-export { default } from "./ChangePassForm";
+export { default } from "./ui/ChangePassForm";

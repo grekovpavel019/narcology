@@ -14,3 +14,8 @@ export type UpdateUserPayload = {
     fullname: string;
     email: string;
 }
+
+export type ChangePasswordPayload = {
+    currentPassword: string;
+    newPassword: string;
+}
