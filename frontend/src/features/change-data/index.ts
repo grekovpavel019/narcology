@@ -1,1 +1,1 @@
-export { default } from "./ChangeDataForm";
+export { default } from "./ui/ChangeDataForm";

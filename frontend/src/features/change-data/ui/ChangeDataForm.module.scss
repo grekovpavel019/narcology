@@ -15,8 +15,14 @@
 }
 
 .form__actions {
+    margin-top: 20px;
+
     display: flex;
     gap: 20px;
+}
+
+.alert {
+    color: var(--color-danger);
 }
 
 @media (max-width: 640px) {

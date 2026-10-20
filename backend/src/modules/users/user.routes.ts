@@ -31,6 +31,7 @@ userRouter.patch("/me", requireAuth, async (req: Request, res: Response) => {
     const result = updateUserSchema.safeParse(req.body);
     
     if (!result.success) {
+
         return res.status(400).json({
             message: "Данные не валидны"
         });
@@ -51,6 +52,17 @@ userRouter.patch("/me", requireAuth, async (req: Request, res: Response) => {
             user
         });
     } catch(e) {
+         if (
+            typeof e === "object" &&
+            e !== null &&
+            "code" in e &&
+            e.code === "23505"
+        ) {
+            return res.status(409).json({
+                message: "Этот email уже используется"
+            });
+        }
+
         console.error(e);
 
         return res.status(500).json({
