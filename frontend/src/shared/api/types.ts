@@ -23,3 +23,13 @@ export type ChangePasswordPayload = {
 export type ForgotPasswordPayload = {
     email: string;
 }
+
+export type ForgotPasswordResponse = {
+    message: string;
+    resetUrl?: string
+}
+
+export type ResetPasswordPayload = {
+    token: string;
+    newPassword: string;
+}

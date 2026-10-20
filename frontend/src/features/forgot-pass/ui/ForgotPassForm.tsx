@@ -5,6 +5,7 @@ import TextField from "@/shared/components/TextField";
 import Button from "@/shared/components/Button";
 
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import type { ForgotPasswordValues } from "../model/types";
 import { forgotPasswordRules } from "../model/rules";
@@ -23,16 +24,31 @@ const ForgotPassForm = (): React.JSX.Element => {
 
     const [serverError, setServerError] = useState("");
 
+    const navigate = useNavigate();
+
     const onSubmit: SubmitHandler<ForgotPasswordValues> = async ({ email }) => {
         setServerError("");
 
         try {
-            await API.forgotPassword({ email });
+            const result = await API.forgotPassword({ email });
+
+            if (!result.resetUrl) {
+                return;
+            }
+
+            const resetUrl = new URL(result.resetUrl);
+            console.log(resetUrl);
+
+            if (resetUrl.origin !== window.location.origin) {
+                throw new Error("Получена некорректная ссылка");
+            }
+
+            // navigate(`${resetUrl.pathname}${resetUrl.search}`);
         } catch (e) {
             setServerError(
                 e instanceof Error ? e.message : "Не удалось отправить запрос"
             );
-        } 
+        }
     };
 
     return (

@@ -11,3 +11,12 @@ export const loginSchema = z.object({
     login: z.string(),
     password: z.string()
 });
+
+export const forgotPasswordSchema = z.object({
+    email: z.string().trim().email("Некорректный email")
+});
+
+export const resetPasswordSchema = z.object({
+    token: z.string().min(1, "Отсутствует токен"),
+    newPassword: z.string().min(8, "Пароль должен содержать минимум 8 символов")
+});

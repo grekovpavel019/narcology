@@ -1,7 +1,7 @@
 import { Router, type Request, type Response } from "express";
 
-import { registerSchema, loginSchema } from "./auth.schemas.js";
-import { registerUser, loginUser } from "./auth.services.js";
+import { registerSchema, loginSchema, resetPasswordSchema, forgotPasswordSchema } from "./auth.schemas.js";
+import { registerUser, loginUser, createPasswordResetLink, resetPassword } from "./auth.services.js";
 
 import { createSession } from "../../middleware/createSession.middleware.js";
 
@@ -106,6 +106,70 @@ authRouter.post("/logout", (req: Request, res: Response) => {
         })
     });
 
+});
+
+authRouter.post("/forgot-password", async (req: Request, res: Response) => {
+    const result = forgotPasswordSchema.safeParse(req.body);
+
+    if (!result.success) {
+        return res.status(400).json({
+            message: "Некорректный email"
+        });
+    }
+
+    try {
+        const resetUrl = await createPasswordResetLink(result.data.email);
+
+        if (!resetUrl) {
+            return res.status(200).json({
+                message: "Если аккаунт существует, ссылка создана"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Ссылка создана",
+            resetUrl
+        });
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            message: "Ошибка восстановления пароля"
+        });
+    }
+});
+
+authRouter.post("/reset-password", async (req: Request, res: Response) => {
+    const result = resetPasswordSchema.safeParse(req.body);
+
+    if (!result.success) {
+        return res.status(400).json({
+            message: "Некорректные данные"
+        });
+    }
+
+    try {
+        const status = await resetPassword(
+            result.data.token,
+            result.data.newPassword
+        );
+
+        if (status === "invalid_token") {
+            return res.status(400).json({
+                message: "Ссылка недействительна или истекла"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Пароль успешно изменён"
+        });
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            message: "Ошибка сброса пароля"
+        });
+    }
 });
 
 export default authRouter;
