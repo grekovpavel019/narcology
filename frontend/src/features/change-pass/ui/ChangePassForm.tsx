@@ -50,13 +50,13 @@ const ChangePassForm: FC = (): React.JSX.Element => {
                 <TextField 
                     label="Новый пароль"
                     error={errors.newPassword?.message}
-                    {...register("currentPassword", changePasswordRules.newPassword)}
+                    {...register("newPassword", changePasswordRules.newPassword)}
                     hint="Минимум 8 символов, буквы и цифры."
                 />
 
                 <TextField 
                     error={errors.confirm?.message}
-                    {...register("currentPassword", changePasswordRules.confirm)}
+                    {...register("confirm", changePasswordRules.confirm)}
                     label="Подтверждение пароля"
                 />
 
@@ -67,7 +67,7 @@ const ChangePassForm: FC = (): React.JSX.Element => {
             )}
 
             <div className={styles.form__actions}>
-                <Button onClick={() => console.log(1)} variant="primaryButton">Изменить пароль</Button>
+                <Button type="submit" variant="primaryButton">Изменить пароль</Button>
             </div>
 
         </form>

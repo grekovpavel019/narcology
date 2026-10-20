@@ -1,7 +1,7 @@
 import { Router, type Request, type Response } from "express";
 import { requireAuth } from "../../middleware/requireAuth.middleware.js";
-import { getCurrentUser, updateUser } from "./user.services.js";
-import { updateUserSchema } from "./user.schema.js";
+import { changePassword, getCurrentUser, updateUser } from "./user.services.js";
+import { changePasswordSchema, updateUserSchema } from "./user.schema.js";
 
 const userRouter = Router();
 
@@ -70,5 +70,48 @@ userRouter.patch("/me", requireAuth, async (req: Request, res: Response) => {
         });
     }
 })
+
+userRouter.patch("/me/password", requireAuth, async (req: Request, res: Response) => {
+    const result = changePasswordSchema.safeParse(req.body);
+
+    if (!result.success) {
+
+        return res.status(400).json({
+            message: "Некорректные данные для смены пароля"
+        });
+    }
+
+    try {
+        const outcome = await changePassword(
+            req.session.userId!,
+            result.data
+        );
+
+        if (outcome === "not_found") {
+
+            return res.status(404).json({
+                message: "Пользователь не найден"
+            });
+        }
+
+        if (outcome === "invalid_password") {
+
+            return res.status(400).json({
+                message: "Текущий пароль указан неверно"
+            });
+        }
+
+        return res.status(200).json({
+
+            message: "Пароль успешно изменён"
+        });
+    } catch (e) {
+        console.error(e);
+
+        return res.status(500).json({
+            message: "Ошибка смены пароля"
+        });
+    }
+});
 
 export default userRouter;

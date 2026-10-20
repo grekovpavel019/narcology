@@ -7,3 +7,8 @@
 .button__area {
     @include form.button__full-width;
 }
+
+.alert {
+    text-align: center;
+    color: var(--color-danger)
+}

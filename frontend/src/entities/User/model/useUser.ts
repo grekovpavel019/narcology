@@ -70,7 +70,7 @@ export const useUser = () => {
 
     useEffect(() => {
         checkUser()
-    }, []);
+    }, [checkUser]);
 
     return {
         user,
