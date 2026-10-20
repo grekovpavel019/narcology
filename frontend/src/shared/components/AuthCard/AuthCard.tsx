@@ -9,7 +9,7 @@ type AuthCardProps = {
     title: string;
     description: string;
 
-    footer: React.ReactNode;
+    footer?: React.ReactNode;
 
     children: React.ReactNode;
 
