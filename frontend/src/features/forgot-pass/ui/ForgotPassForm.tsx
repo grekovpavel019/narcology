@@ -37,7 +37,6 @@ const ForgotPassForm = (): React.JSX.Element => {
             }
 
             const resetUrl = new URL(result.resetUrl);
-            console.log(resetUrl);
 
             if (resetUrl.origin !== window.location.origin) {
                 throw new Error("Получена некорректная ссылка");

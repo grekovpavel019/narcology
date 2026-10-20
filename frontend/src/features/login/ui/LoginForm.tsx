@@ -59,7 +59,7 @@ const LoginForm: FC = (): React.JSX.Element => {
                 label="Пароль"
                 error={errors.password?.message}
                 endSlot={
-                    <LinkButton variant="blueText" to="/register">Забыли пароль?</LinkButton>
+                    <LinkButton variant="blueText" to="/forgot-password">Забыли пароль?</LinkButton>
                 }
                 {...register("password", loginRules.password)}
             />

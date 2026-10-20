@@ -43,7 +43,7 @@ const ChangePassForm: FC = (): React.JSX.Element => {
                     error={errors.currentPassword?.message}
                     {...register("currentPassword", changePasswordRules.currentPassword)}
                     endSlot={
-                        <LinkButton variant="blueText" to="/register">Забыли пароль?</LinkButton>
+                        <LinkButton variant="blueText" to="/forgot-password">Забыли пароль?</LinkButton>
                     }
                 />
 

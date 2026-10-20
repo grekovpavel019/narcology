@@ -24,6 +24,8 @@ import ProtectedLayout from "./Layouts/ProtectedLayout";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
 
+import ProtectedAuthLayout from "./Layouts/ProtectedAuthLayout";
+
 const App: FC = (): React.JSX.Element => {
     return (
         // Роуты на SPA
@@ -39,8 +41,11 @@ const App: FC = (): React.JSX.Element => {
             </Route>
             
             <Route element={ <AuthLayout /> }>
-                <Route path="/login" element={ <LoginPage /> } />
-                <Route path="/register" element={ <RegisterPage /> } />
+                <Route element={ <ProtectedAuthLayout /> } >
+
+                    <Route path="/login" element={ <LoginPage /> } />
+                    <Route path="/register" element={ <RegisterPage /> } />
+                </Route>
 
                 <Route path="/forgot-password" element={ <ForgotPasswordPage /> } />
                 <Route path="/reset-password" element={ <ResetPasswordPage /> } />

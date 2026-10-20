@@ -74,6 +74,13 @@ export const useFilters = (props: UseFiltersProps) => {
         value: string
     ) => {
 
+        // if (
+        //     filters[type].length > 0 &&
+        //     !filters[type].includes(value)
+        // ) {
+        //     return true;
+        // }
+
         // создадим временный фильтр
         const tempFilters = {
             ...filters,

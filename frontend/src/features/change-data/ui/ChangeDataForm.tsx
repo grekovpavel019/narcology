@@ -85,7 +85,7 @@ const ChangeDataForm: FC = (): React.JSX.Element => {
                 <TextField 
                     label="Пароль"
                     endSlot={
-                        <LinkButton variant="blueText" to="/register">Забыли пароль?</LinkButton>
+                        <LinkButton variant="blueText" to="/forgot-password">Забыли пароль?</LinkButton>
                     }
                     disabled
                     value="***********"
