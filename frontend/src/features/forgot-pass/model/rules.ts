@@ -6,7 +6,9 @@ type Rules = {
 }
 
 export const forgotPasswordRules: Rules = {
+    
     "email": {
+        required: "Введите email",
         pattern: { value: /^\S+@\S+\.\S+$/, message: "Некорректная почта" },
     }
 }

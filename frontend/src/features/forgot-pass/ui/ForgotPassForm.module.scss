@@ -1,0 +1,14 @@
+@use "@/shared/styles/form-mixins.scss" as form;
+
+.forgot__form {
+    @include form.auth__form;
+}
+
+.button__area {
+    @include form.button__full-width;
+}
+
+.alert {
+    text-align: center;
+    color: var(--color-danger)
+}
