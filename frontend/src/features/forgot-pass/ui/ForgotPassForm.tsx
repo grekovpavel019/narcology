@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import API from "@/shared/api/api";
 
 import TextField from "@/shared/components/TextField";
 import Button from "@/shared/components/Button";
@@ -20,9 +21,19 @@ const ForgotPassForm = (): React.JSX.Element => {
         handleSubmit
     } = useForm<ForgotPasswordValues>();
 
-    const onSubmit: SubmitHandler<ForgotPasswordValues> = (data) => {
-        console.log(data);
-    }
+    const [serverError, setServerError] = useState("");
+
+    const onSubmit: SubmitHandler<ForgotPasswordValues> = async ({ email }) => {
+        setServerError("");
+
+        try {
+            await API.forgotPassword({ email });
+        } catch (e) {
+            setServerError(
+                e instanceof Error ? e.message : "Не удалось отправить запрос"
+            );
+        } 
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.forgot__form}>
@@ -35,6 +46,10 @@ const ForgotPassForm = (): React.JSX.Element => {
             <div className={styles.button__area}>
                 <Button type="submit" variant="primaryButton">Изменить пароль</Button>
             </div>
+
+            {serverError && (
+                <p className={styles.alert}>{serverError}</p>
+            )}
 
         </form>
     );
