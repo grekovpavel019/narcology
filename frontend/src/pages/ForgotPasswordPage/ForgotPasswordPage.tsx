@@ -1,7 +1,7 @@
 import React from "react";
 
 import AuthCard from "@/shared/components/AuthCard";
-import ForgotPassForm from "@/features/forgot-pass/ui";
+import ForgotPassForm from "@/features/forgot-pass";
 
 const ForgotPasswordPage = (): React.JSX.Element => {
     return (

@@ -43,7 +43,7 @@ const ForgotPassForm = (): React.JSX.Element => {
                 throw new Error("Получена некорректная ссылка");
             }
 
-            // navigate(`${resetUrl.pathname}${resetUrl.search}`);
+            navigate(`${resetUrl.pathname}${resetUrl.search}`);
         } catch (e) {
             setServerError(
                 e instanceof Error ? e.message : "Не удалось отправить запрос"

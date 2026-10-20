@@ -20,7 +20,9 @@ import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import ProfileSettingsPage from "@/pages/ProfileSettingsPage";
 
 import ProtectedLayout from "./Layouts/ProtectedLayout";
+
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/pages/ResetPasswordPage";
 
 const App: FC = (): React.JSX.Element => {
     return (
@@ -41,6 +43,7 @@ const App: FC = (): React.JSX.Element => {
                 <Route path="/register" element={ <RegisterPage /> } />
 
                 <Route path="/forgot-password" element={ <ForgotPasswordPage /> } />
+                <Route path="/reset-password" element={ <ResetPasswordPage /> } />
             </Route>
 
             <Route element={ <ProtectedLayout /> }>
