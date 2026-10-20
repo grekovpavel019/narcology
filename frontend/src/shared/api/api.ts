@@ -1,4 +1,4 @@
-import { type RegisterPayload, type LoginPayload, type UpdateUserPayload, type ChangePasswordPayload } from "./types";
+import { type ForgotPasswordPayload, type RegisterPayload, type LoginPayload, type UpdateUserPayload, type ChangePasswordPayload } from "./types";
 
 const headers = {
     "Content-Type": "application/json"
@@ -77,6 +77,17 @@ const API = {
             body: JSON.stringify({
                 currentPassword: data.currentPassword,
                 newPassword: data.newPassword
+            })
+        }).then(parseResponse)
+    },
+
+    forgotPassword: (data: ForgotPasswordPayload) => {
+        return fetch(`${URL}/api/auth/forgot-password`, {
+            method: "POST",
+            credentials: "include",
+            headers,
+            body: JSON.stringify({
+                email: data.email
             })
         }).then(parseResponse)
     }

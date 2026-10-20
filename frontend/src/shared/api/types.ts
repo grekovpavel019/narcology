@@ -19,3 +19,7 @@ export type ChangePasswordPayload = {
     currentPassword: string;
     newPassword: string;
 }
+
+export type ForgotPasswordPayload = {
+    email: string;
+}
