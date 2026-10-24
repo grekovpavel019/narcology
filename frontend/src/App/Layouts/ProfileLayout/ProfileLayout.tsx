@@ -12,7 +12,7 @@ const ProfileLayout: FC = (): React.JSX.Element => {
 
     return (
         <div className={styles.shell}>
-            <ProfileAside />
+            <ProfileAside isAdmin={false}/>
 
             <div key={location.pathname} className={styles.content}>
                 <Outlet />

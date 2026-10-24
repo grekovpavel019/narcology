@@ -1,1 +1,1 @@
-export { default } from "./ProfileAside";
+export { default } from "./ui/ProfileAside";
