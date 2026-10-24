@@ -1,6 +1,6 @@
 import type { Service } from "../types/Service";
 
-export const services: Service[] = [
+export const services = [
     {
         id: 1,
         description: "Первичная консультация нарколога",
