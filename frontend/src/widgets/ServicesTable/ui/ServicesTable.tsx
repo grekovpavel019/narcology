@@ -7,6 +7,8 @@ import CheckItem from "@/shared/components/CheckItem";
 import styles from "./ServicesTable.module.scss";
 
 import type { Filters } from "../model/types";
+
+import ServiceCell from "@/entities/Service";
 import { useSort } from "../model/useSort";
 import { useFilters } from "../model/useFilters";
 
@@ -179,13 +181,13 @@ const ServicesTable: FC = (): React.JSX.Element => {
                             {
                                 totalServices > 0 ?
                                 sortedServices.map(serv => (
-                                    <tr key={serv.id}>
-                                        <td className={styles["col-id"]}>{serv.id}</td>
-                                        <td className={styles["col-desc"]}>{serv.description}</td>
-                                        <td className={styles["col-cat"]}> <span className={styles.accent}>{serv.category}</span></td>
-                                        <td className={styles["col-format"]}><span className={styles.accent}>{serv.format}</span></td>
-                                        <td className={styles["col-price"]}>{serv.price} р.</td>
-                                    </tr>
+                                    <ServiceCell 
+                                        id={serv.id}
+                                        description={serv.description}
+                                        category={serv.category}
+                                        format={serv.format}
+                                        price={serv.price}
+                                    />
                                 ))
                                 :
                                 <tr className={styles["empty-message"]}>
