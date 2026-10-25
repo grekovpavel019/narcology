@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React from "react";
 
 import NavLinkButton from "@/shared/components/NavLinkButton";
 import Button from "@/shared/components/Button";
