@@ -3,7 +3,7 @@ import React, { type FC } from "react";
 import Title from "@/shared/components/typography/Title";
 import Text from "@/shared/components/typography/Text";
 
-import styles from "./ServiceCard.module.scss";
+import styles from "./DirectionCard.module.scss";
 
 type ServiceCardProps = {
     title: string,
@@ -12,7 +12,7 @@ type ServiceCardProps = {
     who: string
 }
 
-const ServiceCard: FC<ServiceCardProps> = (props: ServiceCardProps): React.JSX.Element => {
+const DirectionCard: FC<ServiceCardProps> = (props: ServiceCardProps): React.JSX.Element => {
 
     const {
         title,
@@ -38,4 +38,4 @@ const ServiceCard: FC<ServiceCardProps> = (props: ServiceCardProps): React.JSX.E
     );
 };
 
-export default ServiceCard;
+export default DirectionCard;

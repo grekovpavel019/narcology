@@ -2,7 +2,7 @@ import React, { type FC } from "react";
 
 import Hero from "@/widgets/Hero";
 import Benefits from "@/widgets/Benefits";
-import Services from "@/widgets/Services";
+import ServiceDirections from "@/widgets/ServicesDirections";
 
 const HomePage: FC = (): React.JSX.Element => {
 
@@ -10,7 +10,7 @@ const HomePage: FC = (): React.JSX.Element => {
         <>
             <Hero />
             <Benefits />
-            <Services />
+            <ServiceDirections />
         </>
     );
 };

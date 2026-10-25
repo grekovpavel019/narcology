@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React from "react";
 
 import Select from "@/shared/components/Select";
 import Title from "@/shared/components/typography/Title";
@@ -13,11 +13,16 @@ import { useSort } from "../model/useSort";
 import { useFilters } from "../model/useFilters";
 
 import { SORT_OPTIONS } from "../model/constants";
+import Button from "@/shared/components/Button";
 
 import { services } from "../model/constants";
 import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";
 
-const ServicesTable: FC = (): React.JSX.Element => {
+type ServicesTableProps = {
+    
+}
+
+const ServicesTable = (): React.JSX.Element => {
     
     const {
         filters,
@@ -42,6 +47,8 @@ const ServicesTable: FC = (): React.JSX.Element => {
     return (
         <section className={styles.servicesTable}>
             <div className={`${styles.servicesTable__inner} container`}>
+
+                <Button variant="primaryButton">Создать услугу</Button>
 
                 <div className={styles.servicesTable__filters}>
                     <div className={styles.filters__head}>
