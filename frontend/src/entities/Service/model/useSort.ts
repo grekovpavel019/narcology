@@ -1,6 +1,7 @@
 import{ useState, useEffect } from "react";
 
 import type { Service, SortVariants} from "@/entities/Service/model/types.ts";
+import type { Filters } from "@/entities/Service/model/types.ts";
 
 type UseSortProps = {
     services: Service[]

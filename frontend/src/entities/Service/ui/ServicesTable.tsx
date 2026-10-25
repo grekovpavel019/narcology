@@ -8,13 +8,13 @@ import styles from "./ServicesTable.module.scss";
 
 import type { Filters } from "@/entities/Service/model/types"
 
-import ServiceCell from "@/entities/Service";
+import ServiceCell from "./ServiceCell"
 import { useSort } from "../model/useSort";
 import { useFilters } from "../model/useFilters";
 
 import { SORT_OPTIONS } from "../model/constants";
 
-import { services } from "@/shared/constants/services";
+import { services } from "../model/constants";
 import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";
 
 const ServicesTable: FC = (): React.JSX.Element => {

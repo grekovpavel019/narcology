@@ -2,7 +2,7 @@ import React, { type FC } from "react";
 
 import Services from "@/widgets/Services";
 import Overview from "@/widgets/Overview";
-import ServicesTable from "@/widgets/ServicesTable";
+import ServicesTable from "@/entities/Service/ui/ServicesTable"
 
 
 const ServicesPage: FC = (): React.JSX.Element => {

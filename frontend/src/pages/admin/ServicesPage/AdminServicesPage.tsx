@@ -1,10 +1,10 @@
 import React from "react";
 
+import { ServicesTable } from "@/entities/Service";
+
 const AdminServicesPage = (): React.JSX.Element => {
     return (
-        <div>
-            Админ панель
-        </div>
+        <ServicesTable />
     );
 };
 
