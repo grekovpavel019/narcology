@@ -6,7 +6,7 @@ import CheckItem from "@/shared/components/CheckItem";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Filters } from "../model/types";
+import type { Filters } from "@/entities/Service/model/types"
 
 import ServiceCell from "@/entities/Service";
 import { useSort } from "../model/useSort";

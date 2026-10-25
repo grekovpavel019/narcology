@@ -1,5 +1,5 @@
 import type { SelectOption } from "@/shared/components/Select/model/types"
-import type { SortVariants } from "./types"
+import type { SortVariants } from "@/entities/Service/model/types.ts";
 
 export const SORT_OPTIONS: SelectOption<SortVariants>[] = [
     { value: "default", label: "По умолчанию"},

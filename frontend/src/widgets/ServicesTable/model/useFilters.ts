@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import type { Filters, Service } from "./types";
+import type { Filters, Service } from "@/entities/Service/model/types.ts";
 
 type UseFiltersProps = {
     services: Service[]
