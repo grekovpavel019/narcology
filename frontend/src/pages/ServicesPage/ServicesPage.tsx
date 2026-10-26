@@ -1,8 +1,9 @@
 import React, { type FC } from "react";
 
-import Overview from "@/widgets/Overview";
-import ServicesTable from "@/entities/Service/ui/ServicesTable"
+import { staticServices } from "@/entities/Service";
 import ServiceDirections from "@/widgets/ServicesDirections";
+import Overview from "@/widgets/Overview";
+import ServicesCatalog from "@/widgets/ServicesCatalog";
 
 const ServicesPage: FC = (): React.JSX.Element => {
 
@@ -16,7 +17,7 @@ const ServicesPage: FC = (): React.JSX.Element => {
             </Overview>
 
             <ServiceDirections />
-            <ServicesTable />
+            <ServicesCatalog services={staticServices} />
         </>
     );
 };

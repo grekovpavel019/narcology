@@ -1,37 +1,22 @@
+import type { SERVICE_AUDIENCES, SERVICE_CATEGORIES, SERVICE_FORMATS } from "./constants";
+
+export type ServiceCategory = (typeof SERVICE_CATEGORIES)[number];
+export type ServiceAudience = (typeof SERVICE_AUDIENCES)[number];
+export type ServiceFormat = (typeof SERVICE_FORMATS)[number];
+
+// Сохранённая услуга, как её отдаёт сервер
 export type Service = {
-    id: number,
-    description: string,
-    sub: string,
-    price: number,
+    id: number;
+    description: string;
+    sub: string;
+    price: number;
+    category: ServiceCategory;
+    audience: ServiceAudience;
+    format: ServiceFormat;
+};
 
-    category: 
-        | "Консультация"
-        | "Детоксикация"
-        | "Лечение"
-        | "Реабилитация",
+// id назначает сервер, поэтому при создании его нет
+export type CreateServiceInput = Omit<Service, "id">;
 
-
-    audience:
-        | "Пациент"
-        | "Родственники"
-        | "Сопровождающий",
-
-    
-    format:
-        | "В клинике"
-        | "На дому"
-        | "Амбулаторно"
-        | "В стационаре"
-}
-
-export type SortVariants = 
-    | "default"
-    | "expensive"
-    | "cheap"
-    | "alphabet"
-
-export type Filters = {
-    category: string[],
-    audience: string[],
-    format: string[]
-}
+// Частичное обновление (PATCH): передаются только изменённые поля
+export type UpdateServiceInput = Partial<CreateServiceInput>;

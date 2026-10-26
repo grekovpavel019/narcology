@@ -1,215 +1,61 @@
-import React from "react";
+import React, { type FC } from "react";
 
-import Select from "@/shared/components/Select";
-import Title from "@/shared/components/typography/Title";
-import CheckItem from "@/shared/components/CheckItem";
+import type { Service } from "../model/types";
+
+import ServiceCell from "./ServiceCell";
 
 import styles from "./ServicesTable.module.scss";
 
-import type { Filters } from "@/entities/Service/model/types"
-
-import ServiceCell from "./ServiceCell"
-import { useSort } from "../model/useSort";
-import { useFilters } from "../model/useFilters";
-
-import { SORT_OPTIONS } from "../model/constants";
-import Button from "@/shared/components/Button";
-
-import { services } from "../model/constants";
-import { categoryFilters, audienceFilters, formatFilters } from "@/shared/constants/filters";
-
 type ServicesTableProps = {
-    
+    services: Service[];
+    // Содержимое колонки «Действия» для услуги (редактирование, удаление).
+    // Публичная таблица её не передаёт, и колонка не показывается
+    renderActions?: (service: Service) => React.ReactNode;
 }
 
-const ServicesTable = (): React.JSX.Element => {
-    
+const ServicesTable: FC<ServicesTableProps> = (props: ServicesTableProps): React.JSX.Element => {
+
     const {
-        filters,
-        filteredServices,
+        services,
+        renderActions
+    } = props;
 
-        handleInputChange,
-        isFilterNotAvailable,
-        resetFilters
-        
-    } = useFilters({ services })
-    const {
-        sort,
-        sortedServices,
-
-        setSort,
-        resetSort
-
-    } = useSort({ services: filteredServices });
-
-    const totalServices: number = sortedServices.length;
+    const columnsCount = renderActions ? 6 : 5;
 
     return (
-        <section className={styles.servicesTable}>
-            <div className={`${styles.servicesTable__inner} container`}>
+        <div className={styles["table-scroll"]}>
+            <table className={styles["table-content"]}>
+                <thead>
+                    <tr className={styles["row-head"]}>
+                        <th className={styles["col-id"]}>Номер</th>
+                        <th className={styles["col-desc"]}>Описание</th>
+                        <th className={styles["col-cat"]}>Направление</th>
+                        <th className={styles["col-format"]}>Формат помощи</th>
+                        <th className={styles["col-price"]}>Цена</th>
+                        {renderActions && <th className={styles["col-actions"]}>Действия</th>}
+                    </tr>
+                </thead>
 
-                <Button variant="primaryButton">Создать услугу</Button>
-
-                <div className={styles.servicesTable__filters}>
-                    <div className={styles.filters__head}>
-                        <Title variant="h3">Фильтры</Title>
-                        <button 
-                            className={styles.reset__filters} 
-                            onClick={() => {
-                                resetFilters();
-                                resetSort()
-                            }}
-                        >
-                            Сбросить фильтры
-            
-                        </button>
-
-                    </div>
-                
-                    <div className={styles.filters__grid}>
-                        <div className={`${styles["filter-item"]}`}>
-                            <Title variant="h4">Направление</Title>
-                            {
-                                categoryFilters.map(item => {
-
-                                    const id = item.id;
-                                    const group = item.group as keyof Filters;
-                                    const value = item.value;
-
-                                    return ( 
-                                        <CheckItem
-                                            id={id}
-                                            key={id}
-                                            isChecked={filters[group].includes(value)}
-                                            isDisabled={isFilterNotAvailable(group, value)}
-                                            onChange={() => handleInputChange(group, value)}
-                                        >
-                                            {value}
-                                        </CheckItem>
-                                    )
-                                })
-                            }
-                            
-                        </div>
-                        <div className={`${styles["filter-item"]}`}>
-                            <Title variant="h4">Для кого</Title>
-                            {
-                                audienceFilters.map(item => {
-
-                                    const id = item.id;
-                                    const group = item.group as keyof Filters;
-                                    const value = item.value;
-
-                                    return ( 
-                                        <CheckItem
-                                            id={id}
-                                            key={id}
-                                            isChecked={filters[group].includes(value)}
-                                            isDisabled={isFilterNotAvailable(group, value)}
-                                            onChange={() => handleInputChange(group, value)}
-                                        >
-                                            {value}
-                                        </CheckItem>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className={`${styles["filter-item"]}`}>
-                            <Title variant="h4">Формат помощи</Title>
-                            {
-                                formatFilters.map(item => {
-
-                                    const id = item.id;
-                                    const group = item.group as keyof Filters;
-                                    const value = item.value;
-
-                                    return ( 
-                                        <CheckItem
-                                            id={id}
-                                            key={id}
-                                            isChecked={filters[group].includes(value)}
-                                            isDisabled={isFilterNotAvailable(group, value)}
-                                            onChange={() => handleInputChange(group, value)}
-                                        >
-                                            {value}
-                                        </CheckItem>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-
-                    <div className={styles["active-filters"]}>
-                        {
-                            Object.entries(filters).map(([group, value]) => (
-                                value.map((value) => (
-                                    <span key={value} className={`${styles.accent} ${styles["current-filter"]}`}>
-                                        {value}
-                                        <button 
-                                            onClick={() => handleInputChange(group as keyof Filters, value)} 
-                                        >
-                                            ×
-                                        </button>
-                                    </span>
-
-                                ))
-                            ))
-                        }
-                    </div>
-                </div>
-
-
-                <div className={styles.servicesTable__info}>
-
-                    <span>
-                        Найдено услуг: <b>{totalServices}</b>
-                    </span>
-
-                    <Select 
-                        options={SORT_OPTIONS}
-                        value={sort}
-                        onChange={setSort}
-                    />
-                </div>
-
-                <div className={styles["table-scroll"]}>
-                    <table className={styles["table-content"]}>
-                        <thead>
-                            <tr className={styles["row-head"]}>
-                                <th className={styles["col-id"]}>Номер</th>
-                                <th className={styles["col-desc"]}>Описание</th>
-                                <th className={styles["col-cat"]}>Категория</th>
-                                <th className={styles["col-format"]}>Направление</th>
-                                <th className={styles["col-price"]}>Цена</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {
-                                totalServices > 0 ?
-                                sortedServices.map(serv => (
-                                    <ServiceCell 
-                                        id={serv.id}
-                                        description={serv.description}
-                                        category={serv.category}
-                                        format={serv.format}
-                                        price={serv.price}
-                                    />
-                                ))
-                                :
-                                <tr className={styles["empty-message"]}>
-                                    <td colSpan={5}>
-                                        Ничего не найдено
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-        </section>
+                <tbody>
+                    {
+                        services.length > 0 ?
+                        services.map(service => (
+                            <ServiceCell
+                                key={service.id}
+                                service={service}
+                                actions={renderActions?.(service)}
+                            />
+                        ))
+                        :
+                        <tr className={styles["empty-message"]}>
+                            <td colSpan={columnsCount}>
+                                Ничего не найдено
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     );
 };
 

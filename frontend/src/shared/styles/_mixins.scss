@@ -16,3 +16,14 @@
     padding: 12px;
     border-radius: 15px;
 }
+
+@mixin accent-pill {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background-color: var(--color-primary-soft);
+
+    color: var(--color-primary);
+    font-weight: bold;
+}

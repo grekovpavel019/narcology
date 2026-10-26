@@ -1,18 +1,36 @@
-import React from "react";
+import React, { type FC } from "react";
 
-import { ServicesTable } from "@/entities/Service";
-import CreateService from "@/features/add-service/ui";
-import { useState } from "react";
+import type { Service } from "@/entities/Service";
 
-const AdminServicesPage = (): React.JSX.Element => {
+import { staticServices } from "@/entities/Service";
+import ServicesCatalog from "@/widgets/ServicesCatalog";
 
-    const [isCreateServiceOpen, setIsCreateServiceOpen] = useState(false);
+const AdminServicesPage: FC = (): React.JSX.Element => {
+    
+    const handleDelete = (id: Service["id"]) => {
+        console.log(1);
+    }
+
+    const handleEdit = (service: Service) => {
+        console.log(2);
+    }
+
+    const renderServiceActions = (service: Service): React.ReactNode => {
+        return (
+            <>
+                <button onClick={() => handleEdit(service)}>
+                    Редактировать
+                </button>
+
+                <button onClick={() => handleDelete(service.id)}>
+                    Удалить
+                </button>
+            </>
+        );
+    };
 
     return (
-        <>
-            <CreateService />
-            <ServicesTable />
-        </>
+        <ServicesCatalog services={staticServices} renderActions={renderServiceActions}/>
     );
 };
 

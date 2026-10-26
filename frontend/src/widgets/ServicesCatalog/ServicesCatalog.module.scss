@@ -1,0 +1,9 @@
+.catalog {
+    padding-top: var(--sec-p-top);
+}
+
+.catalog__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
