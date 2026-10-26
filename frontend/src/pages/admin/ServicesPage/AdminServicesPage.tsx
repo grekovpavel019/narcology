@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React, { type FC, useState } from "react";
 
 import type { Service } from "@/entities/Service";
 
@@ -9,15 +9,22 @@ import Button from "@/shared/components/Button";
 import PlusIcon from "@/shared/icons/PlusIcon";
 import EditIcon from "@/shared/icons/EditIcon";
 import TrashIcon from "@/shared/icons/TrashIcon";
+import AddServiceForm from "@/features/add-service";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
     
+    const [isAddServiceFormOpen, setIsAddServiceOpen] = useState<boolean>(false)
+
     const handleDelete = (id: Service["id"]) => {
         console.log(1);
     }
 
     const handleEdit = (service: Service) => {
         console.log(2);
+    }
+
+    const handleAdd = () => {
+        setIsAddServiceOpen(true);
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {
@@ -35,13 +42,22 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     };
 
     return (
-        <ServicesCatalog 
-            services={staticServices} 
-            renderActions={renderServiceActions}
-            toolbar={
-                <Button variant="primaryButton"><PlusIcon />Добавить услугу</Button>
+        <>
+            <ServicesCatalog 
+                services={staticServices} 
+                renderActions={renderServiceActions}
+                toolbar={
+                    <Button onClick={() => handleAdd()} variant="primaryButton"><PlusIcon />Добавить услугу</Button>
+                }
+            />
+
+            {
+                isAddServiceFormOpen && 
+                <AddServiceForm 
+                    setIsAddServiceOpen={setIsAddServiceOpen}
+                />
             }
-        />
+        </>
     );
 };
 
