@@ -1,5 +1,19 @@
 .catalog {
     padding-top: var(--sec-p-top);
+
+    :global(.container) > button {
+        margin-bottom: 20px;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    
+        & svg {
+            height: 1rem;
+            width: 1rem;
+        }
+    }
 }
 
 .catalog__info {

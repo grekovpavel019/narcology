@@ -4,6 +4,11 @@ import type { Service } from "@/entities/Service";
 
 import { staticServices } from "@/entities/Service";
 import ServicesCatalog from "@/widgets/ServicesCatalog";
+import Button from "@/shared/components/Button";
+
+import PlusIcon from "@/shared/icons/PlusIcon";
+import EditIcon from "@/shared/icons/EditIcon";
+import TrashIcon from "@/shared/icons/TrashIcon";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
     
@@ -18,19 +23,25 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     const renderServiceActions = (service: Service): React.ReactNode => {
         return (
             <>
-                <button onClick={() => handleEdit(service)}>
-                    Редактировать
-                </button>
+                <Button variant="primaryButton" onClick={() => handleEdit(service)}>
+                    <EditIcon />
+                </Button>
 
-                <button onClick={() => handleDelete(service.id)}>
-                    Удалить
-                </button>
+                <Button variant="primaryButton" onClick={() => handleDelete(service.id)}>
+                    <TrashIcon />
+                </Button>
             </>
         );
     };
 
     return (
-        <ServicesCatalog services={staticServices} renderActions={renderServiceActions}/>
+        <ServicesCatalog 
+            services={staticServices} 
+            renderActions={renderServiceActions}
+            toolbar={
+                <Button variant="primaryButton"><PlusIcon />Добавить услугу</Button>
+            }
+        />
     );
 };
 

@@ -26,7 +26,7 @@ const ServiceCell: FC<ServiceCellProps> = (props: ServiceCellProps): React.JSX.E
             <td className={styles["col-cat"]}><span className={styles.accent}>{category}</span></td>
             <td className={styles["col-format"]}><span className={styles.accent}>{format}</span></td>
             <td className={styles["col-price"]}>{price} р.</td>
-            {actions !== undefined && <td className={styles["col-actions"]}>{actions}</td>}
+            {actions !== undefined && <td className={styles["actions-cell"]}>{actions}</td>}
         </tr>
     );
 };
