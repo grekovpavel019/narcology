@@ -11,20 +11,22 @@ import EditIcon from "@/shared/icons/EditIcon";
 import TrashIcon from "@/shared/icons/TrashIcon";
 import AddServiceForm from "@/features/add-service";
 
+import type { ServiceModalState } from "@/shared/types/modal";
+
 const AdminServicesPage: FC = (): React.JSX.Element => {
     
-    const [isAddServiceFormOpen, setIsAddServiceOpen] = useState<boolean>(false)
+    const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
-    const handleDelete = (id: Service["id"]) => {
-        console.log(1);
+    const handleAdd = () => {
+        setModal({ type: "add"})
     }
 
     const handleEdit = (service: Service) => {
         console.log(2);
     }
 
-    const handleAdd = () => {
-        setIsAddServiceOpen(true);
+    const handleDelete = (id: Service["id"]) => {
+        console.log(1);
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {
@@ -51,12 +53,10 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
                 }
             />
 
-            {
-                isAddServiceFormOpen && 
-                <AddServiceForm 
-                    setIsAddServiceOpen={setIsAddServiceOpen}
-                />
-            }
+            {/* {
+                modal?.type === "add" &&
+            } */}
+            <AddServiceForm setModal={setModal} />
         </>
     );
 };

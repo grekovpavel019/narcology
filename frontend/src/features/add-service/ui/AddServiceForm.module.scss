@@ -11,8 +11,18 @@
 }
 
 .modal {
-    width: 500px;
-    height: 500px;
+    padding: 40px 20px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 
     background-color: var(--color-surface);
+}
+
+.selects {
+    display: flex;
+    gap: 10px;
 }
