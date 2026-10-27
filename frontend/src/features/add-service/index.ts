@@ -1,1 +1,1 @@
-export { default } from "./ui/AddServiceForm";
+export { default } from "./ui/ServiceForm";

@@ -9,24 +9,35 @@ import Button from "@/shared/components/Button";
 import PlusIcon from "@/shared/icons/PlusIcon";
 import EditIcon from "@/shared/icons/EditIcon";
 import TrashIcon from "@/shared/icons/TrashIcon";
-import AddServiceForm from "@/features/add-service";
+import ServiceForm from "@/features/add-service";
 
 import type { ServiceModalState } from "@/shared/types/modal";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
+
+    const [services, setServices] = useState<Service[]>(staticServices);
     
     const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
     const handleAdd = () => {
-        setModal({ type: "add"})
+        setModal({ type: "add" })
     }
 
     const handleEdit = (service: Service) => {
-        console.log(2);
+        setModal({ type: "edit", service})
     }
 
     const handleDelete = (id: Service["id"]) => {
-        console.log(1);
+
+    }
+
+    const onClose = () => {
+        setModal(null);
+    }
+
+    const onSubmit = () => {
+        // console.log(values)
+        console.log(123);
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {
@@ -46,17 +57,29 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     return (
         <>
             <ServicesCatalog 
-                services={staticServices} 
+                services={services} 
                 renderActions={renderServiceActions}
                 toolbar={
                     <Button onClick={() => handleAdd()} variant="primaryButton"><PlusIcon />Добавить услугу</Button>
                 }
             />
 
-            {/* {
+            {
                 modal?.type === "add" &&
-            } */}
-            <AddServiceForm setModal={setModal} />
+                <ServiceForm
+                    onClose={onClose} 
+                    onSubmit={onSubmit}
+                />
+            }
+
+            {
+                modal?.type === "edit" &&
+                <ServiceForm
+                    onClose={onClose} 
+                    onSubmit={onSubmit}
+                    service={modal.service}
+                />
+            }
         </>
     );
 };
