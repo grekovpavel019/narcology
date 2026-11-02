@@ -10,7 +10,7 @@ type ChangePasswordData = z.infer<typeof changePasswordSchema>
 
 export async function getCurrentUser(userId: string) {
     const result = await pool.query(`
-        SELECT id, login, email, fullname
+        SELECT id, login, email, fullname, role
         FROM users
         WHERE id = $1
     `, [userId]);
@@ -24,7 +24,7 @@ export async function updateUser(userId: string, data: UpdateUserData) {
         SET fullname = $1,
             email = $2
         WHERE id = $3
-        RETURNING id, login, email, fullname
+        RETURNING id, login, email, fullname, role
     `, [data.fullname, data.email, userId]);
 
     return result.rows[0] ?? null;

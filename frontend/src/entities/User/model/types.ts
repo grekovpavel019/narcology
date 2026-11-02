@@ -5,6 +5,7 @@ export type User = {
     email: string;
     login: string;
     fullname: string;
+    role: "admin" | "user";
 }
 
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated" | "error";
