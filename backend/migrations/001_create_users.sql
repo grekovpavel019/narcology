@@ -4,5 +4,9 @@ CREATE TABLE users (
     email VARCHAR(32) NOT NULL UNIQUE,
     fullname TEXT NOT NULL,
     password_hash TEXT NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    role TEXT NOT NULL DEFAULT 'user',
+
+    constraint role_check 
+        CHECK (role in ('admin', 'user'))
 );
