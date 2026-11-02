@@ -12,6 +12,7 @@ import TrashIcon from "@/shared/icons/TrashIcon";
 import ServiceForm from "@/features/add-service";
 
 import type { ServiceModalState } from "@/shared/types/modal";
+import type { ServiceFormValues } from "@/features/add-service/model/types";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
 
@@ -28,16 +29,37 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     }
 
     const handleDelete = (id: Service["id"]) => {
-
+        setServices(prev => prev.filter(serv => serv.id !== id));
     }
 
     const onClose = () => {
         setModal(null);
     }
 
-    const onSubmit = () => {
-        // console.log(values)
-        console.log(123);
+    const onSubmit = (values: ServiceFormValues) => {
+        if (modal?.type === "add") {
+            const newService = {
+                id: Date.now(),
+                ...values
+            }
+
+            setServices(prev => [...prev, newService])
+        }
+        
+        if (modal?.type === "edit") {
+            const newService = {
+                id: modal.service.id,
+                ...values
+            }
+
+            setServices(prev =>
+                prev.map(serv =>
+                    serv.id === modal.service.id
+                        ? newService
+                        : serv
+                )
+            );
+        }
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {

@@ -42,6 +42,7 @@ const Select = <T extends string>(props:  SelectProps<T>): React.JSX.Element => 
         <div ref={selectRef} className={styles.sort}>
             <button 
                 className={styles.sort__button}
+                type="button"
                 onClick={() => setIsOpen(prev => !prev)}>
                 { currentOption?.label }
             </button>
@@ -53,6 +54,7 @@ const Select = <T extends string>(props:  SelectProps<T>): React.JSX.Element => 
                             return (
                                 <button
                                     key={option.value}
+                                    type="button"
                                     onClick={() => handleSelect(option.value)}
                                     className={`${styles.sort__button} ${value === option.value ? styles.active : ""}`}
                                 >

@@ -7,16 +7,15 @@ import TextField from "@/shared/components/TextField";
 import Select from "@/shared/components/Select";
 import Button from "@/shared/components/Button";
 import Title from "@/shared/components/typography/Title";
-
+import type { ServiceFormValues } from "../model/types";
 import type { ServiceAudience, ServiceCategory, ServiceFormat } from "@/entities/Service";
-
-type ServiceFormValues = Omit<Service, "id">
 
 type ServiceFormProps = {
     service?: Service;
     onClose: () => void;
     onSubmit: (service: ServiceFormValues) => void;
 };
+
 const ServiceForm = (props: ServiceFormProps): React.JSX.Element => {
 
     const { 
