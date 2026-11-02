@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
+import pool from "../lib/db.js";
 
 export function requireAuth(
     req: Request,
