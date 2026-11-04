@@ -1,4 +1,4 @@
-import React, { type FC, useState } from "react";
+import React, { type FC, useState, useEffect } from "react";
 
 import type { Service } from "@/entities/Service";
 
@@ -13,10 +13,12 @@ import ServiceForm from "@/features/add-service";
 
 import type { ServiceModalState } from "@/shared/types/modal";
 import type { ServiceFormValues } from "@/features/add-service/model/types";
+import { useServices } from "@/entities/Service/model/useServices";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
 
     const [services, setServices] = useState<Service[]>(staticServices);
+    const { servicesAPI } = useServices();
     
     const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
@@ -79,7 +81,7 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     return (
         <>
             <ServicesCatalog 
-                services={services} 
+                services={servicesAPI} 
                 renderActions={renderServiceActions}
                 toolbar={
                     <Button onClick={() => handleAdd()} variant="primaryButton"><PlusIcon />Добавить услугу</Button>

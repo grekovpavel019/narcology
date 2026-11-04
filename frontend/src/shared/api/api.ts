@@ -109,6 +109,14 @@ const API = {
                 newPassword: data.newPassword
             })
         }).then(parseResponse);
+    },
+
+    getServices: () => {
+        return fetch (`${URL}/api/services`, {
+            method: "GET",
+            credentials: "include",
+            headers
+        }).then(parseResponse)
     }
 }
 
