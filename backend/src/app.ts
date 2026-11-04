@@ -10,6 +10,7 @@ import adminRouter from "./modules/admin/admin.routes.js";
 import connectPgSimple from "connect-pg-simple";
 
 import { env } from "./config/env.js";
+import servicesRouter from "./modules/services/services.routes.js";
 
 const app: Express = express();
 
@@ -43,7 +44,8 @@ app.use(
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
-app.use("/api/admin", adminRouter)
+app.use("/api/admin", adminRouter);
+app.use("/api/services", servicesRouter)
 
 app.get("/api/health", (req: Request, res: Response) => {
     res.json({
