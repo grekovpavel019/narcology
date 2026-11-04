@@ -5,11 +5,8 @@ import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 import pool from "../../lib/db.js";
 
 import { serviceSchema } from "./services.schemas.js";
-import * as z from "zod";
 
 const servicesRouter = Router();
-
-type Service = z.infer<typeof serviceSchema>;
 
 servicesRouter.get("/", async (req: Request, res: Response) => {
     
@@ -32,6 +29,36 @@ servicesRouter.get("/", async (req: Request, res: Response) => {
     }
 });
 
+servicesRouter.post("/", requireAuth, requireAdmin, async (req: Request, res: Response) => {
+    const result = serviceSchema.safeParse(req.body);
 
+    if (!result.success) {
+        return res.status(400).json({
+            message: "Данные не валидны"
+        });
+    }
+
+    try {
+        const { description, price, category, audience, format } = result.data;
+
+
+        const service = await pool.query(`
+            INSERT INTO services (description, sub, price, category, audience, format)
+            VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING id, description, sub, price, category, audience, format
+        `, [description, result.data.sub ?? null, price, category, audience, format]);
+
+        res.status(201).json({
+            service: service.rows[0]
+        })
+
+    } catch (e) {
+        console.error(e);
+
+        res.status(500).json({
+            message: "Ошибка"
+        });
+    }
+})
 
 export default servicesRouter;
