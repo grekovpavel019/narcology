@@ -105,4 +105,39 @@ servicesRouter.patch("/:id", requireAuth, requireAdmin, async (req: Request, res
     
 });
 
+servicesRouter.delete("/:id", requireAuth, requireAdmin, async (req: Request, res: Response) => {
+    const idResult = serviceIdSchema.safeParse(req.params.id);
+
+    if (!idResult.success) {
+        return res.status(400).json({
+            message: "Бэд реквест"
+        });
+    }
+
+    try {
+
+        const serviceId = await pool.query(`
+            DELETE FROM services WHERE id = $1    
+            RETURNING id
+        `, [idResult.data]);
+
+        if (serviceId.rows.length === 0) {
+            return res.status(404).json({
+                message: "Не удалось удалить"
+            });
+        }
+
+        res.status(200).json({
+            serviceId: serviceId.rows[0]
+        });
+
+    } catch (e) {
+        console.error(e);
+
+        res.status(500).json({
+            message: "Ошибка"
+        });
+    }
+});
+
 export default servicesRouter;
