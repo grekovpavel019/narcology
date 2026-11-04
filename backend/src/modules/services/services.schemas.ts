@@ -8,3 +8,5 @@ export const serviceSchema = z.object({
     audience: z.enum(['Пациент', 'Родственники', 'Сопровождающий']),
     format: z.enum(['В клинике', 'На дому', 'Амбулаторно', 'В стационаре']),
 });
+
+export const serviceIdSchema = z.coerce.number().positive().int();

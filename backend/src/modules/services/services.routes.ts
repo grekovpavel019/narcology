@@ -4,7 +4,7 @@ import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 
 import pool from "../../lib/db.js";
 
-import { serviceSchema } from "./services.schemas.js";
+import { serviceIdSchema, serviceSchema } from "./services.schemas.js";
 
 const servicesRouter = Router();
 
@@ -41,7 +41,6 @@ servicesRouter.post("/", requireAuth, requireAdmin, async (req: Request, res: Re
     try {
         const { description, price, category, audience, format } = result.data;
 
-
         const service = await pool.query(`
             INSERT INTO services (description, sub, price, category, audience, format)
             VALUES ($1, $2, $3, $4, $5, $6)
@@ -59,6 +58,51 @@ servicesRouter.post("/", requireAuth, requireAdmin, async (req: Request, res: Re
             message: "Ошибка"
         });
     }
-})
+});
+
+servicesRouter.patch("/:id", requireAuth, requireAdmin, async (req: Request, res: Response) => {
+    const result = serviceSchema.safeParse(req.body);
+    const idResult = serviceIdSchema.safeParse(req.params.id);
+
+    if (!result.success) {
+        return res.status(400).json({
+            message: "Данные не валидны"
+        });
+    }
+
+    if (!idResult.success) {
+        return res.status(400).json({
+            message: "Бэд реквест"
+        });
+    }
+
+    try {
+        const { description, price, category, audience, format } = result.data;
+
+        const service = await pool.query(`
+            UPDATE services
+            SET description = $2, sub = $3, price = $4, category = $5, audience = $6, format = $7
+            WHERE ID = $1
+            RETURNING id, description, sub, price, category, audience, format
+        `, [idResult.data, description, result.data.sub ?? null, price, category, audience, format])
+        
+        if (service.rows.length === 0) {
+            return res.status(404).json({
+                message: "Не удалось обновить"
+            });
+        }
+
+        res.status(200).json({
+            service: service.rows[0]
+        })
+    } catch (e) {
+        console.error(e);
+
+        res.status(500).json({
+            message: "Ошибка"
+        });
+    }
+    
+});
 
 export default servicesRouter;
