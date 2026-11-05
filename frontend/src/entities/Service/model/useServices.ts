@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import type { Service } from "./types"
+import type { CreateServiceInput, Service } from "./types"
 import API from "@/shared/api/api";
 
 type StatusType =
@@ -9,7 +9,7 @@ type StatusType =
 
 
 export const useServices = () => {
-    const [servicesAPI, setServices] = useState<Service[]>([]);
+    const [services, setServices] = useState<Service[]>([]);
     const [status, setStatus] = useState<StatusType>("loading");
 
     const checkServices = useCallback(() => {
@@ -32,12 +32,20 @@ export const useServices = () => {
             })
     }, [])
 
+    const addService = useCallback((data: CreateServiceInput) => (
+        API.addService(data).then((response) => {
+            setServices(prev => [...prev, response.service])
+        })
+    ), []);
+
     useEffect(() => {
         checkServices()
     }, [checkServices]);
 
     return {
-        servicesAPI,
-        status
+        services,
+        status,
+
+        addService
     }
 }

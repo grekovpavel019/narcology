@@ -7,13 +7,12 @@ import TextField from "@/shared/components/TextField";
 import Select from "@/shared/components/Select";
 import Button from "@/shared/components/Button";
 import Title from "@/shared/components/typography/Title";
-import type { ServiceFormValues } from "../model/types";
-import type { ServiceAudience, ServiceCategory, ServiceFormat } from "@/entities/Service";
+import type { CreateServiceInput, ServiceAudience, ServiceCategory, ServiceFormat } from "@/entities/Service";
 
 type ServiceFormProps = {
     service?: Service;
     onClose: () => void;
-    onSubmit: (service: ServiceFormValues) => void;
+    onSubmit: (service: CreateServiceInput) => void;
 };
 
 const ServiceForm = (props: ServiceFormProps): React.JSX.Element => {
@@ -63,7 +62,7 @@ const ServiceForm = (props: ServiceFormProps): React.JSX.Element => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const values: ServiceFormValues = {
+        const values: CreateServiceInput = {
             description: name,
             sub,
             price: Number(price),

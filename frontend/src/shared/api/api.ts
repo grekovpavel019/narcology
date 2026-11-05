@@ -4,7 +4,8 @@ import {
     type RegisterPayload,
     type LoginPayload,
     type UpdateUserPayload,
-    type ChangePasswordPayload
+    type ChangePasswordPayload,
+    type CreateServicePayload
 } from "./types";
 
 const headers = {
@@ -116,6 +117,15 @@ const API = {
             method: "GET",
             credentials: "include",
             headers
+        }).then(parseResponse)
+    },
+
+    addService: (data: CreateServicePayload) => {
+        return fetch (`${URL}/api/services`, {
+            method: "POST",
+            credentials: "include",
+            headers,
+            body: JSON.stringify(data)
         }).then(parseResponse)
     }
 }

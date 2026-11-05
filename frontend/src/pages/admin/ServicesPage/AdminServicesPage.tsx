@@ -1,8 +1,7 @@
-import React, { type FC, useState, useEffect } from "react";
+import React, { type FC, useState } from "react";
 
-import type { Service } from "@/entities/Service";
+import type { CreateServiceInput, Service } from "@/entities/Service";
 
-import { staticServices } from "@/entities/Service";
 import ServicesCatalog from "@/widgets/ServicesCatalog";
 import Button from "@/shared/components/Button";
 
@@ -12,13 +11,12 @@ import TrashIcon from "@/shared/icons/TrashIcon";
 import ServiceForm from "@/features/add-service";
 
 import type { ServiceModalState } from "@/shared/types/modal";
-import type { ServiceFormValues } from "@/features/add-service/model/types";
 import { useServices } from "@/entities/Service/model/useServices";
 
 const AdminServicesPage: FC = (): React.JSX.Element => {
 
-    const [services, setServices] = useState<Service[]>(staticServices);
-    const { servicesAPI } = useServices();
+    // const [services, setServices] = useState<Service[]>(staticServices);
+    const { services, addService } = useServices();
     
     const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
@@ -27,41 +25,36 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     }
 
     const handleEdit = (service: Service) => {
-        setModal({ type: "edit", service})
+        setModal({ type: "edit", service })
     }
 
     const handleDelete = (id: Service["id"]) => {
-        setServices(prev => prev.filter(serv => serv.id !== id));
+        // setServices(prev => prev.filter(serv => serv.id !== id));
     }
 
     const onClose = () => {
         setModal(null);
     }
 
-    const onSubmit = (values: ServiceFormValues) => {
+    const onSubmit = (values: CreateServiceInput) => {
         if (modal?.type === "add") {
-            const newService = {
-                id: Date.now(),
-                ...values
-            }
-
-            setServices(prev => [...prev, newService])
+            addService(values);
         }
         
-        if (modal?.type === "edit") {
-            const newService = {
-                id: modal.service.id,
-                ...values
-            }
+        // if (modal?.type === "edit") {
+        //     const newService = {
+        //         id: modal.service.id,
+        //         ...values
+        //     }
 
-            setServices(prev =>
-                prev.map(serv =>
-                    serv.id === modal.service.id
-                        ? newService
-                        : serv
-                )
-            );
-        }
+        //     setServices(prev =>
+        //         prev.map(serv =>
+        //             serv.id === modal.service.id
+        //                 ? newService
+        //                 : serv
+        //         )
+        //     );
+        // }
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {
@@ -81,7 +74,7 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     return (
         <>
             <ServicesCatalog 
-                services={servicesAPI} 
+                services={services} 
                 renderActions={renderServiceActions}
                 toolbar={
                     <Button onClick={() => handleAdd()} variant="primaryButton"><PlusIcon />Добавить услугу</Button>

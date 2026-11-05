@@ -33,3 +33,12 @@ export type ResetPasswordPayload = {
     token: string;
     newPassword: string;
 }
+
+export type CreateServicePayload = {
+    description: string;
+    sub?: string;
+    price: number;
+    category: string;
+    audience: string;
+    format: string;
+}
