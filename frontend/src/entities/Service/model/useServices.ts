@@ -42,6 +42,12 @@ export const useServices = () => {
         API.updateService(id, data).then((response) => {
             setServices(prev => prev.map(serv => serv.id === response.service.id ? response.service : serv))
         })
+    }, []);
+
+    const deleteService = useCallback((id: number) => {
+        API.deleteService(id).then((response) => {
+            setServices(prev => prev.filter(serv => serv.id !== response.serviceId.id));
+        })
     }, [])
 
     useEffect(() => {
@@ -53,6 +59,7 @@ export const useServices = () => {
         status,
 
         addService,
-        updateService
+        updateService,
+        deleteService
     }
 }

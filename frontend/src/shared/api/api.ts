@@ -137,6 +137,14 @@ const API = {
             headers,
             body: JSON.stringify(data)
         }).then(parseResponse)
+    },
+
+    deleteService: (id: number) => {
+        return fetch (`${URL}/api/services/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+            headers
+        }).then(parseResponse)
     }
 }
 

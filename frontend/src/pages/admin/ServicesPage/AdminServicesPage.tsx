@@ -16,7 +16,7 @@ import { useServices } from "@/entities/Service/model/useServices";
 const AdminServicesPage: FC = (): React.JSX.Element => {
 
     // const [services, setServices] = useState<Service[]>(staticServices);
-    const { services, addService, updateService } = useServices();
+    const { services, addService, updateService, deleteService } = useServices();
     
     const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
@@ -29,7 +29,7 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
     }
 
     const handleDelete = (id: Service["id"]) => {
-        // setServices(prev => prev.filter(serv => serv.id !== id));
+        deleteService(id);
     }
 
     const onClose = () => {

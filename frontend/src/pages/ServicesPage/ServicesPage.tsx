@@ -1,11 +1,13 @@
 import React, { type FC } from "react";
 
-import { staticServices } from "@/entities/Service";
 import ServiceDirections from "@/widgets/ServicesDirections";
 import Overview from "@/widgets/Overview";
 import ServicesCatalog from "@/widgets/ServicesCatalog";
+import { useServices } from "@/entities/Service/model/useServices";
 
 const ServicesPage: FC = (): React.JSX.Element => {
+
+    const { services } = useServices();
 
     return (
         <>
@@ -17,7 +19,7 @@ const ServicesPage: FC = (): React.JSX.Element => {
             </Overview>
 
             <ServiceDirections />
-            <ServicesCatalog services={staticServices} />
+            <ServicesCatalog services={services} />
         </>
     );
 };
