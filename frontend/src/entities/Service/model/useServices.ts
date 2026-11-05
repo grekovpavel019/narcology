@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import type { CreateServiceInput, Service } from "./types"
+import type { CreateServiceInput, Service, UpdateServiceInput } from "./types"
 import API from "@/shared/api/api";
 
 type StatusType =
@@ -38,6 +38,12 @@ export const useServices = () => {
         })
     ), []);
 
+    const updateService = useCallback((id: number, data: UpdateServiceInput) => {
+        API.updateService(id, data).then((response) => {
+            setServices(prev => prev.map(serv => serv.id === response.service.id ? response.service : serv))
+        })
+    }, [])
+
     useEffect(() => {
         checkServices()
     }, [checkServices]);
@@ -46,6 +52,7 @@ export const useServices = () => {
         services,
         status,
 
-        addService
+        addService,
+        updateService
     }
 }

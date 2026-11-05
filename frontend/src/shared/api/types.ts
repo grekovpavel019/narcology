@@ -42,3 +42,5 @@ export type CreateServicePayload = {
     audience: string;
     format: string;
 }
+
+export type UpdateServicePayload = Partial<CreateServicePayload>;

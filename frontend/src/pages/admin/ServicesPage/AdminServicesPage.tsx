@@ -16,7 +16,7 @@ import { useServices } from "@/entities/Service/model/useServices";
 const AdminServicesPage: FC = (): React.JSX.Element => {
 
     // const [services, setServices] = useState<Service[]>(staticServices);
-    const { services, addService } = useServices();
+    const { services, addService, updateService } = useServices();
     
     const [modal, setModal] = useState<ServiceModalState<Service>>(null);
 
@@ -41,20 +41,9 @@ const AdminServicesPage: FC = (): React.JSX.Element => {
             addService(values);
         }
         
-        // if (modal?.type === "edit") {
-        //     const newService = {
-        //         id: modal.service.id,
-        //         ...values
-        //     }
-
-        //     setServices(prev =>
-        //         prev.map(serv =>
-        //             serv.id === modal.service.id
-        //                 ? newService
-        //                 : serv
-        //         )
-        //     );
-        // }
+        if (modal?.type === "edit") {
+            updateService(modal.service.id, values);
+        }
     }
 
     const renderServiceActions = (service: Service): React.ReactNode => {
