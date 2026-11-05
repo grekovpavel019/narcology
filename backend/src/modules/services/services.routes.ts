@@ -12,7 +12,9 @@ servicesRouter.get("/", async (req: Request, res: Response) => {
     
     try {
         const result = await pool.query(`
-            SELECT id, description, sub, price, category, audience, format FROM services
+            SELECT id, description, sub, price, category, audience, format 
+            FROM services
+            ORDER BY id
         `);
 
         const services = result.rows;
