@@ -6,6 +6,7 @@ export const ActionTypeSchema = z.enum([
     "logout",
     "page_view",
     "profile_update",
+    "password_change",
     "service_created",
     "service_update",
     "service_delete"

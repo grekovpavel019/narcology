@@ -5,8 +5,26 @@ import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 import pool from "../../lib/db.js";
 
 import { serviceIdSchema, serviceSchema } from "./services.schemas.js";
+import { tryLogAction } from "../actions/actions.services.js";
 
 const servicesRouter = Router();
+
+async function logServiceAction(
+    req: Request,
+    action: "service_created" | "service_update" | "service_delete",
+    serviceId: number
+): Promise<void> {
+    const userId = req.session.userId;
+
+    if (userId !== undefined) {
+        return tryLogAction({
+            userId: Number(userId),
+            action,
+            target: `service:${serviceId}`,
+            ip: req.ip ?? null
+        });
+    }
+}
 
 servicesRouter.get("/", async (req: Request, res: Response) => {
     
@@ -48,6 +66,8 @@ servicesRouter.post("/", requireAuth, requireAdmin, async (req: Request, res: Re
             VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id, description, sub, price, category, audience, format
         `, [description, result.data.sub ?? null, price, category, audience, format]);
+
+        await logServiceAction(req, "service_created", service.rows[0].id)
 
         res.status(201).json({
             service: service.rows[0]
@@ -94,6 +114,8 @@ servicesRouter.patch("/:id", requireAuth, requireAdmin, async (req: Request, res
             });
         }
 
+        await logServiceAction(req, "service_update", service.rows[0].id)
+
         res.status(200).json({
             service: service.rows[0]
         })
@@ -128,6 +150,8 @@ servicesRouter.delete("/:id", requireAuth, requireAdmin, async (req: Request, re
                 message: "Не удалось удалить"
             });
         }
+
+        await logServiceAction(req, "service_delete", serviceId.rows[0].id)
 
         res.status(200).json({
             serviceId: serviceId.rows[0]

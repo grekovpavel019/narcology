@@ -2,6 +2,7 @@ import { Router, type Request, type Response } from "express";
 import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 import { changePassword, getCurrentUser, updateUser } from "./user.services.js";
 import { changePasswordSchema, updateUserSchema } from "./user.schema.js";
+import { tryLogAction } from "../actions/actions.services.js";
 
 const userRouter = Router();
 
@@ -29,7 +30,7 @@ userRouter.get("/me", requireAuth, async (req: Request, res: Response) => {
 
 userRouter.patch("/me", requireAuth, async (req: Request, res: Response) => {
     const result = updateUserSchema.safeParse(req.body);
-    
+
     if (!result.success) {
 
         return res.status(400).json({
@@ -46,6 +47,16 @@ userRouter.patch("/me", requireAuth, async (req: Request, res: Response) => {
                 message: "Пользователь не найден"
             });
         }
+
+        if (user.id !== undefined) {
+            await tryLogAction({
+                userId: Number(user.id),
+                action: "profile_update",
+                target: `profile:${user.id}`,
+                ip: req.ip ?? null
+            })
+        }
+
 
         return res.status(200).json({
             message: "Успешно обновлено",
@@ -99,6 +110,15 @@ userRouter.patch("/me/password", requireAuth, async (req: Request, res: Response
             return res.status(400).json({
                 message: "Текущий пароль указан неверно"
             });
+        }
+
+        if (req.session.userId !== undefined) {
+            await tryLogAction({
+                userId: Number(req.session.userId),
+                action: "password_change",
+                target: `profile:${req.session.userId}`,
+                ip: req.ip ?? null
+            })
         }
 
         return res.status(200).json({
