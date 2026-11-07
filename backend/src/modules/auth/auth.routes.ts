@@ -5,6 +5,8 @@ import { registerUser, loginUser, createPasswordResetLink, resetPassword } from 
 
 import { createSession } from "../../middleware/createSession.middleware.js";
 
+import { tryLogAction } from "../actions/actions.services.js";
+
 const authRouter = Router();
 
 authRouter.post("/register", async (req: Request, res: Response) => {
@@ -22,6 +24,13 @@ authRouter.post("/register", async (req: Request, res: Response) => {
         const user = await registerUser(result.data);
 
         await createSession(req, user.id)
+
+        await tryLogAction({
+            userId: Number(user.id),
+            action: "register",
+            target: null,
+            ip: req.ip ?? null
+        })
 
         return res.status(201).json({
             message: "Успешно"
@@ -73,6 +82,13 @@ authRouter.post("/login", async (req: Request, res: Response) => {
 
         await createSession(req, user.id);
 
+        await tryLogAction({
+            userId: Number(user.id),
+            action: "login",
+            target: null,
+            ip: req.ip ?? null
+        })
+
         return res.status(200).json({
             message: "Успешно"
         });
@@ -88,7 +104,10 @@ authRouter.post("/login", async (req: Request, res: Response) => {
 
 
 authRouter.post("/logout", (req: Request, res: Response) => {
-    req.session.destroy((err) => {
+
+    const userId = req.session.userId;
+    
+    req.session.destroy( async (err) => {
         if (err) {
             console.error(err);
 
@@ -100,7 +119,16 @@ authRouter.post("/logout", (req: Request, res: Response) => {
         res.clearCookie("connect.sid", {
             path: "/"
         });
-    
+
+        if (userId !== undefined) {
+            await tryLogAction({
+                userId: Number(userId),
+                action: "logout",
+                target: null,
+                ip: req.ip ?? null
+            })
+        }
+        
         return res.status(200).json({
             message: "Выход выполенен успешно"
         })
