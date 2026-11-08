@@ -20,13 +20,18 @@ const ProfileAside = ({ isAdmin }: ProfileAsideProps): React.JSX.Element => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
+        console.log("1. Клик по кнопке");
+
         try {
             await logout();
-            navigate("/", { replace: true })
+            console.log("2. Logout завершился");
+
+            navigate("/", { replace: true });
+            console.log("3. Навигация выполнена");
         } catch (e) {
-            console.error(e)
+            console.error("Ошибка logout:", e);
         }
-    }
+    };
 
     return (
         <aside className={styles.sidebar}>

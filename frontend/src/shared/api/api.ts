@@ -145,6 +145,17 @@ const API = {
             credentials: "include",
             headers
         }).then(parseResponse)
+    },
+
+    sendPageView: (pathname: string) => {
+        return fetch (`${URL}/api/actions/page-view`, {
+            method: "POST",
+            credentials: "include",
+            headers,
+            body: JSON.stringify({
+                path: pathname
+            })
+        });
     }
 }
 
