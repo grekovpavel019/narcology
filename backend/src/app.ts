@@ -6,6 +6,7 @@ import pool from "./lib/db.js";
 import authRouter from "./modules/auth/auth.routes.js";
 import userRouter from "./modules/users/user.routes.js";
 import adminRouter from "./modules/admin/admin.routes.js";
+import actionsRouter from "./modules/actions/actions.routes.js";
 
 import connectPgSimple from "connect-pg-simple";
 
@@ -46,6 +47,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/services", servicesRouter)
+app.use("/api/actions", actionsRouter);
 
 app.get("/api/health", (req: Request, res: Response) => {
     res.json({
