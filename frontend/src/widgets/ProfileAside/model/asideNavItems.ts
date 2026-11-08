@@ -5,4 +5,5 @@ export const profileNavItems = [
 
 export const adminNavItems = [
     { to: "/admin", label: "Панель управления", end: true },
+    { to: "/statistics", label: "Статистика" },
 ];

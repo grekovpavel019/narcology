@@ -25,6 +25,7 @@ import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
 
 import AdminServicesPage from "@/pages/admin/ServicesPage";
+import AdminStatisticsPage from "@/pages/admin/AdminStatisticsPage";
 
 import ProtectedAuthLayout from "./Layouts/ProtectedAuthLayout";
 import AdminLayout from "./Layouts/AdminLayout";
@@ -63,6 +64,7 @@ const App: FC = (): React.JSX.Element => {
 
                 <Route element={ <AdminLayout /> } >
                     <Route path="/admin" element={ <AdminServicesPage /> } />
+                    <Route path="/statistics" element={ <AdminStatisticsPage /> } />
                 </Route>
                 
             </Route>
