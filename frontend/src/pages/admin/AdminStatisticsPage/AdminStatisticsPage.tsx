@@ -18,9 +18,7 @@ const AdminStatisticsPage = (): React.JSX.Element => {
                 <section>
                     <Title variant="h3">Журнал действий</Title>
 
-                    <form action="">
-
-                    </form>
+                    
                 </section>
             </div>
         </>

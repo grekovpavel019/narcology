@@ -16,6 +16,11 @@ const Statisctics = (): React.JSX.Element => {
         order: "asc"
     });
 
+    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(statisticsFilters)
+    }
+
     return (
         <section>
             <Title variant="h3">Общая статистика</Title>
@@ -23,6 +28,7 @@ const Statisctics = (): React.JSX.Element => {
                 <StatisticsFilters 
                     value={statisticsFilters}
                     onChange={setStatisticsFilters}
+                    onSubmit={onSubmit}
                 />
             </div>
         </section>

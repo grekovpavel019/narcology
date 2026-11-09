@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction } from "react";
+import React, { type Dispatch, type SetStateAction, type SubmitEventHandler } from "react";
 
 import Select from "@/shared/components/Select";
 import Button from "@/shared/components/Button";
@@ -9,17 +9,20 @@ import { sortOrderOptions } from "@/entities/StatisticsFilters/model/constants";
 
 import type { StatiscticsFiltersFormState } from "../model/types";
 
+import styles from "./StatisticsFilters.module.scss";
+
 type StatiscticsFiltersProps = {
     value: StatiscticsFiltersFormState;
     onChange: Dispatch<SetStateAction<StatiscticsFiltersFormState>>;
+    onSubmit: SubmitEventHandler<HTMLFormElement>;
 }
 
 const StatisticsFilters = (props: StatiscticsFiltersProps): React.JSX.Element => {
 
-    const { value, onChange } = props;
+    const { value, onChange, onSubmit } = props;
 
     return (
-        <form action="">
+        <form className={styles.form} onSubmit={onSubmit}>
             <Select 
                 options={groupByOptions}
                 value={value.groupBy}
@@ -33,17 +36,27 @@ const StatisticsFilters = (props: StatiscticsFiltersProps): React.JSX.Element =>
 
             <Select 
                 options={actionOptions}
-                value="all"
-                onChange={() => console.log()}
+                value={value.action}
+                onChange={(newValue) => {
+                    onChange(prev => ({
+                        ...prev,
+                        action: newValue
+                    }))
+                }}
             />
             
             <Select 
                 options={sortOrderOptions}
-                value="asc"
-                onChange={() => console.log(1)}
+                value={value.order}
+                onChange={(newValue) => {
+                    onChange(prev => ({
+                        ...prev,
+                        order: newValue
+                    }))
+                }}
             />
 
-            <Button variant="primaryButton">Показать</Button>
+            <Button type="submit" variant="primaryButton">Показать</Button>
         </form>
     );
 };
