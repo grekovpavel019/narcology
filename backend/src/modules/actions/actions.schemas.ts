@@ -1,16 +1,5 @@
 import * as z from "zod"
-
-export const ActionTypeSchema = z.enum([
-    "register",
-    "login",
-    "logout",
-    "page_view",
-    "profile_update",
-    "password_change",
-    "service_created",
-    "service_update",
-    "service_delete"
-]) 
+import { ActionTypeSchema } from "../../types/action_types.js"
 
 export const LogActionSchema = z.object({
     userId: z.number().nullable(),
