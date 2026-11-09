@@ -1,8 +1,17 @@
 import React from "react";
 
 import styles from "./StatisticsTable.module.scss";
+import { formatDate } from "@/shared/lib/formatDate";
+import type { StatisticsItem } from "../model/types";
 
-const StatisticsTable = (): React.JSX.Element => {
+type StatisticsTableProps = {
+    statistics: StatisticsItem[];
+};
+
+const StatisticsTable = (props: StatisticsTableProps): React.JSX.Element => {
+
+    const { statistics } = props;
+
     return (
         <div className={styles["table-scroll"]}>
             <table className={styles["table-content"]}>
@@ -14,10 +23,14 @@ const StatisticsTable = (): React.JSX.Element => {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td className={styles["col-period"]}>22.08.22</td>
-                        <td className={styles["col-quantity"]}>10</td>
-                    </tr>
+                    {
+                        statistics.map((val) => (
+                            <tr key={val.period}>
+                                <td className={styles["col-period"]}>{formatDate(val.period)}</td>
+                                <td className={styles["col-quantity"]}>{val.quantity}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>

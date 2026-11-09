@@ -156,6 +156,15 @@ const API = {
                 path: pathname
             })
         });
+    },
+
+    getStatistics: (statisticsFilters: any) => {
+        const params = new URLSearchParams(statisticsFilters);
+
+        return fetch(`${URL}/api/admin/statistics?${params.toString()}`, {
+            credentials: "include",
+            headers
+        }).then(parseResponse)
     }
 }
 

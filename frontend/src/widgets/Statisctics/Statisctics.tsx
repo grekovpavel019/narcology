@@ -8,6 +8,8 @@ import type { StatiscticsFiltersFormState } from "@/features/statistics-filters/
 import StatisticsTable from "@/entities/StatisticsFilters";
 
 import styles from "./Statistics.module.scss"
+import API from "@/shared/api/api";
+import { useStatistics } from "@/entities/StatisticsFilters/model/useStatistics";
 
 const Statisctics = (): React.JSX.Element => {
 
@@ -17,9 +19,16 @@ const Statisctics = (): React.JSX.Element => {
         order: "asc"
     });
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const { statistics, setStatistics } = useStatistics();
+
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(statisticsFilters)
+
+        const res = await API.getStatistics(statisticsFilters);
+        setStatistics(res.data);
+
+        console.log("API response:", res);
+        console.log("Is array:", Array.isArray(res.data));
     }
 
     return (
@@ -32,7 +41,9 @@ const Statisctics = (): React.JSX.Element => {
                     onSubmit={onSubmit}
                 />
 
-                <StatisticsTable />
+                <StatisticsTable 
+                    statistics={statistics}
+                />
             </div>
         </section>
     );

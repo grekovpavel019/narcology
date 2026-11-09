@@ -15,3 +15,8 @@ export type ActionFilter =
 export type StatisticsSort = "period" | "quantity";
 
 export type SortOrder = "asc" | "desc";
+
+export type StatisticsItem = {
+    period: string;
+    quantity: number;
+};
