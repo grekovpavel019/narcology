@@ -9,17 +9,17 @@ import { useUserContext } from "@/entities/User/model/useUserContext";
 
 const AdminLayout: FC = (): React.JSX.Element => {
 
-    const location = useLocation();
+    // const location = useLocation();
 
-    const { user, status } = useUserContext();
+    // const { user, status } = useUserContext();
 
-    if (status === "loading") {
-        return <div>Загрузка...</div>
-    }
+    // if (status === "loading") {
+    //     return <div>Загрузка...</div>
+    // }
 
-    if (user?.role !== "admin") {
-        return <Navigate to="/profile" replace />
-    }
+    // if (user?.role !== "admin") {
+    //     return <Navigate to="/profile" replace />
+    // }
 
     return (
         <div className={styles.shell}>
