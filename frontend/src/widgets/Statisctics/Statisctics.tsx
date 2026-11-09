@@ -5,6 +5,7 @@ import Title from "@/shared/components/typography/Title";
 import { useState } from "react";
 
 import type { StatiscticsFiltersFormState } from "@/features/statistics-filters/model/types";
+import StatisticsTable from "@/entities/StatisticsFilters";
 
 import styles from "./Statistics.module.scss"
 
@@ -24,12 +25,14 @@ const Statisctics = (): React.JSX.Element => {
     return (
         <section>
             <Title variant="h3">Общая статистика</Title>
-            <div className={styles.actions}>
+            <div className={styles.content}>
                 <StatisticsFilters 
                     value={statisticsFilters}
                     onChange={setStatisticsFilters}
                     onSubmit={onSubmit}
                 />
+
+                <StatisticsTable />
             </div>
         </section>
     );
