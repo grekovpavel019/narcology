@@ -5,10 +5,8 @@ export const useUserContext = () => {
     const context = useContext(UserContext);
 
     if (!context) {
-        throw new Error(
-            "Ошибка создания контекста"
-        );
+        throw new Error("Ошибка создания контекста");
     }
 
     return context;
-}
+};

@@ -14,8 +14,6 @@ export const useServices = () => {
 
     const checkServices = useCallback(() => {
         
-        setStatus("loading");
-
         API.getServices()
             .then((result) => {
                 const services = result.services;

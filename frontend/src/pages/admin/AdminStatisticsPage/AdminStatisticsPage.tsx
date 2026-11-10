@@ -4,8 +4,6 @@ import Title from "@/shared/components/typography/Title";
 import Statisctics from "@/widgets/Statisctics";
 import LogData from "@/widgets/LogData";
 
-import styles from "./AdminStatisticsPage.module.scss";
-
 const AdminStatisticsPage = (): React.JSX.Element => {
     return (
         <>

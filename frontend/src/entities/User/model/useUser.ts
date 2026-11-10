@@ -10,8 +10,6 @@ export const useUser = () => {
     const [status, setStatus] = useState<AuthStatus>("loading");
 
     const checkUser = useCallback(() => {
-        setStatus("loading");
-
         API.getCurrentUser()
             .then((result) => {
                 setUser(result.user)

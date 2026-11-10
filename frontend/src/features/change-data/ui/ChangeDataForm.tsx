@@ -37,7 +37,7 @@ const ChangeDataForm: FC = (): React.JSX.Element => {
             fullname: user.fullname,
             email: user.email
         })
-    }, [user]);
+    }, [user, reset]);
 
     const onSubmit: SubmitHandler<ChangeDataFormValues> = async (data: ChangeDataFormValues) => {
 

@@ -13,14 +13,15 @@ const Header: FC = (): React.JSX.Element => {
 
     const { user } = useUserContext();
 
-    // состояние открытого окна
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 
-    // каждый раз при изменении URL, мы будем закрывать mobile menu
-    useEffect(() => {
+    const [previousPathname, setPreviousPathname] = useState(location.pathname);
+
+    if (previousPathname !== location.pathname) {
+        setPreviousPathname(location.pathname);
         setIsMenuOpen(false);
-    }, [location.pathname]);
+    }
 
     useEffect(() => {
         const handleCloseMobileMenu = (): void => {
