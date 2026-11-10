@@ -2,7 +2,10 @@ import React, { useState } from "react";
 
 import Title from "@/shared/components/typography/Title";
 import LogDataFilters from "@/features/log-data-filters";
+import LogDataTable from "@/entities/LogFilters";
 import type { LogDataFormState } from "@/features/log-data-filters/model/types";
+
+import styles from "./LogData.module.scss";
 
 const LogData = (): React.JSX.Element => {
 
@@ -19,7 +22,7 @@ const LogData = (): React.JSX.Element => {
     }
 
     return (
-        <section>
+        <section className={styles.content}>
             <Title variant="h3">Журнал действий</Title>
 
             <LogDataFilters 
@@ -27,6 +30,8 @@ const LogData = (): React.JSX.Element => {
                 onChange={setLogDataFilters}
                 onSubmit={onSubmit}
             />
+
+            <LogDataTable />
         </section>
     );
 };

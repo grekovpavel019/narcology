@@ -5,6 +5,8 @@ import Button from "@/shared/components/Button";
 import type { LogDataFormState } from "../model/types";
 import { actionOptions, sortOptions, orderOptions } from "@/entities/LogFilters/model/constants";
 
+import styles from "./LogDataFilters.module.scss"
+
 type LogDataFiltersProps = {
     value: LogDataFormState;
     onChange: Dispatch<SetStateAction<LogDataFormState>>;
@@ -16,7 +18,7 @@ const LogDataFilters = (props: LogDataFiltersProps): React.JSX.Element => {
     const { value, onChange, onSubmit } = props;
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={styles.form} onSubmit={onSubmit}>
             <Select 
                 options={actionOptions}
                 value={value.action}
