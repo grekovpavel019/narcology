@@ -6,7 +6,8 @@ import {
     type UpdateUserPayload,
     type ChangePasswordPayload,
     type CreateServicePayload,
-    type UpdateServicePayload
+    type UpdateServicePayload,
+    type StatisticsFiltersPayload
 } from "./types";
 
 const headers = {
@@ -158,7 +159,7 @@ const API = {
         });
     },
 
-    getStatistics: (statisticsFilters: any) => {
+    getStatistics: async (statisticsFilters: StatisticsFiltersPayload) => {
         const params = new URLSearchParams(statisticsFilters);
 
         return fetch(`${URL}/api/admin/statistics?${params.toString()}`, {

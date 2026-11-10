@@ -44,3 +44,9 @@ export type CreateServicePayload = {
 }
 
 export type UpdateServicePayload = Partial<CreateServicePayload>;
+
+export type StatisticsFiltersPayload = {
+    groupBy: string,
+    action: string,
+    order: string
+}

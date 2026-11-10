@@ -2,12 +2,11 @@ import React from "react";
 import Title from "@/shared/components/typography/Title";
 
 import Statisctics from "@/widgets/Statisctics";
+import LogData from "@/widgets/LogData";
 
 import styles from "./AdminStatisticsPage.module.scss";
 
-
 const AdminStatisticsPage = (): React.JSX.Element => {
-
     return (
         <>
             <div className="container">
@@ -15,11 +14,7 @@ const AdminStatisticsPage = (): React.JSX.Element => {
                 
                 <Statisctics />
 
-                <section>
-                    <Title variant="h3">Журнал действий</Title>
-
-                    
-                </section>
+                <LogData />
             </div>
         </>
     );
