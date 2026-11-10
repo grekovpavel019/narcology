@@ -6,6 +6,8 @@ import LogDataTable from "@/entities/LogFilters";
 import type { LogDataFormState } from "@/features/log-data-filters/model/types";
 
 import styles from "./LogData.module.scss";
+import { useLogs } from "@/entities/LogFilters/model/useLogs";
+import API from "@/shared/api/api";
 
 const LogData = (): React.JSX.Element => {
 
@@ -15,10 +17,13 @@ const LogData = (): React.JSX.Element => {
         order: "asc"
     });
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const { logs, setLogs } = useLogs();
+
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log(logDataFilters)
+        const res = await API.getLogs(logDataFilters);
+        setLogs(res.data)
     }
 
     return (
@@ -31,7 +36,9 @@ const LogData = (): React.JSX.Element => {
                 onSubmit={onSubmit}
             />
 
-            <LogDataTable />
+            <LogDataTable 
+                logs={logs}
+            />
         </section>
     );
 };

@@ -50,3 +50,9 @@ export type StatisticsFiltersPayload = {
     action: string,
     order: string
 }
+
+export type LogsFiltersPayload = {
+    sort: string,
+    action: string,
+    order: string
+}

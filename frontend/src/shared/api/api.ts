@@ -7,7 +7,8 @@ import {
     type ChangePasswordPayload,
     type CreateServicePayload,
     type UpdateServicePayload,
-    type StatisticsFiltersPayload
+    type StatisticsFiltersPayload,
+    type LogsFiltersPayload
 } from "./types";
 
 const headers = {
@@ -163,6 +164,15 @@ const API = {
         const params = new URLSearchParams(statisticsFilters);
 
         return fetch(`${URL}/api/admin/statistics?${params.toString()}`, {
+            credentials: "include",
+            headers
+        }).then(parseResponse)
+    },
+
+    getLogs: async (logsFilters: LogsFiltersPayload) => {
+        const params = new URLSearchParams(logsFilters);
+
+        return fetch(`${URL}/api/admin/logs?${params.toString()}`, {
             credentials: "include",
             headers
         }).then(parseResponse)

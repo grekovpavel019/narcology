@@ -19,3 +19,12 @@ export type Sort =
 export type Order = 
     | "asc"
     | "desc"
+
+export type LogItem = {
+    id: number;
+    user_id: number;
+    action: string;
+    target: string;
+    ip: string;
+    created_at: string;
+};

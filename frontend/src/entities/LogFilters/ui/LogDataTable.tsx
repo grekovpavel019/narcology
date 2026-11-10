@@ -2,7 +2,16 @@ import React from "react";
 
 import styles from "./LogDataTable.module.scss";
 
-const LogDataTable = (): React.JSX.Element => {
+import type { LogItem } from "../model/types";
+
+type LogDataTableProps = {
+    logs: LogItem[]
+}
+
+const LogDataTable = (props: LogDataTableProps): React.JSX.Element => {
+
+    const { logs } = props;
+
     return (
         <div className={styles["table-scroll"]}>
             <table className={styles["table-content"]}>
@@ -18,23 +27,19 @@ const LogDataTable = (): React.JSX.Element => {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>10.11.2026, 12:00</td>
-                        <td>42</td>
-                        <td>LOGIN</td>
-                        <td>auth</td>
-                        <td>192.168.1.1</td>
-                    </tr>
 
-                    <tr>
-                        <td>2</td>
-                        <td>10.11.2026, 12:15</td>
-                        <td>15</td>
-                        <td>LOGOUT</td>
-                        <td>auth</td>
-                        <td>192.168.1.2</td>
-                    </tr>
+                    {
+                        logs.map((val) => (
+                            <tr key={val.id}>
+                                <td>{val.id}</td>
+                                <td>{new Date(val.created_at).toLocaleString("ru-RU")}</td>
+                                <td>{val.user_id ?? "—"}</td>
+                                <td>{val.action}</td>
+                                <td>{val.target}</td>
+                                <td>{val.ip}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>
