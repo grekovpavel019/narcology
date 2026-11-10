@@ -6,3 +6,9 @@ export const statisticsSchema = z.object({
     groupBy: z.enum(["hour", "day", "week", "month"]),
     order: z.enum(["asc", "desc"])
 });
+
+export const logSchema = statisticsSchema.omit({
+    groupBy: true
+}).extend({
+    sort: z.enum(["time", "id", "userId", "action"])
+});
